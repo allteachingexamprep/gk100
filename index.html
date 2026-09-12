@@ -446,7 +446,6 @@
             outline: 2.5px solid #1e1b4b;
         }
 
-        /* रिजल्ट स्क्रीन व Gen-Z फीडबैक कार्ड */
         .result-panel {
             display: none;
             background: var(--card);
@@ -485,9 +484,6 @@
         .bullet-q-card.right-card { border-left-color: var(--success); }
         .bullet-q-card.skipped-card { border-left-color: #f59e0b; }
 
-        /* ========================================================
-           🖨️ SUPER COMPACT PRINT / PDF STYLING (कम से कम पन्ने)
-           ======================================================== */
         @media print {
             body * {
                 visibility: hidden;
@@ -619,25 +615,25 @@
         <p class="section-desc">तैयारी का स्तर चुनें:</p>
 
         <div class="selection-grid">
-            <div class="select-card" onclick="selectPost('PRT (प्राथमिक शिक्षक)')">
+            <div class="select-card" onclick="selectPost('PRT')">
                 <div class="badge-icon">👶</div>
                 <div class="card-title">PRT</div>
-                <div class="card-sub">कक्षा 1 से 5</div>
+                <div class="card-sub">कक्षा 1 से 5 (प्राथमिक)</div>
             </div>
-            <div class="select-card" onclick="selectPost('TGT (माध्यमिक)')">
+            <div class="select-card" onclick="selectPost('TGT')">
                 <div class="badge-icon">📖</div>
                 <div class="card-title">TGT</div>
-                <div class="card-sub">कक्षा 6 से 10</div>
+                <div class="card-sub">कक्षा 6 से 10 (माध्यमिक)</div>
             </div>
-            <div class="select-card" onclick="selectPost('PGT (उच्च माध्यमिक)')">
+            <div class="select-card" onclick="selectPost('PGT')">
                 <div class="badge-icon">🔬</div>
                 <div class="card-title">PGT</div>
-                <div class="card-sub">कक्षा 11 से 12</div>
+                <div class="card-sub">कक्षा 11 से 12 (प्रवक्ता)</div>
             </div>
             <div class="select-card" onclick="selectPost('Assistant Professor')">
                 <div class="badge-icon">👨‍🏫</div>
                 <div class="card-title">Assistant Professor</div>
-                <div class="card-sub">डिग्री कॉलेज / उच्च शिक्षा</div>
+                <div class="card-sub">डिग्री कॉलेज (विज्ञापन 51)</div>
             </div>
         </div>
     </div>
@@ -711,13 +707,12 @@
         </div>
     </div>
 
-    <!-- 6. रिजल्ट स्क्रीन (वेब व्यू) -->
+    <!-- 6. रिजल्ट स्क्रीन -->
     <div class="result-panel" id="resultScreen">
         <div style="font-size: 44px;">🎯</div>
         <h2 style="font-size: 20px; font-weight: 800; margin-top: 4px;">मॉक टेस्ट समाप्त हुआ!</h2>
         <div class="score-huge" id="finalScore">0 / 0</div>
 
-        <!-- Gen-Z Roasting & Appreciating Badge -->
         <div class="genz-feedback-box" id="genzBox"></div>
         
         <div style="display:flex; justify-content:center; gap:20px; margin: 14px 0; font-size:14px;">
@@ -738,15 +733,13 @@
 
 </div>
 
-<!-- 🖨️ SUPER COMPACT PRINT REPORT AREA (न्यूनतम पेज व ज़ीरो वेस्टेज) -->
+<!-- प्रिंट रिपोर्ट एरिया -->
 <div id="printReportArea" style="display:none;">
-    <!-- हल्का बैकग्राउंड वॉटरमार्क -->
     <div style="position:fixed; top:45%; left:25%; font-size:48px; font-weight:900; color:rgba(226, 232, 240, 0.45); transform:rotate(-35deg); pointer-events:none; z-index:0;">
         Team Anurag
     </div>
 
     <div style="position:relative; z-index:1;">
-        <!-- हेडर स्ट्रिप -->
         <div style="border-bottom: 1.5px solid #4f46e5; padding-bottom: 6px; margin-bottom: 10px; display:flex; justify-content:space-between; align-items:flex-end;">
             <div>
                 <h1 style="font-size: 16px; color: #4f46e5; font-weight:800; margin-bottom: 2px;">Teaching Exam GS GK - Revision Sheet</h1>
@@ -757,14 +750,12 @@
             </div>
         </div>
 
-        <!-- Gen-Z रिमार्क प्रिंट में भी दिखेगा -->
         <div id="pdfGenzRemark" style="background:#f1f5f9; padding:5px 8px; border-radius:6px; font-size:10.5px; font-weight:800; margin-bottom:8px; border-left:3px solid #4f46e5;"></div>
 
         <div style="font-size: 11px; font-weight:800; color:#dc2626; margin-bottom: 6px;">
             ⚠️ कमजोर बिंदु (केवल गलत और छूटे हुए सवाल - रिवीजन के लिए):
         </div>
         
-        <!-- 2-कॉलम कॉम्पैक्ट ग्रिड ताकि कम से कम पेज लगे -->
         <div class="print-grid-2col" id="printBulletList"></div>
 
         <div style="margin-top: 12px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 9px; color:#64748b; text-align:center;">
@@ -790,6 +781,16 @@
 </div>
 
 <script>
+    // ==========================================================
+    // ⚙️ ऑटो-मैप्ड CSV लिंक्स (प्रत्येक पद के लिए अलग शीट)
+    // ==========================================================
+    const CSV_URLS = {
+        ASST_PROF: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1896238938&single=true&output=csv",
+        TGT_PGT:   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1383517549&single=true&output=csv",
+        PRT_MOCK:  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=0&single=true&output=csv",
+        NOTES:     "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1508729464&single=true&output=csv"
+    };
+
     let selectedAayog = "";
     let selectedPost = "";
     let questions = [];
@@ -797,6 +798,25 @@
     let userAnswers = {};
     let timeLeft = 60 * 60;
     let timerInterval = null;
+    let allNotesData = {};
+
+    function parseCSVLine(text) {
+        let p = '', row = [''], i = 0, q = false;
+        for (let c of text) {
+            if (c === '"') {
+                if (q && c === p) { row[i] += c; }
+                q = !q;
+            } else if (c === ',' && !q) {
+                row[++i] = '';
+            } else if (c === '\r' || c === '\n') {
+                if (q) { row[i] += c; }
+            } else {
+                row[i] += c;
+            }
+            p = c;
+        }
+        return row.map(v => v.trim());
+    }
 
     function goHome() {
         clearInterval(timerInterval);
@@ -844,39 +864,83 @@
         loadDateContent(today);
     }
 
-    function loadDateContent(selectedDate) {
+    async function loadDateContent(selectedDate) {
         const heading = document.getElementById('notesHeading');
         const body = document.getElementById('notesBody');
 
-        heading.textContent = `दैनिक नोट्स (${selectedDate}) - ${selectedAayog} ${selectedPost}`;
-        body.innerHTML = `
-            <p>• <strong>उत्तर प्रदेश शिक्षा सेवा चयन आयोग (UPESSC):</strong> प्रयागराज स्थित यह आयोग प्रदेश के प्राथमिक, माध्यमिक और एडेड महाविद्यालयों में शिक्षकों की निष्पक्ष भर्ती करेगा।</p><br>
-            <p>• <strong>राष्ट्रीय शिक्षा नीति (NEP 2020):</strong> इसमें 5+3+3+4 ढाँचा लागू किया गया है। 3 से 8 वर्ष की आयु को फाउंडेशनल स्टेज माना गया है।</p><br>
-            <p>• <strong>भारतीय संविधान:</strong> अनुच्छेद 21-A शिक्षा के अधिकार को मौलिक अधिकार घोषित करता है जिसे 86वें संविधान संशोधन (2002) द्वारा जोड़ा गया था।</p><br>
-            <p>• <strong>पर्यावरण व भूगोल:</strong> उत्तर प्रदेश का राज्य पक्षी 'सारस' (क्रौंच) तथा राजकीय पशु 'बारहसिंगा' है।</p>
-        `;
+        heading.textContent = `दैनिक नोट्स (${selectedDate})`;
+        body.innerHTML = "नोट्स लोड हो रहे हैं, कृपया प्रतीक्षा करें...";
+
+        try {
+            if (Object.keys(allNotesData).length === 0) {
+                const res = await fetch(CSV_URLS.NOTES);
+                const csv = await res.text();
+                const lines = csv.split('\n');
+
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    const cols = parseCSVLine(line);
+                    if (cols.length >= 3) {
+                        const d = cols[0];
+                        allNotesData[d] = { title: cols[1], content: cols[2] };
+                    }
+                }
+            }
+
+            if (allNotesData[selectedDate]) {
+                heading.textContent = allNotesData[selectedDate].title;
+                body.innerHTML = allNotesData[selectedDate].content;
+            } else {
+                heading.textContent = `तारीख: ${selectedDate}`;
+                body.innerHTML = `<p style="color: #dc2626; font-weight: 700;">⚠️ इस तारीख के लिए अभी नोट्स उपलब्ध नहीं हैं। कृपया कैलेंडर से 2026-09-12 चुनें।</p>`;
+            }
+        } catch (err) {
+            body.innerHTML = "नोट्स लोड करने में समस्या हुई। कृपया इंटरनेट कनेक्शन चेक करें।";
+        }
     }
 
-    function startCbtMock() {
+    async function startCbtMock() {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
         document.getElementById('quizScreen').style.display = 'block';
         document.getElementById('timerBadge').style.display = 'block';
         document.getElementById('btnPaletteOpen').style.display = 'block';
         document.getElementById('examDetailTag').textContent = `${selectedAayog} • ${selectedPost}`;
+        document.getElementById('questionText').textContent = "लाइव टेस्ट लोड हो रहा है, कृपया प्रतीक्षा करें...";
 
-        // 10 टेस्ट प्रश्न (शीट जोड़ने पर 100 प्रश्न लोड होंगे)
-        questions = [
-            { q: "उत्तर प्रदेश शिक्षा सेवा चयन आयोग (UPESSC) का मुख्यालय कहाँ स्थित है?", a: "लखनऊ", b: "प्रयागराज", c: "वाराणसी", d: "गोरखपुर", correct: "B", exp: "UPESSC का गठन प्रयागराज में किया गया है जो राज्य की समस्त शिक्षक भर्तियाँ कराएगा।" },
-            { q: "भारत का राष्ट्रीय पशु कौन सा है?", a: "शेर", b: "बाघ", c: "हाथी", d: "चीता", correct: "B", exp: "बाघ (पैंथरा टाइग्रिस) भारत का राष्ट्रीय पशु है।" },
-            { q: "भारत की सबसे लंबी नदी कौन सी है?", a: "यमुना", b: "गोदावरी", c: "गंगा", d: "नर्मदा", correct: "C", exp: "गंगा 2525 किमी की कुल लंबाई के साथ भारत की सबसे लंबी नदी है।" },
-            { q: "ताजमहल किस नदी के तट पर स्थित है?", a: "गंगा", b: "यमुना", c: "सरयू", d: "गोमती", correct: "B", exp: "ताजमहल आगरा में यमुना नदी के तट पर स्थित है।" },
-            { q: "भारत के पहले प्रधानमंत्री कौन थे?", a: "सरदार पटेल", b: "महात्मा गांधी", c: "जवाहरलाल नेहरू", d: "डॉ. राजेंद्र प्रसाद", correct: "C", exp: "पंडित जवाहरलाल नेहरू स्वतंत्र भारत के पहले प्रधानमंत्री थे।" },
-            { q: "विश्व का सबसे बड़ा महासागर कौन सा है?", a: "अटलांटिक", b: "हिंद", c: "आर्कटिक", d: "प्रशांत महासागर", correct: "D", exp: "प्रशांत महासागर विश्व का सबसे बड़ा और गहरा महासागर है।" },
-            { q: "भारत का राष्ट्रीय खेल क्या माना जाता है?", a: "क्रिकेट", b: "हॉकी", c: "कबड्डी", d: "फुटबॉल", correct: "B", exp: "भारत का राष्ट्रीय खेल आधिकारिक रूप से हॉकी को माना जाता है।" },
-            { q: "सूर्य से सबसे निकटतम ग्रह कौन सा है?", a: "शुक्र", b: "मंगल", c: "बुध", d: "बृहस्पति", correct: "C", exp: "बुध (Mercury) सौरमंडल में सूर्य का सबसे नजदीकी ग्रह है।" },
-            { q: "क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य कौन सा है?", a: "मध्य प्रदेश", b: "उत्तर प्रदेश", c: "राजस्थान", d: "महाराष्ट्र", correct: "C", exp: "राजस्थान क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य है।" },
-            { q: "संविधान सभा के स्थायी अध्यक्ष कौन चुने गए थे?", a: "डॉ. बी.आर. अंबेडकर", b: "जवाहरलाल नेहरू", c: "डॉ. राजेंद्र प्रसाद", d: "के.एम. मुंशी", correct: "C", exp: "11 दिसंबर 1946 को डॉ. राजेंद्र प्रसाद को संविधान सभा का स्थायी अध्यक्ष चुना गया था।" }
-        ];
+        // चुने गए पद के अनुसार सही CSV लिंक का चयन
+        let targetCsvUrl = CSV_URLS.PRT_MOCK;
+        if (selectedPost === 'Assistant Professor') {
+            targetCsvUrl = CSV_URLS.ASST_PROF;
+        } else if (selectedPost === 'TGT' || selectedPost === 'PGT') {
+            targetCsvUrl = CSV_URLS.TGT_PGT;
+        }
+
+        try {
+            const response = await fetch(targetCsvUrl);
+            const csvText = await response.text();
+            const lines = csvText.split('\n');
+
+            questions = [];
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                const cols = parseCSVLine(line);
+                if (cols.length >= 7) {
+                    questions.push({
+                        q: cols[1] || '',
+                        a: cols[2] || '',
+                        b: cols[3] || '',
+                        c: cols[4] || '',
+                        d: cols[5] || '',
+                        correct: (cols[6] || '').toUpperCase(),
+                        exp: cols[7] || ''
+                    });
+                }
+            }
+        } catch (e) {
+            console.error("Sheet load error", e);
+        }
 
         currentIndex = 0;
         userAnswers = {};
@@ -934,6 +998,10 @@
     }
 
     function renderQuestion() {
+        if (!questions || questions.length === 0) {
+            document.getElementById('questionText').textContent = "इस पद के लिए सवाल अभी अपलोड किए जा रहे हैं...";
+            return;
+        }
         const q = questions[currentIndex];
         document.getElementById('qCountText').textContent = `Q ${currentIndex + 1}/${questions.length}`;
         document.getElementById('questionText').textContent = q.q;
@@ -1002,14 +1070,13 @@
         });
 
         const totalQ = questions.length;
-        const percentage = Math.round((correct / totalQ) * 100);
+        const percentage = totalQ > 0 ? Math.round((correct / totalQ) * 100) : 0;
 
         document.getElementById('finalScore').textContent = `${correct} / ${totalQ} (${percentage}%)`;
         document.getElementById('statRight').textContent = correct;
         document.getElementById('statWrong').textContent = wrong;
         document.getElementById('statSkipped').textContent = skipped;
 
-        // Gen-Z स्टाइल रिमार्क्स
         let remark = "";
         let boxColor = "";
         let bgStyle = "";
@@ -1059,7 +1126,6 @@
         document.getElementById('pdfRightText').textContent = `${c}`;
         document.getElementById('pdfWrongText').textContent = `${w}`;
 
-        // वेब व्यू कार्ड जनरेटर
         const createWebCard = (item, type) => {
             let badgeColor = type === 'wrong' ? '#dc2626' : (type === 'skipped' ? '#d97706' : '#16a34a');
             let badgeText = type === 'wrong' ? '❌ गलत' : (type === 'skipped' ? '⚠️ छूटा' : '✅ सही');
@@ -1076,7 +1142,6 @@
             `;
         };
 
-        // सुपर कॉम्पैक्ट प्रिंट कार्ड जनरेटर (कम स्पेस में 2-कॉलम फिट)
         const createPrintCard = (item, type) => {
             return `
                 <div class="bullet-q-card">
@@ -1090,12 +1155,10 @@
             `;
         };
 
-        // वेब पर सब दिखेगा
         wrongList.forEach(item => webContainer.innerHTML += createWebCard(item, 'wrong'));
         skippedList.forEach(item => webContainer.innerHTML += createWebCard(item, 'skipped'));
         correctList.forEach(item => webContainer.innerHTML += createWebCard(item, 'right'));
 
-        // प्रिंट में सिर्फ गलत और छूटे हुए ही जाएंगे ताकि प्रिंटिंग कॉस्ट 70% बच सके
         if (wrongList.length === 0 && skippedList.length === 0) {
             printContainer.innerHTML = `<div style="grid-column: span 2; text-align:center; padding:10px; font-weight:800; color:#16a34a;">शाबाश! आपने सभी प्रश्नों के सही उत्तर दिए हैं। कोई गलत सवाल नहीं है!</div>`;
         } else {
