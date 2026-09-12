@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Teaching Exam GS GK - CBT Portal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --telegram: #0088cc;
+            --whatsapp: #25D366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding-bottom: 60px;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1.5px solid var(--border);
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-home {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-main);
+        }
+
+        .brand-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-strip {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .animated-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: pulseEffect 2s infinite;
+        }
+
+        .btn-tg { background: linear-gradient(135deg, #0088cc, #005f8d); }
+        .btn-wa { background: linear-gradient(135deg, #25D366, #1b9a4b); }
+
+        @keyframes pulseEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .timer-badge {
+            background: #fee2e2;
+            color: var(--danger);
+            border: 1px solid #fecaca;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            display: none;
+        }
+
+        .btn-palette-toggle {
+            background: #e0e7ff;
+            color: var(--primary-dark);
+            border: 1px solid #c7d2fe;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            display: none;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 18px auto;
+            padding: 0 16px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .section-desc {
+            font-size: 13.5px;
+            color: var(--text-sub);
+            margin-bottom: 18px;
+        }
+
+        .selection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .select-card {
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            transition: 0.15s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .select-card:hover, .select-card:active {
+            border-color: var(--primary);
+            background: #f5f7ff;
+            transform: translateY(-2px);
+        }
+
+        .select-card .badge-icon { font-size: 26px; }
+        .select-card .card-title { font-size: 15px; font-weight: 800; }
+        .select-card .card-sub { font-size: 11.5px; color: var(--text-sub); font-weight: 600; }
+
+        .breadcrumb-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            cursor: pointer;
+        }
+
+        .action-choice-card {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 18px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            margin-bottom: 14px;
+            transition: 0.15s;
+        }
+        .action-choice-card:hover {
+            border-color: var(--primary);
+            background: #fafbff;
+        }
+
+        .study-box {
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            padding: 20px 16px;
+        }
+
+        .calendar-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8fafc;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1.5px solid var(--border);
+            margin-bottom: 20px;
+        }
+        .calendar-selector input[type="date"] {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            outline: none;
+            flex: 1;
+        }
+
+        .notes-content {
+            background: #f8fafc;
+            border-radius: 14px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            line-height: 1.7;
+            font-size: 14.5px;
+            margin-bottom: 18px;
+        }
+
+        .btn-action-pdf {
+            background: #4f46e5;
+            color: #ffffff;
+            padding: 14px;
+            border-radius: 12px;
+            border: none;
+            width: 100%;
+            font-weight: 800;
+            font-size: 14.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .quiz-card {
+            display: none;
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            padding: 20px 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .q-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .exam-tag {
+            background: #e0e7ff;
+            color: var(--primary-dark);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .question-box {
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.55;
+            margin-bottom: 20px;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .option-item {
+            background: #f8fafc;
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 13px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: 0.15s;
+        }
+
+        .option-item.selected {
+            background: #e0e7ff;
+            border-color: var(--primary);
+            color: var(--primary-dark);
+        }
+
+        .opt-prefix {
+            background: #fff;
+            border: 1.5px solid var(--border);
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .option-item.selected .opt-prefix {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .btn {
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-prev { background: #f1f5f9; color: var(--text-sub); }
+        .btn-next { background: var(--primary); color: #fff; flex: 1; }
+        .btn-submit { background: var(--success); color: #fff; flex: 1; display: none; }
+
+        .palette-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(2px);
+            z-index: 200;
+            display: none;
+        }
+
+        .palette-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 92%;
+            max-width: 440px;
+            max-height: 85vh;
+            background: #ffffff;
+            z-index: 201;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            padding: 18px;
+        }
+
+        .palette-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1.5px solid var(--border);
+        }
+
+        .palette-legend-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .p-indicator { display: flex; align-items: center; gap: 6px; }
+        .dot { width: 11px; height: 11px; border-radius: 3px; }
+
+        .palette-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 6px;
+            overflow-y: auto;
+            max-height: 52vh;
+            padding: 6px 2px;
+        }
+
+        .p-box {
+            aspect-ratio: 1;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--danger);
+            color: #ffffff;
+            font-size: 11.5px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .p-box.attempted {
+            background: var(--success);
+            border-color: #15803d;
+        }
+
+        .p-box.current {
+            outline: 2.5px solid #1e1b4b;
+        }
+
+        /* रिजल्ट स्क्रीन व Gen-Z फीडबैक कार्ड */
+        .result-panel {
+            display: none;
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            padding: 24px 18px;
+            text-align: center;
+        }
+        .score-huge {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            margin: 6px 0;
+        }
+
+        .genz-feedback-box {
+            border-radius: 14px;
+            padding: 14px;
+            margin: 14px 0;
+            font-size: 15px;
+            font-weight: 800;
+            line-height: 1.5;
+            border: 1.5px dashed;
+        }
+
+        .bullet-q-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--danger);
+            border-radius: 10px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+        .bullet-q-card.right-card { border-left-color: var(--success); }
+        .bullet-q-card.skipped-card { border-left-color: #f59e0b; }
+
+        /* ========================================================
+           🖨️ SUPER COMPACT PRINT / PDF STYLING (कम से कम पन्ने)
+           ======================================================== */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printReportArea, #printReportArea * {
+                visibility: visible;
+            }
+            #printReportArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: #ffffff;
+                color: #0f172a;
+                padding: 10px 15px;
+                box-sizing: border-box;
+            }
+            .print-grid-2col {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .bullet-q-card {
+                padding: 6px 8px !important;
+                margin-bottom: 6px !important;
+                font-size: 11px !important;
+                border: 1px solid #cbd5e1 !important;
+                border-left: 3px solid #dc2626 !important;
+                page-break-inside: avoid;
+            }
+            .bullet-q-card .q-title {
+                font-size: 11px !important;
+                font-weight: 800 !important;
+                margin-bottom: 2px !important;
+            }
+            .bullet-q-card .q-meta-ans {
+                font-size: 10px !important;
+            }
+            .bullet-q-card .q-exp {
+                font-size: 9.5px !important;
+                margin-top: 2px !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="brand-box">
+        <button class="btn-home" onclick="goHome()">🏠 Home</button>
+        <div class="brand-title">📚 Teaching Exam GS GK</div>
+    </div>
+    <div class="header-actions">
+        <button class="btn-palette-toggle" id="btnPaletteOpen" onclick="togglePalette(true)">🔢 पैलेट (1-100)</button>
+        <div class="timer-badge" id="timerBadge">⏱️ <span id="timerText">60:00</span></div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="social-strip">
+        <a href="https://t.me/TeachingexamGKGSNotes" target="_blank" class="animated-btn btn-tg">
+            <span>✈️</span> Telegram चैनल
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb8lFzX60eBiTqrlX92l" target="_blank" class="animated-btn btn-wa">
+            <span>💬</span> WhatsApp चैनल
+        </a>
+    </div>
+    
+    <!-- 1. आयोग चयन -->
+    <div id="aayogScreen">
+        <h1 class="section-title">परीक्षा आयोग चुनें</h1>
+        <p class="section-desc">जिस भर्ती परीक्षा की तैयारी कर रहे हैं, उस पर क्लिक करें:</p>
+        
+        <div class="selection-grid">
+            <div class="select-card" onclick="selectAayog('UPESSC', 'उत्तर प्रदेश शिक्षा सेवा चयन आयोग')">
+                <div class="badge-icon">🏛️</div>
+                <div class="card-title">UPESSC</div>
+                <div class="card-sub">उत्तर प्रदेश शिक्षा सेवा आयोग</div>
+            </div>
+            <div class="select-card" onclick="selectAayog('BPSC TRE', 'बिहार लोक सेवा आयोग')">
+                <div class="badge-icon">📍</div>
+                <div class="card-title">BPSC TRE</div>
+                <div class="card-sub">बिहार शिक्षक भर्ती</div>
+            </div>
+            <div class="select-card" onclick="selectAayog('UPPSC', 'उत्तर प्रदेश लोक सेवा')">
+                <div class="badge-icon">⚖️</div>
+                <div class="card-title">UPPSC (GIC/LT)</div>
+                <div class="card-sub">UP राजकीय शिक्षक</div>
+            </div>
+            <div class="select-card" onclick="selectAayog('KVS', 'Kendriya Vidyalaya')">
+                <div class="badge-icon">🏫</div>
+                <div class="card-title">KVS</div>
+                <div class="card-sub">केंद्रीय विद्यालय संगठन</div>
+            </div>
+            <div class="select-card" onclick="selectAayog('NVS', 'Navodaya Vidyalaya')">
+                <div class="badge-icon">🌲</div>
+                <div class="card-title">NVS</div>
+                <div class="card-sub">नवोदय विद्यालय समिति</div>
+            </div>
+            <div class="select-card" onclick="selectAayog('DSSSB', 'दिल्ली अधीनस्थ सेवा')">
+                <div class="badge-icon">🏙️</div>
+                <div class="card-title">DSSSB</div>
+                <div class="card-sub">दिल्ली शिक्षक भर्ती</div>
+            </div>
+            <div class="select-card" onclick="selectAayog('EMRS', 'एकलव्य विद्यालय')">
+                <div class="badge-icon">🏹</div>
+                <div class="card-title">EMRS</div>
+                <div class="card-sub">जनजातीय कार्य मंत्रालय</div>
+            </div>
+            <div class="select-card" onclick="selectAayog('UGC NET', 'विश्वविद्यालय अनुदान आयोग')">
+                <div class="badge-icon">🎓</div>
+                <div class="card-title">UGC NET</div>
+                <div class="card-sub">Paper 1 General</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. पद चयन -->
+    <div id="postScreen" style="display: none;">
+        <div class="breadcrumb-bar" onclick="goHome()">
+            <span>← आयोग बदलें</span> | <span id="currentAayogBadge" style="color:var(--text-main);"></span>
+        </div>
+
+        <h2 class="section-title">पद / स्तर चुनें</h2>
+        <p class="section-desc">तैयारी का स्तर चुनें:</p>
+
+        <div class="selection-grid">
+            <div class="select-card" onclick="selectPost('PRT (प्राथमिक शिक्षक)')">
+                <div class="badge-icon">👶</div>
+                <div class="card-title">PRT</div>
+                <div class="card-sub">कक्षा 1 से 5</div>
+            </div>
+            <div class="select-card" onclick="selectPost('TGT (माध्यमिक)')">
+                <div class="badge-icon">📖</div>
+                <div class="card-title">TGT</div>
+                <div class="card-sub">कक्षा 6 से 10</div>
+            </div>
+            <div class="select-card" onclick="selectPost('PGT (उच्च माध्यमिक)')">
+                <div class="badge-icon">🔬</div>
+                <div class="card-title">PGT</div>
+                <div class="card-sub">कक्षा 11 से 12</div>
+            </div>
+            <div class="select-card" onclick="selectPost('Assistant Professor')">
+                <div class="badge-icon">👨‍🏫</div>
+                <div class="card-title">Assistant Professor</div>
+                <div class="card-sub">डिग्री कॉलेज / उच्च शिक्षा</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. सेक्शन चयन -->
+    <div id="sectionChoiceScreen" style="display: none;">
+        <div class="breadcrumb-bar" onclick="backToPostScreen()">
+            <span>← पद बदलें</span> | <span id="currentPostBadge" style="color:var(--text-main);"></span>
+        </div>
+
+        <h2 class="section-title">आप क्या चुनना चाहते हैं?</h2>
+        <p class="section-desc">दैनिक अध्ययन सामग्री पढ़ें या टाइमर के साथ मॉक टेस्ट दें:</p>
+
+        <div class="action-choice-card" onclick="openStudyMaterial()">
+            <div style="font-size: 34px;">📖</div>
+            <div>
+                <h3 style="font-size: 16.5px; font-weight:800; color:var(--primary);">Daily Study Material & Notes</h3>
+                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;">तारीख वार दैनिक नोट्स पढ़ें व डाउनलोड करें</p>
+            </div>
+        </div>
+
+        <div class="action-choice-card" onclick="startCbtMock()">
+            <div style="font-size: 34px;">📝</div>
+            <div>
+                <h3 style="font-size: 16.5px; font-weight:800; color:var(--success);">Daily Mock Test (CBT 100 MCQs)</h3>
+                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;">CBT टेस्ट + Gen-Z स्कोर फीडबैक + सुपर कॉम्पैक्ट PDF</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. स्टडी मटेरियल -->
+    <div id="studyMaterialScreen" style="display: none;">
+        <div class="breadcrumb-bar" onclick="backToSectionChoice()">
+            <span>← वापस विकल्प पर आएँ</span>
+        </div>
+
+        <div class="study-box">
+            <h2 style="font-size: 18px; font-weight:800; margin-bottom: 8px;">📅 दैनिक अध्ययन सामग्री</h2>
+            
+            <div class="calendar-selector">
+                <label style="font-size:13px; font-weight:700;">तारीख चुनें:</label>
+                <input type="date" id="contentDatePicker" onchange="loadDateContent(this.value)">
+            </div>
+
+            <div class="notes-content" id="notesContentBox">
+                <h3 id="notesHeading" style="font-size: 15.5px; font-weight:800; color:var(--primary); margin-bottom:8px;"></h3>
+                <div id="notesBody">सामग्री लोड हो रही है...</div>
+            </div>
+
+            <button class="btn-action-pdf" onclick="window.print()">
+                📥 डाउनलोड / प्रिंट नोट्स (PDF)
+            </button>
+        </div>
+    </div>
+
+    <!-- 5. CBT ऑनलाइन क्विज स्क्रीन -->
+    <div class="quiz-card" id="quizScreen">
+        <div class="q-meta">
+            <span class="exam-tag" id="examDetailTag">UPESSC • PRT</span>
+            <span style="font-size: 12.5px; font-weight:700; color:var(--text-sub);" id="qCountText">Q 1/100</span>
+        </div>
+
+        <div class="question-box" id="questionText">सवाल लोड हो रहा है...</div>
+
+        <div class="options-list" id="optionsContainer"></div>
+
+        <div class="nav-controls">
+            <button class="btn btn-prev" id="btnPrev" onclick="navQuestion(-1)" disabled>← पिछला</button>
+            <button class="btn btn-next" id="btnNext" onclick="navQuestion(1)">अगला →</button>
+            <button class="btn btn-submit" id="btnSubmit" onclick="finishExam()">फाइनल सबमिट करें ✓</button>
+        </div>
+    </div>
+
+    <!-- 6. रिजल्ट स्क्रीन (वेब व्यू) -->
+    <div class="result-panel" id="resultScreen">
+        <div style="font-size: 44px;">🎯</div>
+        <h2 style="font-size: 20px; font-weight: 800; margin-top: 4px;">मॉक टेस्ट समाप्त हुआ!</h2>
+        <div class="score-huge" id="finalScore">0 / 0</div>
+
+        <!-- Gen-Z Roasting & Appreciating Badge -->
+        <div class="genz-feedback-box" id="genzBox"></div>
+        
+        <div style="display:flex; justify-content:center; gap:20px; margin: 14px 0; font-size:14px;">
+            <div style="color:var(--success); font-weight:800;">सही: <span id="statRight">0</span></div>
+            <div style="color:var(--danger); font-weight:800;">गलत: <span id="statWrong">0</span></div>
+            <div style="color:var(--text-sub); font-weight:800;">छूटा: <span id="statSkipped">0</span></div>
+        </div>
+
+        <button class="btn-action-pdf" style="margin-bottom: 12px; background:#dc2626;" onclick="window.print()">
+            🖨️ सेव करें सुपर कॉम्पैक्ट PDF (कम से कम पेज)
+        </button>
+
+        <button class="btn btn-prev" style="width:100%; margin-bottom: 20px; font-weight:800;" onclick="goHome()">🏠 होम पर वापस जाएँ</button>
+
+        <h3 style="font-size: 15.5px; font-weight: 800; text-align: left; margin-bottom: 12px;">📊 प्रदर्शन विश्लेषण (Weak Points):</h3>
+        <div id="bulletContainerWeb"></div>
+    </div>
+
+</div>
+
+<!-- 🖨️ SUPER COMPACT PRINT REPORT AREA (न्यूनतम पेज व ज़ीरो वेस्टेज) -->
+<div id="printReportArea" style="display:none;">
+    <!-- हल्का बैकग्राउंड वॉटरमार्क -->
+    <div style="position:fixed; top:45%; left:25%; font-size:48px; font-weight:900; color:rgba(226, 232, 240, 0.45); transform:rotate(-35deg); pointer-events:none; z-index:0;">
+        Team Anurag
+    </div>
+
+    <div style="position:relative; z-index:1;">
+        <!-- हेडर स्ट्रिप -->
+        <div style="border-bottom: 1.5px solid #4f46e5; padding-bottom: 6px; margin-bottom: 10px; display:flex; justify-content:space-between; align-items:flex-end;">
+            <div>
+                <h1 style="font-size: 16px; color: #4f46e5; font-weight:800; margin-bottom: 2px;">Teaching Exam GS GK - Revision Sheet</h1>
+                <p style="font-size: 10px; color: #64748b;" id="pdfMetaText"></p>
+            </div>
+            <div style="text-align:right; font-size:9.5px; font-weight:700; color:#0f172a;">
+                Score: <span id="pdfScoreText">0/0</span> | Right: <span id="pdfRightText" style="color:#16a34a;">0</span> | Wrong: <span id="pdfWrongText" style="color:#dc2626;">0</span>
+            </div>
+        </div>
+
+        <!-- Gen-Z रिमार्क प्रिंट में भी दिखेगा -->
+        <div id="pdfGenzRemark" style="background:#f1f5f9; padding:5px 8px; border-radius:6px; font-size:10.5px; font-weight:800; margin-bottom:8px; border-left:3px solid #4f46e5;"></div>
+
+        <div style="font-size: 11px; font-weight:800; color:#dc2626; margin-bottom: 6px;">
+            ⚠️ कमजोर बिंदु (केवल गलत और छूटे हुए सवाल - रिवीजन के लिए):
+        </div>
+        
+        <!-- 2-कॉलम कॉम्पैक्ट ग्रिड ताकि कम से कम पेज लगे -->
+        <div class="print-grid-2col" id="printBulletList"></div>
+
+        <div style="margin-top: 12px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 9px; color:#64748b; text-align:center;">
+            Telegram: @TeachingexamGKGSNotes • WhatsApp: Team Anurag • Designed for Quick Exam Revision
+        </div>
+    </div>
+</div>
+
+<!-- कॉम्पैक्ट क्वेश्चन पैलेट (1-100) -->
+<div class="palette-overlay" id="paletteOverlay" onclick="togglePalette(false)"></div>
+<div class="palette-modal" id="paletteModal">
+    <div class="palette-modal-header">
+        <h3 style="font-size: 15px; font-weight: 800;">क्वेश्चन पैलेट (1-100)</h3>
+        <button style="border:none; background:none; font-size:18px; font-weight:800; cursor:pointer;" onclick="togglePalette(false)">✕</button>
+    </div>
+
+    <div class="palette-legend-bar">
+        <div class="p-indicator"><div class="dot" style="background:var(--success);"></div> हल किया (Attempted)</div>
+        <div class="p-indicator"><div class="dot" style="background:var(--danger);"></div> बाकी है (Pending)</div>
+    </div>
+
+    <div class="palette-grid-compact" id="paletteGrid"></div>
+</div>
+
+<script>
+    let selectedAayog = "";
+    let selectedPost = "";
+    let questions = [];
+    let currentIndex = 0;
+    let userAnswers = {};
+    let timeLeft = 60 * 60;
+    let timerInterval = null;
+
+    function goHome() {
+        clearInterval(timerInterval);
+        document.getElementById('aayogScreen').style.display = 'block';
+        document.getElementById('postScreen').style.display = 'none';
+        document.getElementById('sectionChoiceScreen').style.display = 'none';
+        document.getElementById('studyMaterialScreen').style.display = 'none';
+        document.getElementById('quizScreen').style.display = 'none';
+        document.getElementById('resultScreen').style.display = 'none';
+        document.getElementById('timerBadge').style.display = 'none';
+        document.getElementById('btnPaletteOpen').style.display = 'none';
+        document.getElementById('printReportArea').style.display = 'none';
+        togglePalette(false);
+    }
+
+    function selectAayog(aayogName, sub) {
+        selectedAayog = aayogName;
+        document.getElementById('aayogScreen').style.display = 'none';
+        document.getElementById('postScreen').style.display = 'block';
+        document.getElementById('currentAayogBadge').textContent = `${aayogName} (${sub})`;
+    }
+
+    function selectPost(postName) {
+        selectedPost = postName;
+        document.getElementById('postScreen').style.display = 'none';
+        document.getElementById('sectionChoiceScreen').style.display = 'block';
+        document.getElementById('currentPostBadge').textContent = `${selectedAayog} • ${selectedPost}`;
+    }
+
+    function backToPostScreen() {
+        document.getElementById('sectionChoiceScreen').style.display = 'none';
+        document.getElementById('postScreen').style.display = 'block';
+    }
+
+    function backToSectionChoice() {
+        document.getElementById('studyMaterialScreen').style.display = 'none';
+        document.getElementById('sectionChoiceScreen').style.display = 'block';
+    }
+
+    function openStudyMaterial() {
+        document.getElementById('sectionChoiceScreen').style.display = 'none';
+        document.getElementById('studyMaterialScreen').style.display = 'block';
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('contentDatePicker').value = today;
+        loadDateContent(today);
+    }
+
+    function loadDateContent(selectedDate) {
+        const heading = document.getElementById('notesHeading');
+        const body = document.getElementById('notesBody');
+
+        heading.textContent = `दैनिक नोट्स (${selectedDate}) - ${selectedAayog} ${selectedPost}`;
+        body.innerHTML = `
+            <p>• <strong>उत्तर प्रदेश शिक्षा सेवा चयन आयोग (UPESSC):</strong> प्रयागराज स्थित यह आयोग प्रदेश के प्राथमिक, माध्यमिक और एडेड महाविद्यालयों में शिक्षकों की निष्पक्ष भर्ती करेगा।</p><br>
+            <p>• <strong>राष्ट्रीय शिक्षा नीति (NEP 2020):</strong> इसमें 5+3+3+4 ढाँचा लागू किया गया है। 3 से 8 वर्ष की आयु को फाउंडेशनल स्टेज माना गया है।</p><br>
+            <p>• <strong>भारतीय संविधान:</strong> अनुच्छेद 21-A शिक्षा के अधिकार को मौलिक अधिकार घोषित करता है जिसे 86वें संविधान संशोधन (2002) द्वारा जोड़ा गया था।</p><br>
+            <p>• <strong>पर्यावरण व भूगोल:</strong> उत्तर प्रदेश का राज्य पक्षी 'सारस' (क्रौंच) तथा राजकीय पशु 'बारहसिंगा' है।</p>
+        `;
+    }
+
+    function startCbtMock() {
+        document.getElementById('sectionChoiceScreen').style.display = 'none';
+        document.getElementById('quizScreen').style.display = 'block';
+        document.getElementById('timerBadge').style.display = 'block';
+        document.getElementById('btnPaletteOpen').style.display = 'block';
+        document.getElementById('examDetailTag').textContent = `${selectedAayog} • ${selectedPost}`;
+
+        // 10 टेस्ट प्रश्न (शीट जोड़ने पर 100 प्रश्न लोड होंगे)
+        questions = [
+            { q: "उत्तर प्रदेश शिक्षा सेवा चयन आयोग (UPESSC) का मुख्यालय कहाँ स्थित है?", a: "लखनऊ", b: "प्रयागराज", c: "वाराणसी", d: "गोरखपुर", correct: "B", exp: "UPESSC का गठन प्रयागराज में किया गया है जो राज्य की समस्त शिक्षक भर्तियाँ कराएगा।" },
+            { q: "भारत का राष्ट्रीय पशु कौन सा है?", a: "शेर", b: "बाघ", c: "हाथी", d: "चीता", correct: "B", exp: "बाघ (पैंथरा टाइग्रिस) भारत का राष्ट्रीय पशु है।" },
+            { q: "भारत की सबसे लंबी नदी कौन सी है?", a: "यमुना", b: "गोदावरी", c: "गंगा", d: "नर्मदा", correct: "C", exp: "गंगा 2525 किमी की कुल लंबाई के साथ भारत की सबसे लंबी नदी है।" },
+            { q: "ताजमहल किस नदी के तट पर स्थित है?", a: "गंगा", b: "यमुना", c: "सरयू", d: "गोमती", correct: "B", exp: "ताजमहल आगरा में यमुना नदी के तट पर स्थित है।" },
+            { q: "भारत के पहले प्रधानमंत्री कौन थे?", a: "सरदार पटेल", b: "महात्मा गांधी", c: "जवाहरलाल नेहरू", d: "डॉ. राजेंद्र प्रसाद", correct: "C", exp: "पंडित जवाहरलाल नेहरू स्वतंत्र भारत के पहले प्रधानमंत्री थे।" },
+            { q: "विश्व का सबसे बड़ा महासागर कौन सा है?", a: "अटलांटिक", b: "हिंद", c: "आर्कटिक", d: "प्रशांत महासागर", correct: "D", exp: "प्रशांत महासागर विश्व का सबसे बड़ा और गहरा महासागर है।" },
+            { q: "भारत का राष्ट्रीय खेल क्या माना जाता है?", a: "क्रिकेट", b: "हॉकी", c: "कबड्डी", d: "फुटबॉल", correct: "B", exp: "भारत का राष्ट्रीय खेल आधिकारिक रूप से हॉकी को माना जाता है।" },
+            { q: "सूर्य से सबसे निकटतम ग्रह कौन सा है?", a: "शुक्र", b: "मंगल", c: "बुध", d: "बृहस्पति", correct: "C", exp: "बुध (Mercury) सौरमंडल में सूर्य का सबसे नजदीकी ग्रह है।" },
+            { q: "क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य कौन सा है?", a: "मध्य प्रदेश", b: "उत्तर प्रदेश", c: "राजस्थान", d: "महाराष्ट्र", correct: "C", exp: "राजस्थान क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य है।" },
+            { q: "संविधान सभा के स्थायी अध्यक्ष कौन चुने गए थे?", a: "डॉ. बी.आर. अंबेडकर", b: "जवाहरलाल नेहरू", c: "डॉ. राजेंद्र प्रसाद", d: "के.एम. मुंशी", correct: "C", exp: "11 दिसंबर 1946 को डॉ. राजेंद्र प्रसाद को संविधान सभा का स्थायी अध्यक्ष चुना गया था।" }
+        ];
+
+        currentIndex = 0;
+        userAnswers = {};
+        timeLeft = 60 * 60;
+        startTimer();
+        renderQuestion();
+        renderCompactPalette();
+    }
+
+    function togglePalette(show) {
+        document.getElementById('paletteOverlay').style.display = show ? 'block' : 'none';
+        document.getElementById('paletteModal').style.display = show ? 'flex' : 'none';
+        if (show) renderCompactPalette();
+    }
+
+    function renderCompactPalette() {
+        const grid = document.getElementById('paletteGrid');
+        grid.innerHTML = '';
+
+        questions.forEach((_, idx) => {
+            const box = document.createElement('div');
+            box.className = 'p-box';
+            box.textContent = idx + 1;
+
+            if (userAnswers[idx] !== undefined) {
+                box.classList.add('attempted');
+            }
+            if (idx === currentIndex) {
+                box.classList.add('current');
+            }
+
+            box.onclick = () => {
+                currentIndex = idx;
+                renderQuestion();
+                togglePalette(false);
+            };
+            grid.appendChild(box);
+        });
+    }
+
+    function startTimer() {
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                finishExam();
+                return;
+            }
+            timeLeft--;
+            const mins = Math.floor(timeLeft / 60);
+            const secs = timeLeft % 60;
+            document.getElementById('timerText').textContent = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }, 1000);
+    }
+
+    function renderQuestion() {
+        const q = questions[currentIndex];
+        document.getElementById('qCountText').textContent = `Q ${currentIndex + 1}/${questions.length}`;
+        document.getElementById('questionText').textContent = q.q;
+
+        const optsContainer = document.getElementById('optionsContainer');
+        optsContainer.innerHTML = '';
+
+        const opts = [
+            { k: 'A', t: q.a },
+            { k: 'B', t: q.b },
+            { k: 'C', t: q.c },
+            { k: 'D', t: q.d }
+        ];
+
+        opts.forEach(opt => {
+            const item = document.createElement('div');
+            item.className = 'option-item' + (userAnswers[currentIndex] === opt.k ? ' selected' : '');
+            item.innerHTML = `
+                <div class="opt-prefix">${opt.k}</div>
+                <div style="flex:1; padding-top:2px;">${opt.t}</div>
+            `;
+            item.onclick = () => {
+                userAnswers[currentIndex] = opt.k;
+                renderQuestion();
+            };
+            optsContainer.appendChild(item);
+        });
+
+        document.getElementById('btnPrev').disabled = currentIndex === 0;
+        const isLast = currentIndex === questions.length - 1;
+        document.getElementById('btnNext').style.display = isLast ? 'none' : 'block';
+        document.getElementById('btnSubmit').style.display = isLast ? 'block' : 'none';
+    }
+
+    function navQuestion(dir) {
+        currentIndex += dir;
+        renderQuestion();
+    }
+
+    function finishExam() {
+        clearInterval(timerInterval);
+        document.getElementById('quizScreen').style.display = 'none';
+        document.getElementById('timerBadge').style.display = 'none';
+        document.getElementById('btnPaletteOpen').style.display = 'none';
+        document.getElementById('resultScreen').style.display = 'block';
+
+        let correct = 0, wrong = 0, skipped = 0;
+        const wrongList = [];
+        const skippedList = [];
+        const correctList = [];
+
+        questions.forEach((q, idx) => {
+            const ans = userAnswers[idx];
+            const dataObj = { num: idx + 1, q: q.q, ans: ans, correct: q.correct, exp: q.exp };
+
+            if (ans === undefined) {
+                skipped++;
+                skippedList.push(dataObj);
+            } else if (ans === q.correct) {
+                correct++;
+                correctList.push(dataObj);
+            } else {
+                wrong++;
+                wrongList.push(dataObj);
+            }
+        });
+
+        const totalQ = questions.length;
+        const percentage = Math.round((correct / totalQ) * 100);
+
+        document.getElementById('finalScore').textContent = `${correct} / ${totalQ} (${percentage}%)`;
+        document.getElementById('statRight').textContent = correct;
+        document.getElementById('statWrong').textContent = wrong;
+        document.getElementById('statSkipped').textContent = skipped;
+
+        // Gen-Z स्टाइल रिमार्क्स
+        let remark = "";
+        let boxColor = "";
+        let bgStyle = "";
+
+        if (percentage >= 90) {
+            remark = "वाह! क्या भौकाल तैयारी है! 🔥 गुरु तुम तो पहली ही लिस्ट में टॉपर बनोगे, नो कैप (No Cap)! 🚀 सीट पक्की समझो!";
+            boxColor = "#16a34a";
+            bgStyle = "#ecfdf5";
+        } else if (percentage >= 75) {
+            remark = "एकदम सॉलिड तैयारी! ⚡ बस थोड़ा सा रिवीजन और, फिर सीधे कटऑफ पार! कीप इट अप ब्रो!";
+            boxColor = "#2563eb";
+            bgStyle = "#eff6ff";
+        } else if (percentage >= 50) {
+            remark = "काम चलाऊ स्कोर है भाई! 📚 ओवरकॉन्फिडेंस में मत आना, वरना असली एग्जाम में मोये-मोये हो जाएगा! थोड़ा और घिसो!";
+            boxColor = "#d97706";
+            bgStyle = "#fffbeb";
+        } else if (percentage >= 20) {
+            remark = "सीरियस हो जाओ यार! 💀 रील्स और शॉर्ट्स कम देखो और तुरंत NCERT उठाओ, वरना कटऑफ बहुत दूर रह जाएगी!";
+            boxColor = "#ea580c";
+            bgStyle = "#fff7ed";
+        } else {
+            remark = "बेटा तुमसे ना हो पाएगा! 😭 ऐसे तो एडमिट कार्ड भी रो देगा! फोन साइड में रखो और आज से ही बेसिक से पढ़ना शुरू करो!";
+            boxColor = "#dc2626";
+            bgStyle = "#fef2f2";
+        }
+
+        const genzBox = document.getElementById('genzBox');
+        genzBox.textContent = remark;
+        genzBox.style.color = boxColor;
+        genzBox.style.borderColor = boxColor;
+        genzBox.style.background = bgStyle;
+
+        document.getElementById('pdfGenzRemark').textContent = `फीडबैक: ${remark}`;
+
+        renderBulletResults(wrongList, skippedList, correctList, correct, wrong, skipped);
+    }
+
+    function renderBulletResults(wrongList, skippedList, correctList, c, w, s) {
+        const webContainer = document.getElementById('bulletContainerWeb');
+        const printContainer = document.getElementById('printBulletList');
+        webContainer.innerHTML = '';
+        printContainer.innerHTML = '';
+
+        document.getElementById('printReportArea').style.display = 'block';
+        document.getElementById('pdfMetaText').textContent = `Exam: ${selectedAayog} (${selectedPost})  |  Generated by Team Anurag`;
+        document.getElementById('pdfScoreText').textContent = `${c}/${questions.length}`;
+        document.getElementById('pdfRightText').textContent = `${c}`;
+        document.getElementById('pdfWrongText').textContent = `${w}`;
+
+        // वेब व्यू कार्ड जनरेटर
+        const createWebCard = (item, type) => {
+            let badgeColor = type === 'wrong' ? '#dc2626' : (type === 'skipped' ? '#d97706' : '#16a34a');
+            let badgeText = type === 'wrong' ? '❌ गलत' : (type === 'skipped' ? '⚠️ छूटा' : '✅ सही');
+            return `
+                <div class="bullet-q-card ${type==='wrong'?'':(type==='skipped'?'skipped-card':'right-card')}">
+                    <div style="font-weight:800; font-size:14px; margin-bottom:4px;">Q${item.num}. ${item.q}</div>
+                    <div style="font-size:12.5px; margin-bottom:2px;">
+                        <span style="background:${badgeColor}15; color:${badgeColor}; padding:1px 6px; border-radius:4px; font-weight:800;">${badgeText}</span>
+                        <span style="margin-left:6px; font-weight:700;">आपका चयन: ${item.ans || 'None'}</span>
+                        <span style="margin-left:6px; color:#16a34a; font-weight:800;">| सही उत्तर: (${item.correct})</span>
+                    </div>
+                    ${item.exp ? `<div style="font-size:12px; color:#64748b; margin-top:3px;">💡 व्याख्या: ${item.exp}</div>` : ''}
+                </div>
+            `;
+        };
+
+        // सुपर कॉम्पैक्ट प्रिंट कार्ड जनरेटर (कम स्पेस में 2-कॉलम फिट)
+        const createPrintCard = (item, type) => {
+            return `
+                <div class="bullet-q-card">
+                    <div class="q-title">Q${item.num}. ${item.q}</div>
+                    <div class="q-meta-ans">
+                        <strong>आपका उत्तर:</strong> ${item.ans || 'None'} | 
+                        <strong style="color:#16a34a;">सही: (${item.correct})</strong>
+                    </div>
+                    ${item.exp ? `<div class="q-exp" style="color:#475569;">💡 ${item.exp}</div>` : ''}
+                </div>
+            `;
+        };
+
+        // वेब पर सब दिखेगा
+        wrongList.forEach(item => webContainer.innerHTML += createWebCard(item, 'wrong'));
+        skippedList.forEach(item => webContainer.innerHTML += createWebCard(item, 'skipped'));
+        correctList.forEach(item => webContainer.innerHTML += createWebCard(item, 'right'));
+
+        // प्रिंट में सिर्फ गलत और छूटे हुए ही जाएंगे ताकि प्रिंटिंग कॉस्ट 70% बच सके
+        if (wrongList.length === 0 && skippedList.length === 0) {
+            printContainer.innerHTML = `<div style="grid-column: span 2; text-align:center; padding:10px; font-weight:800; color:#16a34a;">शाबाश! आपने सभी प्रश्नों के सही उत्तर दिए हैं। कोई गलत सवाल नहीं है!</div>`;
+        } else {
+            wrongList.forEach(item => printContainer.innerHTML += createPrintCard(item, 'wrong'));
+            skippedList.forEach(item => printContainer.innerHTML += createPrintCard(item, 'skipped'));
+        }
+    }
+</script>
+</body>
+</html>
