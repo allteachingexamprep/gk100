@@ -38,6 +38,154 @@
             min-height: 100vh;
         }
 
+        /* 🔒 1. पेड लॉगिन गेटवे */
+        #loginOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.94);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .login-card {
+            background: #ffffff;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 400px;
+            padding: 28px 22px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1.5px solid #e0e7ff;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .login-field {
+            width: 100%;
+            padding: 13px 14px;
+            margin-bottom: 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.15s;
+        }
+
+        .login-field:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+
+        .btn-login-submit {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            width: 100%;
+            font-size: 15.5px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        .btn-login-submit:hover {
+            background: var(--primary-dark);
+        }
+
+        /* 💬 व्हाट्सएप एडमिशन बटन */
+        .btn-whatsapp-admission {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            background: #25D366;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13.5px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: 0.2s;
+        }
+        .btn-whatsapp-admission:hover {
+            background: #1eb956;
+            transform: translateY(-1px);
+        }
+
+        /* 🔴 2. एनिमेटेड ब्रेकिंग न्यूज़ टिकर */
+        .ticker-container {
+            background: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 2px solid var(--primary);
+            height: 38px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .ticker-badge-live {
+            background: #dc2626;
+            color: #ffffff;
+            padding: 0 14px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            z-index: 2;
+            flex-shrink: 0;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.3);
+        }
+
+        .ticker-scroll-area {
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .ticker-scroll-text {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: tickerScroll 24s linear infinite;
+        }
+
+        .ticker-scroll-area:hover .ticker-scroll-text {
+            animation-play-state: paused;
+        }
+
+        @keyframes tickerScroll {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .ticker-item {
+            margin-right: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         .header {
             background: #ffffff;
             border-bottom: 1.5px solid var(--border);
@@ -54,7 +202,7 @@
         .brand-box {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .btn-home {
@@ -62,7 +210,7 @@
             border: 1px solid var(--border);
             padding: 6px 12px;
             border-radius: 10px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 700;
             cursor: pointer;
             display: inline-flex;
@@ -72,7 +220,7 @@
         }
 
         .brand-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             color: var(--primary);
         }
@@ -86,7 +234,7 @@
         .social-strip {
             display: flex;
             gap: 10px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .animated-btn {
@@ -140,11 +288,10 @@
 
         .container {
             max-width: 680px;
-            margin: 18px auto;
+            margin: 14px auto;
             padding: 0 16px;
         }
 
-        /* 📢 होम स्क्रीन: डायनामिक नोटिस बोर्ड */
         .student-news-card {
             background: #ffffff;
             border: 1.5px solid #c7d2fe;
@@ -320,16 +467,15 @@
             margin-bottom: 18px;
         }
 
-        /* 📋 सिलेबस टेबल व कार्ड्स स्टाइल */
         .syllabus-table {
             width: 100%;
             border-collapse: collapse;
             margin: 12px 0;
-            font-size: 13.5px;
+            font-size: 13px;
         }
         .syllabus-table th, .syllabus-table td {
             border: 1px solid var(--border);
-            padding: 10px 12px;
+            padding: 9px 10px;
             text-align: left;
         }
         .syllabus-table th {
@@ -337,9 +483,8 @@
             color: var(--primary-dark);
             font-weight: 800;
         }
-        .syllabus-table tr:nth-child(even) {
-            background: #f8fafc;
-        }
+        .syllabus-table tr:nth-child(even) { background: #f8fafc; }
+        
         .syllabus-unit-box {
             background: #f8fafc;
             border: 1px solid var(--border);
@@ -592,18 +737,12 @@
         .bullet-q-card.right-card { border-left-color: var(--success); }
         .bullet-q-card.skipped-card { border-left-color: #f59e0b; }
 
-        /* ========================================================
-           🖨️ SMART PRINT / PDF STYLING
-           ======================================================== */
         @media print {
-            body {
-                background: #ffffff !important;
-                padding: 0 !important;
-            }
+            body { background: #ffffff !important; padding: 0 !important; }
 
             .header, .social-strip, #aayogScreen, #postScreen, #sectionChoiceScreen, 
             .calendar-selector, .btn-action-pdf, .breadcrumb-bar, #quizScreen, 
-            .result-panel, .palette-overlay, .palette-modal, #homeNoticeBoard {
+            .result-panel, .palette-overlay, .palette-modal, #homeNoticeBoard, #loginOverlay, .ticker-container {
                 display: none !important;
             }
 
@@ -641,11 +780,7 @@
             }
             body.printing-syllabus #printReportArea, body.printing-syllabus #studyMaterialScreen { display: none !important; }
 
-            .print-grid-2col {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
+            .print-grid-2col { display: grid !important; grid-template-columns: 1fr 1fr; gap: 8px; }
             .bullet-q-card {
                 padding: 6px 8px !important;
                 margin-bottom: 6px !important;
@@ -659,10 +794,47 @@
 </head>
 <body>
 
+<!-- 🔒 1. पेड लॉगिन गेटवे -->
+<div id="loginOverlay">
+    <div class="login-card">
+        <div style="font-size: 44px; margin-bottom: 8px;">🔐</div>
+        <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 4px;">विद्यार्थी लॉगिन (Paid Access)</h2>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 18px;">कृपया अपना रजिस्टर्ड मोबाइल नंबर व पासवर्ड दर्ज करें:</p>
+        
+        <input type="tel" id="userMobile" class="login-field" placeholder="रजिस्टर्ड मोबाइल नंबर (10 अंक)" maxlength="10">
+        <input type="password" id="userPass" class="login-field" placeholder="पासवर्ड दर्ज करें">
+        
+        <div id="loginErrMsg" style="color: #dc2626; font-size: 12.5px; font-weight: 700; margin-bottom: 12px; display: none;"></div>
+        
+        <button class="btn-login-submit" id="btnLoginBtn" onclick="verifyLogin()">पोर्टल में प्रवेश करें ➔</button>
+
+        <div style="margin-top: 18px; font-size: 12.5px; color: #64748b; border-top: 1px dashed #e2e8f0; padding-top: 14px; line-height: 1.6;">
+            नए एडमिशन व पोर्टल एक्सेस हेतु संपर्क करें:<br>
+            <a href="https://wa.me/919140740167?text=नमस्ते%20Team%20Anurag,%20मुझे%20Teaching%20Exam%20CBT%20पोर्टल%20में%20नया%20एडमिशन/एक्सेस%20चाहिए।" target="_blank" class="btn-whatsapp-admission">
+                <span>💬</span> WhatsApp पर संदेश भेजें (Team Anurag)
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 🔴 2. एनिमेटेड स्क्रॉलिंग टिकर -->
+<div class="ticker-container">
+    <div class="ticker-badge-live">⚡ BREAKING NEWS</div>
+    <div class="ticker-scroll-area">
+        <div class="ticker-scroll-text" id="liveTickerText">
+            <span class="ticker-item">📢 <strong>UP PRT 2026:</strong> प्राथमिक शिक्षक भर्ती (12,405 पद) ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।</span>
+            <span class="ticker-item">🎓 <strong>UP TGT/PGT:</strong> TGT में 50% बाध्यता समाप्त; हिंदी पद हेतु संस्कृत की अनिवार्यता यथावत।</span>
+            <span class="ticker-item">🏛️ <strong>UPESSC विज्ञापन 51:</strong> असिस्टेंट प्रोफेसर परीक्षा तिथि जल्द संभावित।</span>
+            <span class="ticker-item">🏢 <strong>UPSSSC:</strong> कनिष्ठ सहायक 3284 पदों की टंकण परीक्षा 30 अक्टूबर 2026 को।</span>
+        </div>
+    </div>
+</div>
+
 <div class="header">
     <div class="brand-box">
         <button class="btn-home" onclick="goHome()">🏠 Home</button>
-        <div class="brand-title">📚 Teaching Exam GS GK</div>
+        <button class="btn-home" style="color: var(--danger); font-weight: 800;" onclick="userLogout()">🚪 Logout</button>
+        <div class="brand-title">📚 Teaching Exam Prep</div>
     </div>
     <div class="header-actions">
         <button class="btn-palette-toggle" id="btnPaletteOpen" onclick="togglePalette(true)">🔢 पैलेट</button>
@@ -676,12 +848,12 @@
         <a href="https://t.me/TeachingexamGKGSNotes" target="_blank" class="animated-btn btn-tg">
             <span>✈️</span> Telegram चैनल
         </a>
-        <a href="https://whatsapp.com/channel/0029Vb8lFzX60eBiTqrlX92l" target="_blank" class="animated-btn btn-wa">
-            <span>💬</span> WhatsApp चैनल
+        <a href="https://wa.me/919140740167?text=नमस्ते%20Team%20Anurag,%20मुझे%20Teaching%20Exam%20CBT%20पोर्टल%20के%20बारे%20में%20जानकारी%20चाहिए।" target="_blank" class="animated-btn btn-wa">
+            <span>💬</span> WhatsApp सपोर्ट
         </a>
     </div>
 
-    <!-- 📢 होम स्क्रीन: डायनामिक नोटिस बोर्ड -->
+    <!-- 📢 होम स्क्रीन: नोटिस बोर्ड -->
     <div id="homeNoticeBoard" class="student-news-card">
         <div class="news-header-strip">
             <div style="font-weight: 800; font-size: 14.5px; color: var(--primary); display: flex; align-items: center; gap: 6px;">
@@ -782,7 +954,7 @@
         </div>
     </div>
 
-    <!-- 3. सेक्शन चयन (अब 3 विकल्प: डेली नोट्स, सिलेबस, मॉक टेस्ट) -->
+    <!-- 3. सेक्शन चयन -->
     <div id="sectionChoiceScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="backToPostScreen()">
             <span>← पद बदलें</span> | <span id="currentPostBadge" style="color:var(--text-main);"></span>
@@ -791,7 +963,6 @@
         <h2 class="section-title">आप क्या चुनना चाहते हैं?</h2>
         <p class="section-desc">दैनिक अध्ययन सामग्री पढ़ें, पाठ्यक्रम देखें या ऑनलाइन टेस्ट दें:</p>
 
-        <!-- विकल्प 1: डेली नोट्स (कॉमन) -->
         <div class="action-choice-card" onclick="openStudyMaterial()">
             <div style="font-size: 34px;">📖</div>
             <div>
@@ -800,7 +971,6 @@
             </div>
         </div>
 
-        <!-- विकल्प 2: आधिकारिक पाठ्यक्रम (Syllabus) -->
         <div class="action-choice-card" onclick="openSyllabus()">
             <div style="font-size: 34px;">📋</div>
             <div>
@@ -809,7 +979,6 @@
             </div>
         </div>
 
-        <!-- विकल्प 3: मॉक टेस्ट -->
         <div class="action-choice-card" onclick="startCbtMock()">
             <div style="font-size: 34px;">📝</div>
             <div>
@@ -819,7 +988,7 @@
         </div>
     </div>
 
-    <!-- 4. स्टडी मटेरियल स्क्रीन (Common Daily News) -->
+    <!-- 4. स्टडी मटेरियल स्क्रीन -->
     <div id="studyMaterialScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="backToSectionChoice()">
             <span>← वापस विकल्प पर आएँ</span>
@@ -844,7 +1013,7 @@
         </div>
     </div>
 
-    <!-- 5. आधिकारिक पाठ्यक्रम स्क्रीन (Syllabus Screen) -->
+    <!-- 5. पाठ्यक्रम स्क्रीन -->
     <div id="syllabusScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="backToSectionChoice()">
             <span>← वापस विकल्प पर आएँ</span>
@@ -859,9 +1028,7 @@
                 <span class="exam-tag" id="syllabusTag">UPESSC</span>
             </div>
 
-            <div id="syllabusContentArea">
-                <!-- जावास्क्रिप्ट द्वारा डायनामिक सिलेबस भरा जाएगा -->
-            </div>
+            <div id="syllabusContentArea"></div>
 
             <button class="btn-action-pdf" style="margin-top: 14px; background:#0284c7;" onclick="printSyllabus()">
                 📥 डाउनलोड / प्रिंट सिलेबस (PDF)
@@ -939,7 +1106,7 @@
         <div class="print-grid-2col" id="printBulletList"></div>
 
         <div style="margin-top: 12px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 9px; color:#64748b; text-align:center;">
-            Telegram: @TeachingexamGKGSNotes • WhatsApp: Team Anurag • Designed for Quick Exam Revision
+            Telegram: @TeachingexamGKGSNotes • WhatsApp: 9140740167 • Designed for Quick Exam Revision
         </div>
     </div>
 </div>
@@ -965,13 +1132,16 @@
     // ⚙️ GOOGLE SHEET CSV LINKS
     // ==========================================================
     const CSV_URLS = {
-        ASST_PROF: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1896238938&single=true&output=csv",
-        TGT_PGT:   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1383517549&single=true&output=csv",
-        PRT:       "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1463599656&single=true&output=csv",
-        DEFAULT:   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=0&single=true&output=csv",
-        NOTES:     "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1508729464&single=true&output=csv",
-        NOTICES:   ""
+        ASST_PROF:  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1896238938&single=true&output=csv",
+        TGT_PGT:    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1383517549&single=true&output=csv",
+        PRT:        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1463599656&single=true&output=csv",
+        DEFAULT:    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=0&single=true&output=csv",
+        NOTES:      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1508729464&single=true&output=csv",
+        PAID_USERS: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=896927898&single=true&output=csv"
     };
+
+    const MASTER_PASSWORD = "Anurag2016@";
+    const ADMIN_WHATSAPP = "9140740167";
 
     let selectedAayog = "";
     let selectedPost = "";
@@ -984,7 +1154,91 @@
     let allNoticesList = [];
 
     // ==========================================================
-    // 📚 पद-वार आधिकारिक पाठ्यक्रम डेटाबेस (Official Syllabus)
+    // 🔐 पेड लॉगिन सिस्टम (Google Sheet से लाइव सत्यापन)
+    // ==========================================================
+    function checkAuthStatus() {
+        const session = localStorage.getItem('cbt_user_session');
+        const overlay = document.getElementById('loginOverlay');
+        if (session) {
+            overlay.style.display = 'none';
+        } else {
+            overlay.style.display = 'flex';
+        }
+    }
+
+    async function verifyLogin() {
+        const mobile = document.getElementById('userMobile').value.trim();
+        const pass = document.getElementById('userPass').value.trim();
+        const err = document.getElementById('loginErrMsg');
+        const btn = document.getElementById('btnLoginBtn');
+
+        if (!/^[6-9]\d{9}$/.test(mobile)) {
+            err.innerHTML = "कृपया मान्य 10 अंकों का मोबाइल नंबर दर्ज करें!";
+            err.style.display = 'block';
+            return;
+        }
+
+        if (pass !== MASTER_PASSWORD) {
+            err.innerHTML = "गलत पासवर्ड! कृपया सही पासवर्ड दर्ज करें।";
+            err.style.display = 'block';
+            return;
+        }
+
+        btn.textContent = "जाँच हो रही है...";
+        btn.disabled = true;
+
+        try {
+            const res = await fetch(CSV_URLS.PAID_USERS + '&_t=' + new Date().getTime());
+            const csv = await res.text();
+            const lines = csv.split('\n');
+            let isUserAuthorized = false;
+            let studentName = "";
+
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                const cols = parseCSVLine(line);
+                const sheetMobile = (cols[0] || '').replace(/\D/g, '');
+                const sheetStatus = (cols[2] || '').trim().toUpperCase();
+
+                if (sheetMobile === mobile && sheetStatus === 'ACTIVE') {
+                    isUserAuthorized = true;
+                    studentName = cols[1] || '';
+                    break;
+                }
+            }
+
+            if (isUserAuthorized) {
+                err.style.display = 'none';
+                localStorage.setItem('cbt_user_session', JSON.stringify({
+                    mobile: mobile,
+                    name: studentName,
+                    time: new Date().toISOString()
+                }));
+                document.getElementById('loginOverlay').style.display = 'none';
+            } else {
+                const waLink = `https://wa.me/91${ADMIN_WHATSAPP}?text=${encodeURIComponent('नमस्ते Team Anurag, मैंने फीस जमा कर दी है। कृपया मेरा मोबाइल नंबर पोर्टल में एक्टिवेट करें: ' + mobile)}`;
+                err.innerHTML = `⚠️ यह मोबाइल नंबर एक्टिव नहीं है।<br><a href="${waLink}" target="_blank" style="color:#2563eb; text-decoration:underline;">👉 यहाँ क्लिक कर WhatsApp पर एक्सेस मांगें</a>`;
+                err.style.display = 'block';
+            }
+        } catch (e) {
+            err.innerHTML = "सर्वर से कनेक्ट होने में समस्या हुई। कृपया इंटरनेट चेक करें।";
+            err.style.display = 'block';
+        } finally {
+            btn.textContent = "पोर्टल में प्रवेश करें ➔";
+            btn.disabled = false;
+        }
+    }
+
+    function userLogout() {
+        if (confirm("क्या आप इस डिवाइस से लॉगआउट करना चाहते हैं?")) {
+            localStorage.removeItem('cbt_user_session');
+            location.reload();
+        }
+    }
+
+    // ==========================================================
+    // 📚 आधिकारिक पाठ्यक्रम डेटाबेस (Official Syllabus)
     // ==========================================================
     const SYLLABUS_DATA = {
         'PRT': {
@@ -1002,7 +1256,7 @@
                     <tr><td><strong>शिक्षण कौशल</strong></td><td>शिक्षण विधियाँ व कौशल, शिक्षण अधिगम सिद्धांत, वर्तमान भारतीय समाज व प्रारंभिक शिक्षा, समावेशी शिक्षा, नवीन प्रयास, मूल्यांकन व मापन, पठन कौशल, शैक्षिक प्रबंधन।</td><td align="center"><strong>08</strong></td></tr>
                     <tr><td><strong>जीवन कौशल / प्रबन्धन</strong></td><td>व्यावसायिक आचरण व नीति, प्रेरणा, शिक्षक की भूमिका (सुविधा प्रदाता, मार्गदर्शक, परामर्शदाता), संवैधानिक व मानवीय मूल्य, दंड व पुरस्कार व्यवस्था।</td><td align="center"><strong>08</strong></td></tr>
                     <tr><td><strong>तार्किक ज्ञान (Reasoning)</strong></td><td>Analogies, Assertion-Reason, Binary logic, Coding-Decoding, Clocks & Calendars, Critical reasoning, Number series, Puzzles, Venn diagrams & Dice, Direction sense.</td><td align="center"><strong>05</strong></td></tr>
-                    <tr><td><strong>सूचना तकनीकी (ICT)</strong></td><td>शिक्षण कौशल विकास, कंप्यूटर, इंटरनेट, स्मार्टफोन, OER (ओपन एजुकेशनल रिसोर्स), शिक्षण में उपयोगी ऐप्स व डिजिटल सामग्री।</td><td align="center"><strong>04</strong></td></tr>
+                    <tr><td><strong>सूचना तकनीकी (ICT)</strong></td><td>शिक्षण कौशल विकास, कंप्यूटर, इंटरनेट, स्मार्टफोन, OER, शिक्षण में उपयोगी ऐप्स व डिजिटल सामग्री।</td><td align="center"><strong>04</strong></td></tr>
                     <tr style="background:#e0e7ff; font-weight:800;"><td>कुल योग</td><td>सम्पूर्ण बहुविकल्पीय प्रश्नपत्र (द्विभाषी: हिन्दी व अंग्रेजी)</td><td align="center">120 प्रश्न (360 अंक)</td></tr>
                 </table>
             `
@@ -1013,15 +1267,15 @@
             html: `
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 1: समसामयिक घटनाएं (Current Affairs)</span><span>(08-10 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) राष्ट्रीय, अंतर्राष्ट्रीय एवं उत्तर प्रदेश राज्य स्तरीय महत्वपूर्ण समसामयिक घटनाएं।<br>(ii) चर्चित व्यक्तित्व (Personalities in News)।<br>(iii) खेलकूद एवं प्रतियोगिताएं (Sports events & Winners)।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) राष्ट्रीय, अंतर्राष्ट्रीय एवं उत्तर प्रदेश राज्य स्तरीय महत्वपूर्ण समसामयिक घटनाएं।<br>(ii) चर्चित व्यक्तित्व (Personalities in News)।<br>(iii) खेलकूद एवं प्रतियोगिताएं।</p>
                 </div>
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 2: भारतीय इतिहास, राजव्यवस्था, अर्थव्यवस्था व भूगोल</span><span>(10-12 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) भारतीय इतिहास एवं भारतीय राष्ट्रीय आंदोलन (1857 से 1947)।<br>(ii) भारतीय संविधान एवं राजव्यवस्था, शिक्षा प्रणाली से संबंधित कानूनी एवं संवैधानिक विकास (Art 21-A, RTE, नीतियां)।<br>(iii) भारतीय अर्थव्यवस्था की बुनियादी समझ व चुनौतियां।<br>(iv) भारत का सामान्य भूगोल एवं जनगणना (जनसांख्यिकी)।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) भारतीय इतिहास एवं भारतीय राष्ट्रीय आंदोलन।<br>(ii) भारतीय संविधान एवं राजव्यवस्था, शिक्षा प्रणाली से संबंधित कानूनी व संवैधानिक विकास।<br>(iii) भारतीय अर्थव्यवस्था की बुनियादी समझ व चुनौतियां।<br>(iv) भारत का सामान्य भूगोल एवं जनसंख्या।</p>
                 </div>
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 3: सामान्य विज्ञान एवं सूचना-संचार प्रौद्योगिकी (ICT)</span><span>(08-10 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) समकालीन संदर्भ में सामान्य विज्ञान, प्रौद्योगिकी एवं पर्यावरण।<br>(ii) मानव स्वास्थ्य एवं स्वच्छता - विटामिन्स, खनिज, संक्रामक व हीनताजन्य रोग, हार्मोन्स एवं एंजाइम्स।<br>(iii) कंप्यूटर एवं इंटरनेट शब्दावली (Terminology)।<br>(iv) शिक्षा में ICT का अनुप्रयोग एवं शैक्षिक प्रौद्योगिकी में विकास (DIKSHA, SWAYAM आदि)।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) सामान्य विज्ञान, प्रौद्योगिकी एवं पर्यावरण।<br>(ii) मानव स्वास्थ्य एवं स्वच्छता - विटामिन्स, खनिज, संक्रामक व हीनताजन्य रोग, हार्मोन्स एवं एंजाइम्स।<br>(iii) कंप्यूटर एवं इंटरनेट शब्दावली।<br>(iv) शिक्षा में ICT का अनुप्रयोग एवं शैक्षिक प्रौद्योगिकी में विकास।</p>
                 </div>
             `
         },
@@ -1031,15 +1285,15 @@
             html: `
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 1: समसामयिक घटनाएं (Current Affairs)</span><span>(08-10 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) राष्ट्रीय, अंतर्राष्ट्रीय एवं उत्तर प्रदेश राज्य स्तरीय महत्वपूर्ण समसामयिक घटनाएं।<br>(ii) चर्चित व्यक्तित्व (Personalities in News)।<br>(iii) खेलकूद एवं प्रतियोगिताएं (Sports events & Winners)।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) राष्ट्रीय, अंतर्राष्ट्रीय एवं राज्य स्तरीय समसामयिक घटनाएं।<br>(ii) चर्चित व्यक्तित्व।<br>(iii) खेलकूद एवं पुरस्कार।</p>
                 </div>
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 2: भारतीय इतिहास, राजव्यवस्था, अर्थव्यवस्था व भूगोल</span><span>(10-12 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) भारतीय इतिहास एवं भारतीय राष्ट्रीय आंदोलन।<br>(ii) भारतीय संविधान, शासन प्रणाली, शिक्षा का संवैधानिक विकास।<br>(iii) भारतीय अर्थव्यवस्था की प्रमुख विशेषताएं व राजकोषीय प्रणाली।<br>(iv) भारत का भूगोल, नदियाँ, खनिज, कृषि एवं जनसंख्या।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) भारतीय राष्ट्रीय आंदोलन।<br>(ii) भारतीय संविधान, शासन प्रणाली, शिक्षा का संवैधानिक विकास।<br>(iii) भारतीय अर्थव्यवस्था की प्रमुख विशेषताएं।<br>(iv) भारत का भूगोल एवं जनसांख्यिकी।</p>
                 </div>
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 3: सामान्य विज्ञान एवं सूचना-संचार प्रौद्योगिकी (ICT)</span><span>(08-10 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) दैनिक जीवन में विज्ञान व पारिस्थितिकी/पर्यावरण संरक्षण।<br>(ii) मानव स्वास्थ्य, पोषण, प्रमुख रोग, विटामिन्स व जैव-अणु।<br>(iii) कंप्यूटर हार्डवेयर, सॉफ्टवेयर, इंटरनेट व नेटवर्किंग टर्मिनोलॉजी।<br>(iv) शैक्षिक प्रौद्योगिकी के आधुनिक साधन एवं ICT आधारित शिक्षण अधिगम।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) दैनिक जीवन में विज्ञान व पर्यावरण।<br>(ii) मानव स्वास्थ्य, पोषण, रोग, विटामिन्स।<br>(iii) कंप्यूटर हार्डवेयर, सॉफ्टवेयर, इंटरनेट टर्मिनोलॉजी।<br>(iv) ICT आधारित आधुनिक शिक्षण विधियाँ।</p>
                 </div>
             `
         },
@@ -1047,18 +1301,18 @@
             title: "असिस्टेंट प्रोफेसर (विज्ञापन 51) - अनिवार्य सामान्य अध्ययन",
             structure: "📝 कुल प्रश्न: 30 बहुविकल्पीय प्रश्न | 🎯 कुल अंक: 60 अंक | 6 अनिवार्य इकाइयाँ",
             html: `
-                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 1: समसामयिक मुद्दे</div><p style="font-size:13px; color:#334155;">राष्ट्रीय व अंतर्राष्ट्रीय घटनाएं, प्रमुख व्यक्तित्व, खेलकूद, विज्ञान के क्षेत्र में नवीनतम शोध एवं नवाचार।</p></div>
-                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 2: शिक्षण एवं शोध अभिवृत्ति</div><p style="font-size:13px; color:#334155;">शिक्षण की प्रकृति, उद्देश्य, विधियाँ, सहायक सामग्री, मूल्यांकन प्रणाली। शोध का अर्थ, प्रकार, पद्धतियाँ, डेटा संकलन एवं शोध नैतिकता।</p></div>
-                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 3: सूचना एवं संचार प्रौद्योगिकी (ICT)</div><p style="font-size:13px; color:#334155;">ICT के लाभ व अनुप्रयोग, इंटरनेट एवं ईमेल शब्दावली, उच्च शिक्षा में डिजिटल पहल (SWAYAM, MOOCs, NPTEL आदि)।</p></div>
-                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 4: मानव एवं पर्यावरण</div><p style="font-size:13px; color:#334155;">पर्यावरण संरक्षण, प्रदूषण, जलवायु परिवर्तन, जैव विविधता, अंतरराष्ट्रीय संधियां एवं सम्मेलन (कॉप, क्योटो, पेरिस समझौता)।</p></div>
-                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 5: भारतीय इतिहास एवं भूगोल</div><p style="font-size:13px; color:#334155;">भारतीय राष्ट्रीय आंदोलन, स्वतंत्रता संग्राम, भारत का भौतिक, सामाजिक एवं आर्थिक भूगोल, प्राकृतिक संसाधन।</p></div>
-                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 6: भारतीय संविधान एवं अर्थव्यवस्था</div><p style="font-size:13px; color:#334155;">प्रस्तावना, मौलिक अधिकार, नीति निदेशक तत्व, न्यायपालिका, संसद, भारतीय अर्थव्यवस्था, कृषि, उद्योग एवं वित्तीय संस्थाएं।</p></div>
+                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 1: समसामयिक मुद्दे</div><p style="font-size:13px; color:#334155;">राष्ट्रीय व अंतर्राष्ट्रीय घटनाएं, प्रमुख व्यक्तित्व, खेलकूद, विज्ञान में नवीनतम शोध।</p></div>
+                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 2: शिक्षण एवं शोध अभिवृत्ति</div><p style="font-size:13px; color:#334155;">शिक्षण की प्रकृति, विधियाँ, मूल्यांकन। शोध के प्रकार, पद्धतियाँ, डेटा संकलन व नैतिकता।</p></div>
+                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 3: सूचना एवं संचार प्रौद्योगिकी (ICT)</div><p style="font-size:13px; color:#334155;">इंटरनेट एवं ईमेल शब्दावली, उच्च शिक्षा में डिजिटल पहल (SWAYAM, MOOCs आदि)।</p></div>
+                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 4: मानव एवं पर्यावरण</div><p style="font-size:13px; color:#334155;">पर्यावरण संरक्षण, प्रदूषण, जलवायु परिवर्तन, अंतरराष्ट्रीय संधियां (क्योटो, पेरिस)।</p></div>
+                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 5: भारतीय इतिहास एवं भूगोल</div><p style="font-size:13px; color:#334155;">भारतीय राष्ट्रीय आंदोलन, भारत का भौतिक, सामाजिक एवं आर्थिक भूगोल।</p></div>
+                <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 6: भारतीय संविधान एवं अर्थव्यवस्था</div><p style="font-size:13px; color:#334155;">मौलिक अधिकार, नीति निदेशक तत्व, न्यायपालिका, संसद, भारतीय अर्थव्यवस्था।</p></div>
             `
         }
     };
 
     function parseCSVLine(text) {
-        let p = '', row = [''], i = 0, r = 0, q = false;
+        let p = '', row = [''], i = 0, q = false;
         for (let c of text) {
             if (c === '"') {
                 if (q && c === p) { row[i] += c; }
@@ -1091,7 +1345,7 @@
     }
 
     // ==========================================================
-    // 📢 नोटिस बोर्ड (होम स्क्रीन)
+    // 📢 नोटिस बोर्ड
     // ==========================================================
     async function loadStudentNotices() {
         const today = new Date().toISOString().split('T')[0];
@@ -1103,30 +1357,6 @@
             { date: today, tag: "UPESSC Adv 51", text: "असिस्टेंट प्रोफेसर परीक्षा केंद्रों के निर्धारण की समीक्षा पूरी; शीघ्र संभावित परीक्षा तिथि।" },
             { date: today, tag: "UPSSSC", text: "कनिष्ठ सहायक (3284 पद) टंकण परीक्षा 30 अक्टूबर 2026 को; आबकारी सिपाही एडमिट कार्ड जारी।" }
         ];
-
-        if (CSV_URLS.NOTICES) {
-            try {
-                const res = await fetch(CSV_URLS.NOTICES + '&_t=' + new Date().getTime());
-                const csv = await res.text();
-                const lines = csv.split('\n');
-                allNoticesList = [];
-
-                for (let i = 1; i < lines.length; i++) {
-                    const line = lines[i].trim();
-                    if (!line) continue;
-                    const cols = parseCSVLine(line);
-                    if (cols.length >= 3) {
-                        allNoticesList.push({
-                            date: normalizeDateString(cols[0]),
-                            tag: cols[1],
-                            text: cols[2]
-                        });
-                    }
-                }
-            } catch (e) {
-                console.log("Using fallback notices");
-            }
-        }
 
         filterNoticesByDate(today);
     }
@@ -1159,7 +1389,7 @@
     }
 
     // ==========================================================
-    // 📖 दैनिक अध्ययन सामग्री (Common Daily Notes)
+    // 📖 दैनिक अध्ययन सामग्री
     // ==========================================================
     function openStudyMaterial() {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
@@ -1203,12 +1433,12 @@
                 body.innerHTML = `<p style="color: #dc2626; font-weight: 700;">⚠️ इस तारीख के लिए अभी नोट्स उपलब्ध नहीं हैं।</p>`;
             }
         } catch (err) {
-            body.innerHTML = "नोट्स लोड करने में समस्या हुई। कृपया पुनः प्रयास करें।";
+            body.innerHTML = "नोट्स लोड करने में समस्या हुई।";
         }
     }
 
     // ==========================================================
-    // 📋 पाठ्यक्रम (Syllabus) लॉजिक
+    // 📋 पाठ्यक्रम लॉजिक
     // ==========================================================
     function openSyllabus() {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
@@ -1591,6 +1821,7 @@
     }
 
     window.onload = function() {
+        checkAuthStatus();
         loadStudentNotices();
     };
 </script>
