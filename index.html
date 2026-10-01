@@ -21,6 +21,7 @@
             --warning: #d97706;
             --telegram: #0088cc;
             --whatsapp: #25D366;
+            --upessc-blue: #0284c7;
         }
 
         * {
@@ -100,11 +101,8 @@
             transition: 0.15s;
         }
 
-        .btn-login-submit:hover {
-            background: var(--primary-dark);
-        }
+        .btn-login-submit:hover { background: var(--primary-dark); }
 
-        /* 💬 व्हाट्सएप एडमिशन बटन */
         .btn-whatsapp-admission {
             display: inline-flex;
             align-items: center;
@@ -121,10 +119,6 @@
             width: 100%;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
             transition: 0.2s;
-        }
-        .btn-whatsapp-admission:hover {
-            background: #1eb956;
-            transform: translateY(-1px);
         }
 
         /* 🔴 2. एनिमेटेड ब्रेकिंग न्यूज़ टिकर */
@@ -298,7 +292,7 @@
             border-left: 5px solid var(--primary);
             border-radius: 16px;
             padding: 16px;
-            margin-bottom: 22px;
+            margin-bottom: 16px;
             box-shadow: 0 4px 14px rgba(79, 70, 229, 0.06);
         }
 
@@ -467,6 +461,55 @@
             margin-bottom: 18px;
         }
 
+        /* 🏛️ UPESSC आधिकारिक बुकलेट प्रीमियम बैनर */
+        .upessc-booklet-banner {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .upessc-booklet-banner .b-title {
+            font-size: 15px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .upessc-booklet-banner .b-sub {
+            font-size: 12px;
+            color: #e0f2fe;
+            margin-top: 3px;
+            line-height: 1.4;
+        }
+
+        .btn-open-booklet {
+            background: #ffffff;
+            color: #0369a1;
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: 0.15s;
+        }
+        .btn-open-booklet:hover {
+            background: #f0f9ff;
+            transform: scale(1.03);
+        }
+
         .syllabus-table {
             width: 100%;
             border-collapse: collapse;
@@ -500,6 +543,44 @@
             display: flex;
             justify-content: space-between;
         }
+
+        .pyq-paper-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 14px;
+            transition: 0.15s;
+        }
+        .pyq-paper-card:hover {
+            border-color: #d97706;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.08);
+        }
+        .pyq-paper-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .pyq-paper-meta {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .pyq-btn-group { display: flex; gap: 10px; }
+        .pyq-btn {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: none;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+        }
+        .pyq-btn-study { background: #fef3c7; color: #92400e; }
+        .pyq-btn-cbt { background: #4f46e5; color: #ffffff; }
 
         .btn-action-pdf {
             background: #4f46e5;
@@ -690,14 +771,8 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        .p-box.attempted {
-            background: var(--success);
-            border-color: #15803d;
-        }
-
-        .p-box.current {
-            outline: 2.5px solid #1e1b4b;
-        }
+        .p-box.attempted { background: var(--success); border-color: #15803d; }
+        .p-box.current { outline: 2.5px solid #1e1b4b; }
 
         .result-panel {
             display: none;
@@ -742,7 +817,7 @@
 
             .header, .social-strip, #aayogScreen, #postScreen, #sectionChoiceScreen, 
             .calendar-selector, .btn-action-pdf, .breadcrumb-bar, #quizScreen, 
-            .result-panel, .palette-overlay, .palette-modal, #homeNoticeBoard, #loginOverlay, .ticker-container {
+            .result-panel, .palette-overlay, .palette-modal, #homeNoticeBoard, #loginOverlay, .ticker-container, #pyqScreen {
                 display: none !important;
             }
 
@@ -794,7 +869,7 @@
 </head>
 <body>
 
-<!-- 🔒 1. पेड लॉगिन गेटवे -->
+<!-- 🔒 1. Paid Login Gateway -->
 <div id="loginOverlay">
     <div class="login-card">
         <div style="font-size: 44px; margin-bottom: 8px;">🔐</div>
@@ -817,15 +892,15 @@
     </div>
 </div>
 
-<!-- 🔴 2. एनिमेटेड स्क्रॉलिंग टिकर -->
+<!-- 🔴 2. Breaking News Ticker -->
 <div class="ticker-container">
     <div class="ticker-badge-live">⚡ BREAKING NEWS</div>
     <div class="ticker-scroll-area">
         <div class="ticker-scroll-text" id="liveTickerText">
-            <span class="ticker-item">📢 <strong>UP PRT 2026:</strong> प्राथमिक शिक्षक भर्ती (12,405 पद) ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।</span>
-            <span class="ticker-item">🎓 <strong>UP TGT/PGT:</strong> TGT में 50% बाध्यता समाप्त; हिंदी पद हेतु संस्कृत की अनिवार्यता यथावत।</span>
-            <span class="ticker-item">🏛️ <strong>UPESSC विज्ञापन 51:</strong> असिस्टेंट प्रोफेसर परीक्षा तिथि जल्द संभावित।</span>
-            <span class="ticker-item">🏢 <strong>UPSSSC:</strong> कनिष्ठ सहायक 3284 पदों की टंकण परीक्षा 30 अक्टूबर 2026 को।</span>
+            <span class="ticker-item">🏛️ <strong>UPESSC Official:</strong> आयोग की आधिकारिक पाठ्यक्रम पुस्तिका (Booklet) पोर्टल पर सीधे लाइव उपलब्ध।</span>
+            <span class="ticker-item">👶 <strong>UP PRT 2026:</strong> प्राथमिक शिक्षक भर्ती (12,405 पद) ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।</span>
+            <span class="ticker-item">🎓 <strong>UP TGT/PGT:</strong> TGT 50% बाध्यता समाप्त; हिंदी पद हेतु संस्कृत की अनिवार्यता पूर्ववत।</span>
+            <span class="ticker-item">📂 <strong>PYQ Section:</strong> पिछले वर्षों के हल प्रश्न-पत्र व्याख्या सहित उपलब्ध।</span>
         </div>
     </div>
 </div>
@@ -853,7 +928,7 @@
         </a>
     </div>
 
-    <!-- 📢 होम स्क्रीन: नोटिस बोर्ड -->
+    <!-- 📢 Home Notice Board -->
     <div id="homeNoticeBoard" class="student-news-card">
         <div class="news-header-strip">
             <div style="font-weight: 800; font-size: 14.5px; color: var(--primary); display: flex; align-items: center; gap: 6px;">
@@ -872,7 +947,7 @@
         </ul>
     </div>
     
-    <!-- 1. आयोग चयन -->
+    <!-- 1. आयोग चयन Screen -->
     <div id="aayogScreen">
         <h1 class="section-title">परीक्षा आयोग चुनें</h1>
         <p class="section-desc">जिस भर्ती परीक्षा की तैयारी कर रहे हैं, उस पर क्लिक करें:</p>
@@ -921,10 +996,21 @@
         </div>
     </div>
 
-    <!-- 2. पद चयन -->
+    <!-- 2. पद चयन Screen -->
     <div id="postScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="goHome()">
             <span>← आयोग बदलें</span> | <span id="currentAayogBadge" style="color:var(--text-main);"></span>
+        </div>
+
+        <!-- 🌐 UPESSC डायरेक्ट बुकलेट क्विक एक्सेस (अगर UPESSC चुना हो) -->
+        <div class="upessc-booklet-banner" id="upesscDirectBookletBanner" style="display: none;">
+            <div>
+                <div class="b-title">🏛️ UPESSC आधिकारिक पाठ्यक्रम पुस्तिका (Booklet)</div>
+                <div class="b-sub">आयोग की आधिकारिक वेबसाइट से सभी विषयों का संपूर्ण मूल सिलेबस देखें व डाउनलोड करें।</div>
+            </div>
+            <a href="https://www.upessc.up.gov.in/Home/Booklet" target="_blank" rel="noopener noreferrer" class="btn-open-booklet">
+                🌐 बुकलेट खोलें ➔
+            </a>
         </div>
 
         <h2 class="section-title">पद / स्तर चुनें</h2>
@@ -954,28 +1040,38 @@
         </div>
     </div>
 
-    <!-- 3. सेक्शन चयन -->
+    <!-- 3. सेक्शन चयन Screen -->
     <div id="sectionChoiceScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="backToPostScreen()">
             <span>← पद बदलें</span> | <span id="currentPostBadge" style="color:var(--text-main);"></span>
         </div>
 
         <h2 class="section-title">आप क्या चुनना चाहते हैं?</h2>
-        <p class="section-desc">दैनिक अध्ययन सामग्री पढ़ें, पाठ्यक्रम देखें या ऑनलाइन टेस्ट दें:</p>
+        <p class="section-desc">दैनिक नोट्स, आधिकारिक पाठ्यक्रम, पिछले वर्षों के पेपर या टेस्ट दें:</p>
 
         <div class="action-choice-card" onclick="openStudyMaterial()">
             <div style="font-size: 34px;">📖</div>
             <div>
                 <h3 style="font-size: 16.5px; font-weight:800; color:var(--primary);">Daily Study Material & Notes</h3>
-                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;">तारीख वार दैनिक समसामयिकी व नोट्स (सभी परीक्षाओं हेतु)</p>
+                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;">तारीख वार दैनिक समसामयिकी व नोट्स पढ़ें व PDF लें</p>
             </div>
         </div>
 
+        <!-- 📋 Official Syllabus Button -->
         <div class="action-choice-card" onclick="openSyllabus()">
             <div style="font-size: 34px;">📋</div>
             <div>
                 <h3 style="font-size: 16.5px; font-weight:800; color:#0284c7;">आधिकारिक पाठ्यक्रम (Official Syllabus)</h3>
-                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;">परीक्षा संरचना, विषयवार अंक व संपूर्ण सिलेबस देखें</p>
+                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;">UPESSC आधिकारिक बुकलेट लिंक + विषयवार संपूर्ण विवरण</p>
+            </div>
+        </div>
+
+        <!-- 📂 PYQ Button -->
+        <div class="action-choice-card" onclick="openPyqSection()">
+            <div style="font-size: 34px;">📂</div>
+            <div>
+                <h3 style="font-size: 16.5px; font-weight:800; color:#d97706;">Previous Year Questions (PYQs)</h3>
+                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;">आधिकारिक पुराने पेपर्स + हल व्याख्या + टाइमर CBT टेस्ट</p>
             </div>
         </div>
 
@@ -988,7 +1084,7 @@
         </div>
     </div>
 
-    <!-- 4. स्टडी मटेरियल स्क्रीन -->
+    <!-- 4. स्टडी मटेरियल Screen -->
     <div id="studyMaterialScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="backToSectionChoice()">
             <span>← वापस विकल्प पर आएँ</span>
@@ -1013,13 +1109,24 @@
         </div>
     </div>
 
-    <!-- 5. पाठ्यक्रम स्क्रीन -->
+    <!-- 5. पाठ्यक्रम Screen (UPESSC डायरेक्ट बुकलेट के साथ) -->
     <div id="syllabusScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="backToSectionChoice()">
             <span>← वापस विकल्प पर आएँ</span>
         </div>
 
         <div class="study-box">
+            <!-- 🏛️️ UPESSC आधिकारिक बुकलेट डायरेक्ट लिंक कार्ड -->
+            <div class="upessc-booklet-banner">
+                <div>
+                    <div class="b-title">🏛️ UPESSC आधिकारिक बुकलेट (All Subjects)</div>
+                    <div class="b-sub">आयोग द्वारा जारी सभी विषयों की आधिकारिक पाठ्यक्रम पुस्तिका सीधे आधिकारिक सर्वर पर खोलें:</div>
+                </div>
+                <a href="https://www.upessc.up.gov.in/Home/Booklet" target="_blank" rel="noopener noreferrer" class="btn-open-booklet">
+                    🌐 आधिकारिक लिंक ➔
+                </a>
+            </div>
+
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px; border-bottom: 1.5px solid var(--border); padding-bottom: 8px;">
                 <div>
                     <h2 style="font-size: 18px; font-weight:800; color:var(--primary);" id="syllabusHeading">आधिकारिक पाठ्यक्रम</h2>
@@ -1036,7 +1143,30 @@
         </div>
     </div>
 
-    <!-- 6. CBT ऑनलाइन क्विज स्क्रीन -->
+    <!-- 6. PYQ Screen -->
+    <div id="pyqScreen" style="display: none;">
+        <div class="breadcrumb-bar" onclick="backToSectionChoice()">
+            <span>← वापस विकल्प पर आएँ</span>
+        </div>
+
+        <div class="study-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px; border-bottom: 1.5px solid var(--border); padding-bottom: 8px;">
+                <div>
+                    <h2 style="font-size: 18px; font-weight:800; color:#d97706;">📂 पिछले वर्षों के हल प्रश्न-पत्र (PYQs)</h2>
+                    <p style="font-size: 12.5px; color:var(--text-sub);" id="pyqSubHeading">मूल आधिकारिक प्रश्न-पत्र एवं उत्तर कुंजी</p>
+                </div>
+                <span class="exam-tag" id="pyqTag" style="background:#fef3c7; color:#92400e;">PYQ</span>
+            </div>
+
+            <p style="font-size:13px; color:var(--text-sub); margin-bottom:14px;">
+                नीचे दिए गए किसी भी पिछले वर्ष के पेपर को चुनें। आप इसे उत्तर-व्याख्या सहित पढ़ सकते हैं या सीधे टाइमर के साथ लाइव टेस्ट दे सकते हैं:
+            </p>
+
+            <div id="pyqPapersContainer"></div>
+        </div>
+    </div>
+
+    <!-- 7. CBT ऑनलाइन क्विज Screen -->
     <div class="quiz-card" id="quizScreen">
         <div class="q-meta">
             <span class="exam-tag" id="examDetailTag">UPESSC</span>
@@ -1054,7 +1184,7 @@
         </div>
     </div>
 
-    <!-- 7. रिजल्ट स्क्रीन -->
+    <!-- 8. रिजल्ट Screen -->
     <div class="result-panel" id="resultScreen">
         <div style="font-size: 44px;">🎯</div>
         <h2 style="font-size: 20px; font-weight: 800; margin-top: 4px;">मॉक टेस्ट समाप्त हुआ!</h2>
@@ -1080,7 +1210,7 @@
 
 </div>
 
-<!-- 🖨️ प्रिंट रिपोर्ट एरिया -->
+<!-- 🖨️ Print Area -->
 <div id="printReportArea" style="display:none;">
     <div style="position:fixed; top:45%; left:25%; font-size:48px; font-weight:900; color:rgba(226, 232, 240, 0.45); transform:rotate(-35deg); pointer-events:none; z-index:0;">
         Team Anurag
@@ -1111,7 +1241,7 @@
     </div>
 </div>
 
-<!-- कॉम्पैक्ट क्वेश्चन पैलेट -->
+<!-- Compact Palette -->
 <div class="palette-overlay" id="paletteOverlay" onclick="togglePalette(false)"></div>
 <div class="palette-modal" id="paletteModal">
     <div class="palette-modal-header">
@@ -1154,7 +1284,29 @@
     let allNoticesList = [];
 
     // ==========================================================
-    // 🔐 पेड लॉगिन सिस्टम (Google Sheet से लाइव सत्यापन)
+    // 📂 PYQ Papers Data
+    // ==========================================================
+    const PYQ_PAPERS_DATA = {
+        'PRT': [
+            { id: 'prt_2019', title: "UP 69,000 सहायक अध्यापक भर्ती (2019)", meta: "आधिकारिक परीक्षा तिथि: 06 जनवरी 2019 | 150 प्रश्न", csvUrl: CSV_URLS.PRT },
+            { id: 'prt_2018', title: "UP 68,500 सहायक अध्यापक भर्ती (2018)", meta: "आधिकारिक प्रश्न-पत्र | हल सहित", csvUrl: CSV_URLS.PRT }
+        ],
+        'TGT': [
+            { id: 'tgt_2021', title: "UP TGT 2021 - सामान्य ज्ञान व शिक्षण अभिवृत्ति", meta: "आधिकारिक परीक्षा तिथि: अगस्त 2021 | 30 MCQs", csvUrl: CSV_URLS.TGT_PGT },
+            { id: 'tgt_2016', title: "UP TGT 2016 - सामान्य अध्ययन", meta: "माध्यमिक शिक्षा सेवा चयन बोर्ड | हल प्रश्न-पत्र", csvUrl: CSV_URLS.TGT_PGT }
+        ],
+        'PGT': [
+            { id: 'pgt_2021', title: "UP PGT 2021 - सामान्य ज्ञान भाग-1", meta: "आधिकारिक परीक्षा तिथि: अगस्त 2021 | 30 MCQs", csvUrl: CSV_URLS.TGT_PGT },
+            { id: 'pgt_2016', title: "UP PGT 2016 - प्रवक्ता सामान्य अध्ययन", meta: "हल प्रश्न-पत्र व्याख्या सहित", csvUrl: CSV_URLS.TGT_PGT }
+        ],
+        'Assistant Professor': [
+            { id: 'asst_adv50', title: "UPHESC विज्ञापन 50 - सामान्य अध्ययन (2021)", meta: "सभी 6 इकाइयों के 30 आधिकारिक प्रश्न | व्याख्या सहित", csvUrl: CSV_URLS.ASST_PROF },
+            { id: 'asst_adv47', title: "UPHESC विज्ञापन 47 - सामान्य अध्ययन (2018)", meta: "डिग्री कॉलेज असिस्टेंट प्रोफेसर भर्ती परीक्षा", csvUrl: CSV_URLS.ASST_PROF }
+        ]
+    };
+
+    // ==========================================================
+    // 🔐 Auth System
     // ==========================================================
     function checkAuthStatus() {
         const session = localStorage.getItem('cbt_user_session');
@@ -1238,12 +1390,12 @@
     }
 
     // ==========================================================
-    // 📚 आधिकारिक पाठ्यक्रम डेटाबेस (Official Syllabus)
+    // 📚 Official Syllabus Database
     // ==========================================================
     const SYLLABUS_DATA = {
         'PRT': {
             title: "प्राथमिक विद्यालय सहायक अध्यापक (कक्षा 1-5) भर्ती 2026",
-            structure: "⏱️ समय: 02:00 घण्टे (120 मिनट) | 📝 कुल प्रश्न: 120 (MCQ) | 🎯 पूर्णांक: 360 अंक (+3 अंक प्रति प्रश्न) | ⚠️ नेगेटिव मार्किंग: -1 अंक",
+            structure: "⏱️ समय: 02:00 घण्टे (120 मिनट) | 📝 कुल प्रश्न: 120 (MCQ) | 🎯 पूर्णांक: 360 अंक (+3 अंक प्रति प्रश्न) | ⚠️️ नेगेटिव मार्किंग: -1 अंक",
             html: `
                 <table class="syllabus-table">
                     <tr><th>विषय वर्ग</th><th>पाठ्यक्रम विवरण</th><th style="text-align:center;">प्रश्न</th></tr>
@@ -1281,7 +1433,7 @@
         },
         'PGT': {
             title: "प्रवक्ता (PGT) - सामान्य ज्ञान पाठ्यक्रम",
-            structure: "📝 कुल प्रश्न: 30 बहुविकल्पीय प्रश्न (MCQ) | ⏱️ अवधि: भाग-1 अनिवार्य सामान्य ज्ञान",
+            structure: "📝 कुल प्रश्न: 30 बहुविकल्पीय प्रश्न (MCQ) | ⏱️️ अवधि: भाग-1 अनिवार्य सामान्य ज्ञान",
             html: `
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 1: समसामयिक घटनाएं (Current Affairs)</span><span>(08-10 प्रश्न)</span></div>
@@ -1345,17 +1497,17 @@
     }
 
     // ==========================================================
-    // 📢 नोटिस बोर्ड
+    // 📢 Notice Board
     // ==========================================================
     async function loadStudentNotices() {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('noticeDatePicker').value = today;
 
         allNoticesList = [
-            { date: today, tag: "UP PRT 2026", text: "उत्तर प्रदेश प्राथमिक शिक्षक भर्ती (12,405 पद) के ऑनलाइन आवेदन प्रारंभ; अंतिम तिथि 15 अक्टूबर 2026।" },
-            { date: today, tag: "UP TGT/PGT", text: "TGT/PGT नियमावली स्पष्ट: TGT में 50% बाध्यता नहीं; हिंदी विषय हेतु इंटर/स्नातक स्तर पर संस्कृत अनिवार्य।" },
-            { date: today, tag: "UPESSC Adv 51", text: "असिस्टेंट प्रोफेसर परीक्षा केंद्रों के निर्धारण की समीक्षा पूरी; शीघ्र संभावित परीक्षा तिथि।" },
-            { date: today, tag: "UPSSSC", text: "कनिष्ठ सहायक (3284 पद) टंकण परीक्षा 30 अक्टूबर 2026 को; आबकारी सिपाही एडमिट कार्ड जारी।" }
+            { date: today, tag: "UPESSC Official", text: "उत्तर प्रदेश शिक्षा सेवा चयन आयोग द्वारा सभी विषयों की आधिकारिक पाठ्यक्रम पुस्तिका (Booklet) जारी।" },
+            { date: today, tag: "UP PRT 2026", text: "उत्तर प्रदेश प्राथमिक शिक्षक भर्ती (12,405 पद) ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।" },
+            { date: today, tag: "UP TGT/PGT", text: "TGT/PGT नियमावली स्पष्ट: TGT में 50% बाध्यता समाप्त; हिंदी पद हेतु संस्कृत की अनिवार्यता पूर्ववत।" },
+            { date: today, tag: "UPESSC Adv 51", text: "असिस्टेंट प्रोफेसर परीक्षा तिथि निर्धारण हेतु आयोग स्तर पर समीक्षा बैठक जारी।" }
         ];
 
         filterNoticesByDate(today);
@@ -1389,7 +1541,7 @@
     }
 
     // ==========================================================
-    // 📖 दैनिक अध्ययन सामग्री
+    // 📖 Daily Study Material
     // ==========================================================
     function openStudyMaterial() {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
@@ -1438,7 +1590,7 @@
     }
 
     // ==========================================================
-    // 📋 पाठ्यक्रम लॉजिक
+    // 📋 Syllabus Logic
     // ==========================================================
     function openSyllabus() {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
@@ -1456,6 +1608,87 @@
             </div>
             ${sData.html}
         `;
+    }
+
+    // ==========================================================
+    // 📂 PYQ Logic
+    // ==========================================================
+    function openPyqSection() {
+        document.getElementById('sectionChoiceScreen').style.display = 'none';
+        document.getElementById('pyqScreen').style.display = 'block';
+
+        document.getElementById('pyqSubHeading').textContent = `${selectedAayog} • ${selectedPost} - हल प्रश्न-पत्र संग्रह`;
+        document.getElementById('pyqTag').textContent = selectedPost;
+
+        const container = document.getElementById('pyqPapersContainer');
+        container.innerHTML = '';
+
+        const papers = PYQ_PAPERS_DATA[selectedPost] || PYQ_PAPERS_DATA['PRT'];
+
+        papers.forEach(paper => {
+            const card = document.createElement('div');
+            card.className = 'pyq-paper-card';
+            card.innerHTML = `
+                <div class="pyq-paper-title">${paper.title}</div>
+                <div class="pyq-paper-meta">${paper.meta}</div>
+                <div class="pyq-btn-group">
+                    <button class="pyq-btn pyq-btn-study" onclick="startPyqStudy('${paper.csvUrl}', '${paper.title}')">
+                        📖 हल व्याख्या पढ़ें (PDF)
+                    </button>
+                    <button class="pyq-btn pyq-btn-cbt" onclick="startPyqCbt('${paper.csvUrl}', '${paper.title}')">
+                        ⏱️ CBT टेस्ट दें
+                    </button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    async function startPyqCbt(csvUrl, paperTitle) {
+        document.getElementById('pyqScreen').style.display = 'none';
+        startCbtMockWithCustomUrl(csvUrl, paperTitle);
+    }
+
+    async function startPyqStudy(csvUrl, paperTitle) {
+        document.getElementById('pyqScreen').style.display = 'none';
+        document.getElementById('studyMaterialScreen').style.display = 'block';
+
+        const heading = document.getElementById('notesHeading');
+        const body = document.getElementById('notesBody');
+
+        heading.textContent = paperTitle;
+        body.innerHTML = "प्रश्न-पत्र लोड हो रहा है, कृपया प्रतीक्षा करें...";
+
+        try {
+            const res = await fetch(csvUrl + '&_nocache=' + new Date().getTime());
+            const csv = await res.text();
+            const lines = csv.split('\n');
+            let html = `<div style="margin-bottom:12px; font-weight:800; color:var(--primary);">मूल आधिकारिक प्रश्न-पत्र (हल व व्याख्या सहित):</div>`;
+
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                const cols = parseCSVLine(line);
+                if (cols.length >= 7) {
+                    html += `
+                        <div class="bullet-q-card" style="margin-bottom:12px; padding:12px;">
+                            <div style="font-weight:800; font-size:14.5px; margin-bottom:6px;">Q${cols[0] || i}. ${cols[1]}</div>
+                            <div style="font-size:13px; color:#334155; margin-bottom:4px;">
+                                <strong>(A)</strong> ${cols[2]} &nbsp;&nbsp; <strong>(B)</strong> ${cols[3]}<br>
+                                <strong>(C)</strong> ${cols[4]} &nbsp;&nbsp; <strong>(D)</strong> ${cols[5]}
+                            </div>
+                            <div style="font-size:13px; font-weight:800; color:#16a34a; margin-top:6px;">
+                                ✅ सही उत्तर: (${(cols[6] || '').toUpperCase()})
+                            </div>
+                            ${cols[7] ? `<div style="font-size:12px; color:#64748b; margin-top:4px;">💡 व्याख्या: ${cols[7]}</div>` : ''}
+                        </div>
+                    `;
+                }
+            }
+            body.innerHTML = html;
+        } catch (e) {
+            body.innerHTML = "प्रश्न-पत्र लोड करने में समस्या हुई।";
+        }
     }
 
     function printSyllabus() {
@@ -1482,6 +1715,7 @@
         document.getElementById('sectionChoiceScreen').style.display = 'none';
         document.getElementById('studyMaterialScreen').style.display = 'none';
         document.getElementById('syllabusScreen').style.display = 'none';
+        document.getElementById('pyqScreen').style.display = 'none';
         document.getElementById('quizScreen').style.display = 'none';
         document.getElementById('resultScreen').style.display = 'none';
         document.getElementById('timerBadge').style.display = 'none';
@@ -1496,6 +1730,14 @@
         document.getElementById('aayogScreen').style.display = 'none';
         document.getElementById('postScreen').style.display = 'block';
         document.getElementById('currentAayogBadge').textContent = `${aayogName} (${sub})`;
+
+        // यदि UPESSC चुना गया हो, तो पोस्ट स्क्रीन पर भी बुकलेट का डायरेक्ट बैनर दिखाएँ
+        const bookletBanner = document.getElementById('upesscDirectBookletBanner');
+        if (aayogName === 'UPESSC') {
+            bookletBanner.style.display = 'flex';
+        } else {
+            bookletBanner.style.display = 'none';
+        }
     }
 
     function selectPost(postName) {
@@ -1520,31 +1762,36 @@
     function backToSectionChoice() {
         document.getElementById('studyMaterialScreen').style.display = 'none';
         document.getElementById('syllabusScreen').style.display = 'none';
+        document.getElementById('pyqScreen').style.display = 'none';
         document.getElementById('sectionChoiceScreen').style.display = 'block';
     }
 
     // ==========================================================
-    // 📝 CBT टेस्ट इंजन
+    // 📝 CBT Test Engine
     // ==========================================================
     async function startCbtMock() {
+        let targetCsvUrl = CSV_URLS.DEFAULT;
+        if (selectedPost === 'Assistant Professor') {
+            targetCsvUrl = CSV_URLS.ASST_PROF;
+        } else if (selectedPost === 'TGT' || selectedPost === 'PGT') {
+            targetCsvUrl = CSV_URLS.TGT_PGT;
+        } else if (selectedPost === 'PRT') {
+            targetCsvUrl = CSV_URLS.PRT;
+        }
+        startCbtMockWithCustomUrl(targetCsvUrl, `${selectedAayog} • ${selectedPost}`);
+    }
+
+    async function startCbtMockWithCustomUrl(targetCsvUrl, examTitle) {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
+        document.getElementById('pyqScreen').style.display = 'none';
         document.getElementById('quizScreen').style.display = 'block';
         document.getElementById('timerBadge').style.display = 'block';
         document.getElementById('btnPaletteOpen').style.display = 'block';
-        document.getElementById('examDetailTag').textContent = `${selectedAayog} • ${selectedPost}`;
+        document.getElementById('examDetailTag').textContent = examTitle;
         document.getElementById('questionText').textContent = "लाइव टेस्ट लोड हो रहा है, कृपया प्रतीक्षा करें...";
 
-        let targetCsvUrl = CSV_URLS.DEFAULT;
         let examSeconds = 60 * 60;
-
-        if (selectedPost === 'Assistant Professor') {
-            targetCsvUrl = CSV_URLS.ASST_PROF;
-            examSeconds = 60 * 60;
-        } else if (selectedPost === 'TGT' || selectedPost === 'PGT') {
-            targetCsvUrl = CSV_URLS.TGT_PGT;
-            examSeconds = 60 * 60;
-        } else if (selectedPost === 'PRT') {
-            targetCsvUrl = CSV_URLS.PRT;
+        if (selectedPost === 'PRT') {
             examSeconds = 120 * 60;
         }
 
