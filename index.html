@@ -39,7 +39,7 @@
             min-height: 100vh;
         }
 
-        /* 🔒 1. पेड लॉगिन गेटवे */
+        /* 🔒 1. Paid Login Gateway + Demo Mode */
         #loginOverlay {
             position: fixed;
             top: 0;
@@ -60,7 +60,7 @@
             border-radius: 24px;
             width: 100%;
             max-width: 400px;
-            padding: 28px 22px;
+            padding: 26px 22px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             text-align: center;
             border: 1.5px solid #e0e7ff;
@@ -74,11 +74,11 @@
 
         .login-field {
             width: 100%;
-            padding: 13px 14px;
-            margin-bottom: 12px;
+            padding: 12px 14px;
+            margin-bottom: 11px;
             border: 1.5px solid var(--border);
             border-radius: 12px;
-            font-size: 15px;
+            font-size: 14.5px;
             outline: none;
             transition: 0.15s;
         }
@@ -92,36 +92,57 @@
             background: var(--primary);
             color: #ffffff;
             border: none;
-            padding: 14px;
+            padding: 13px;
             border-radius: 12px;
             width: 100%;
-            font-size: 15.5px;
+            font-size: 15px;
             font-weight: 800;
             cursor: pointer;
             transition: 0.15s;
         }
-
         .btn-login-submit:hover { background: var(--primary-dark); }
+
+        .btn-demo-mode {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1.5px dashed #d97706;
+            padding: 12px;
+            border-radius: 12px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: 0.15s;
+        }
+        .btn-demo-mode:hover {
+            background: #fde68a;
+            transform: scale(1.02);
+        }
 
         .btn-whatsapp-admission {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin-top: 10px;
+            margin-top: 8px;
             background: #25D366;
             color: #ffffff;
             padding: 10px 18px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 13.5px;
+            font-size: 13px;
             width: 100%;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
             transition: 0.2s;
         }
 
-        /* 🔴 2. एनिमेटेड ब्रेकिंग न्यूज़ टिकर */
+        /* 🔴 2. Breaking News Ticker */
         .ticker-container {
             background: #0f172a;
             color: #f8fafc;
@@ -161,7 +182,7 @@
             display: inline-block;
             white-space: nowrap;
             padding-left: 100%;
-            animation: tickerScroll 24s linear infinite;
+            animation: tickerScroll 25s linear infinite;
         }
 
         .ticker-scroll-area:hover .ticker-scroll-text {
@@ -217,6 +238,17 @@
             font-size: 15px;
             font-weight: 800;
             color: var(--primary);
+        }
+
+        .demo-user-badge {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            display: none;
         }
 
         .header-actions {
@@ -461,7 +493,7 @@
             margin-bottom: 18px;
         }
 
-        /* 🏛️ UPESSC आधिकारिक बुकलेट प्रीमियम बैनर */
+        /* 🏛️ UPESSC Booklet Banner */
         .upessc-booklet-banner {
             background: linear-gradient(135deg, #0284c7, #0369a1);
             color: #ffffff;
@@ -473,21 +505,6 @@
             align-items: center;
             justify-content: space-between;
             gap: 14px;
-        }
-
-        .upessc-booklet-banner .b-title {
-            font-size: 15px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .upessc-booklet-banner .b-sub {
-            font-size: 12px;
-            color: #e0f2fe;
-            margin-top: 3px;
-            line-height: 1.4;
         }
 
         .btn-open-booklet {
@@ -507,6 +524,102 @@
         }
         .btn-open-booklet:hover {
             background: #f0f9ff;
+            transform: scale(1.03);
+        }
+
+        /* 📁 Google Drive PDF Library Controls */
+        .drive-filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            color: #475569;
+            transition: 0.15s;
+        }
+        .filter-btn.active {
+            background: #ef4444;
+            color: #ffffff;
+            border-color: #ef4444;
+        }
+        .drive-search-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 13.5px;
+            outline: none;
+            margin-bottom: 14px;
+        }
+        .drive-search-input:focus {
+            border-color: #ef4444;
+        }
+        .drive-pdf-item {
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            transition: 0.15s;
+        }
+        .drive-pdf-item:hover {
+            border-color: #ef4444;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.08);
+        }
+        .pdf-icon-badge {
+            background: #fee2e2;
+            color: #dc2626;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .pdf-info-wrap { flex: 1; }
+        .pdf-title-text {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.35;
+        }
+        .pdf-meta-badge {
+            font-size: 11.5px;
+            color: var(--text-sub);
+            margin-top: 3px;
+            font-weight: 600;
+        }
+        .btn-drive-download {
+            background: #ef4444;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 12.5px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+            transition: 0.15s;
+        }
+        .btn-drive-download:hover {
+            background: #dc2626;
             transform: scale(1.03);
         }
 
@@ -817,7 +930,7 @@
 
             .header, .social-strip, #aayogScreen, #postScreen, #sectionChoiceScreen, 
             .calendar-selector, .btn-action-pdf, .breadcrumb-bar, #quizScreen, 
-            .result-panel, .palette-overlay, .palette-modal, #homeNoticeBoard, #loginOverlay, .ticker-container, #pyqScreen {
+            .result-panel, .palette-overlay, .palette-modal, #homeNoticeBoard, #loginOverlay, .ticker-container, #pyqScreen, #drivePdfScreen {
                 display: none !important;
             }
 
@@ -869,24 +982,29 @@
 </head>
 <body>
 
-<!-- 🔒 1. Paid Login Gateway -->
+<!-- 🔒 1. Paid Login Gateway + Free Demo Access -->
 <div id="loginOverlay">
     <div class="login-card">
-        <div style="font-size: 44px; margin-bottom: 8px;">🔐</div>
-        <h2 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 4px;">विद्यार्थी लॉगिन (Paid Access)</h2>
-        <p style="font-size: 13px; color: #64748b; margin-bottom: 18px;">कृपया अपना रजिस्टर्ड मोबाइल नंबर व पासवर्ड दर्ज करें:</p>
+        <div style="font-size: 44px; margin-bottom: 6px;">🔐</div>
+        <h2 style="font-size: 19px; font-weight: 800; color: #0f172a; margin-bottom: 2px;">विद्यार्थी लॉगिन (Paid Access)</h2>
+        <p style="font-size: 12.5px; color: #64748b; margin-bottom: 16px;">रजिस्टर्ड मोबाइल नंबर व पासवर्ड दर्ज करें:</p>
         
         <input type="tel" id="userMobile" class="login-field" placeholder="रजिस्टर्ड मोबाइल नंबर (10 अंक)" maxlength="10">
         <input type="password" id="userPass" class="login-field" placeholder="पासवर्ड दर्ज करें">
         
-        <div id="loginErrMsg" style="color: #dc2626; font-size: 12.5px; font-weight: 700; margin-bottom: 12px; display: none;"></div>
+        <div id="loginErrMsg" style="color: #dc2626; font-size: 12px; font-weight: 700; margin-bottom: 10px; display: none;"></div>
         
         <button class="btn-login-submit" id="btnLoginBtn" onclick="verifyLogin()">पोर्टल में प्रवेश करें ➔</button>
 
-        <div style="margin-top: 18px; font-size: 12.5px; color: #64748b; border-top: 1px dashed #e2e8f0; padding-top: 14px; line-height: 1.6;">
-            नए एडमिशन व पोर्टल एक्सेस हेतु संपर्क करें:<br>
+        <!-- 🎁 Free Demo Button -->
+        <button class="btn-demo-mode" onclick="enterDemoMode()">
+            <span>🎁</span> फ्री डेमो एक्सेस देखें (Try Demo Mode)
+        </button>
+
+        <div style="margin-top: 16px; font-size: 12px; color: #64748b; border-top: 1px dashed #e2e8f0; padding-top: 12px; line-height: 1.5;">
+            नए एडमिशन व फुल एक्सेस हेतु संपर्क करें:<br>
             <a href="https://wa.me/919140740167?text=नमस्ते%20Team%20Anurag,%20मुझे%20Teaching%20Exam%20CBT%20पोर्टल%20में%20नया%20एडमिशन/एक्सेस%20चाहिए।" target="_blank" class="btn-whatsapp-admission">
-                <span>💬</span> WhatsApp पर संदेश भेजें (Team Anurag)
+                <span>💬</span> WhatsApp पर संपर्क करें (Team Anurag)
             </a>
         </div>
     </div>
@@ -897,10 +1015,10 @@
     <div class="ticker-badge-live">⚡ BREAKING NEWS</div>
     <div class="ticker-scroll-area">
         <div class="ticker-scroll-text" id="liveTickerText">
-            <span class="ticker-item">🏛️ <strong>UPESSC Official:</strong> आयोग की आधिकारिक पाठ्यक्रम पुस्तिका (Booklet) पोर्टल पर सीधे लाइव उपलब्ध।</span>
+            <span class="ticker-item">📂 <strong>PDF Library:</strong> 'राष्ट्रीय एवं अंतरराष्ट्रीय पुरस्कार व सम्मान 2025-26' की संपूर्ण PDF ड्राइव पर लाइव!</span>
+            <span class="ticker-item">🏛️ <strong>UPESSC Official:</strong> आयोग की आधिकारिक पाठ्यक्रम पुस्तिका (Booklet) पोर्टल पर सीधे लाइव।</span>
             <span class="ticker-item">👶 <strong>UP PRT 2026:</strong> प्राथमिक शिक्षक भर्ती (12,405 पद) ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।</span>
             <span class="ticker-item">🎓 <strong>UP TGT/PGT:</strong> TGT 50% बाध्यता समाप्त; हिंदी पद हेतु संस्कृत की अनिवार्यता पूर्ववत।</span>
-            <span class="ticker-item">📂 <strong>PYQ Section:</strong> पिछले वर्षों के हल प्रश्न-पत्र व्याख्या सहित उपलब्ध।</span>
         </div>
     </div>
 </div>
@@ -908,6 +1026,7 @@
 <div class="header">
     <div class="brand-box">
         <button class="btn-home" onclick="goHome()">🏠 Home</button>
+        <span class="demo-user-badge" id="demoUserTag">🎁 DEMO USER</span>
         <button class="btn-home" style="color: var(--danger); font-weight: 800;" onclick="userLogout()">🚪 Logout</button>
         <div class="brand-title">📚 Teaching Exam Prep</div>
     </div>
@@ -1002,11 +1121,10 @@
             <span>← आयोग बदलें</span> | <span id="currentAayogBadge" style="color:var(--text-main);"></span>
         </div>
 
-        <!-- 🌐 UPESSC डायरेक्ट बुकलेट क्विक एक्सेस (अगर UPESSC चुना हो) -->
         <div class="upessc-booklet-banner" id="upesscDirectBookletBanner" style="display: none;">
             <div>
-                <div class="b-title">🏛️ UPESSC आधिकारिक पाठ्यक्रम पुस्तिका (Booklet)</div>
-                <div class="b-sub">आयोग की आधिकारिक वेबसाइट से सभी विषयों का संपूर्ण मूल सिलेबस देखें व डाउनलोड करें।</div>
+                <div style="font-size:14.5px; font-weight:800;">🏛️ UPESSC आधिकारिक पाठ्यक्रम पुस्तिका (Booklet)</div>
+                <div style="font-size:12px; color:#e0f2fe; margin-top:2px;">आयोग की वेबसाइट से सभी विषयों का संपूर्ण मूल सिलेबस देखें व डाउनलोड करें।</div>
             </div>
             <a href="https://www.upessc.up.gov.in/Home/Booklet" target="_blank" rel="noopener noreferrer" class="btn-open-booklet">
                 🌐 बुकलेट खोलें ➔
@@ -1033,7 +1151,7 @@
                 <div class="card-sub">प्रवक्ता सामान्य ज्ञान (30 प्रश्न)</div>
             </div>
             <div class="select-card" onclick="selectPost('Assistant Professor')">
-                <div class="badge-icon">👨‍🏫</div>
+                <div class="badge-icon">👨‍‍🏫</div>
                 <div class="card-title">Assistant Professor</div>
                 <div class="card-sub">विज्ञापन 51 GS (30 प्रश्न)</div>
             </div>
@@ -1047,8 +1165,18 @@
         </div>
 
         <h2 class="section-title">आप क्या चुनना चाहते हैं?</h2>
-        <p class="section-desc">दैनिक नोट्स, आधिकारिक पाठ्यक्रम, पिछले वर्षों के पेपर या टेस्ट दें:</p>
+        <p class="section-desc">दैनिक नोट्स, महत्वपूर्ण PDF, पाठ्यक्रम, पुराने पेपर्स या टेस्ट:</p>
 
+        <!-- 📂 विकल्प 1: Google Drive PDF Library -->
+        <div class="action-choice-card" onclick="openDrivePdfLibrary()">
+            <div style="font-size: 34px;">📂</div>
+            <div>
+                <h3 style="font-size: 16.5px; font-weight:800; color:#ef4444;">Important Topics PDF Library (Google Drive)</h3>
+                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;">पुरस्कार, सम्मेलन, सूचकांक आदि की मास्टर PDF डाउनलोड करें</p>
+            </div>
+        </div>
+
+        <!-- विकल्प 2: दैनिक समसामयिकी व नोट्स -->
         <div class="action-choice-card" onclick="openStudyMaterial()">
             <div style="font-size: 34px;">📖</div>
             <div>
@@ -1057,7 +1185,7 @@
             </div>
         </div>
 
-        <!-- 📋 Official Syllabus Button -->
+        <!-- विकल्प 3: आधिकारिक पाठ्यक्रम -->
         <div class="action-choice-card" onclick="openSyllabus()">
             <div style="font-size: 34px;">📋</div>
             <div>
@@ -1066,15 +1194,16 @@
             </div>
         </div>
 
-        <!-- 📂 PYQ Button -->
+        <!-- विकल्प 4: PYQ Section -->
         <div class="action-choice-card" onclick="openPyqSection()">
-            <div style="font-size: 34px;">📂</div>
+            <div style="font-size: 34px;">📜</div>
             <div>
                 <h3 style="font-size: 16.5px; font-weight:800; color:#d97706;">Previous Year Questions (PYQs)</h3>
                 <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;">आधिकारिक पुराने पेपर्स + हल व्याख्या + टाइमर CBT टेस्ट</p>
             </div>
         </div>
 
+        <!-- विकल्प 5: डेली मॉक टेस्ट -->
         <div class="action-choice-card" onclick="startCbtMock()">
             <div style="font-size: 34px;">📝</div>
             <div>
@@ -1084,7 +1213,32 @@
         </div>
     </div>
 
-    <!-- 4. स्टडी मटेरियल Screen -->
+    <!-- 📂 4. GOOGLE DRIVE PDF LIBRARY Screen -->
+    <div id="drivePdfScreen" style="display: none;">
+        <div class="breadcrumb-bar" onclick="backToSectionChoice()">
+            <span>← वापस विकल्प पर आएँ</span>
+        </div>
+
+        <div class="study-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px; border-bottom: 1.5px solid var(--border); padding-bottom: 8px;">
+                <div>
+                    <h2 style="font-size: 18px; font-weight:800; color:#ef4444;">📂 महत्वपूर्ण टॉपिक PDF लाइब्रेरी</h2>
+                    <p style="font-size: 12.5px; color:var(--text-sub);">Google Drive से 1-क्लिक में आधिकारिक प्रिंट-रेडी PDF डाउनलोड करें</p>
+                </div>
+                <span class="exam-tag" style="background:#fee2e2; color:#dc2626;">Drive PDF</span>
+            </div>
+
+            <!-- 🔍 Search Box -->
+            <input type="text" id="drivePdfSearchInput" class="drive-search-input" placeholder="🔍 टॉपिक या नाम से खोजें (जैसे: पुरस्कार, बजट, नोबेल)..." oninput="filterDrivePdfs()">
+
+            <!-- 🏷️ Topic Filter Tabs -->
+            <div class="drive-filter-bar" id="driveTopicFilterBar"></div>
+
+            <div id="drivePdfListContainer"></div>
+        </div>
+    </div>
+
+    <!-- 5. स्टडी मटेरियल Screen -->
     <div id="studyMaterialScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="backToSectionChoice()">
             <span>← वापस विकल्प पर आएँ</span>
@@ -1109,18 +1263,17 @@
         </div>
     </div>
 
-    <!-- 5. पाठ्यक्रम Screen (UPESSC डायरेक्ट बुकलेट के साथ) -->
+    <!-- 6. पाठ्यक्रम Screen -->
     <div id="syllabusScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="backToSectionChoice()">
             <span>← वापस विकल्प पर आएँ</span>
         </div>
 
         <div class="study-box">
-            <!-- 🏛️️ UPESSC आधिकारिक बुकलेट डायरेक्ट लिंक कार्ड -->
             <div class="upessc-booklet-banner">
                 <div>
-                    <div class="b-title">🏛️ UPESSC आधिकारिक बुकलेट (All Subjects)</div>
-                    <div class="b-sub">आयोग द्वारा जारी सभी विषयों की आधिकारिक पाठ्यक्रम पुस्तिका सीधे आधिकारिक सर्वर पर खोलें:</div>
+                    <div style="font-size:14.5px; font-weight:800;">🏛️ UPESSC आधिकारिक बुकलेट (All Subjects)</div>
+                    <div style="font-size:12px; color:#e0f2fe; margin-top:2px;">आयोग द्वारा जारी सभी विषयों की आधिकारिक पुस्तिका सीधे खोलें:</div>
                 </div>
                 <a href="https://www.upessc.up.gov.in/Home/Booklet" target="_blank" rel="noopener noreferrer" class="btn-open-booklet">
                     🌐 आधिकारिक लिंक ➔
@@ -1143,7 +1296,7 @@
         </div>
     </div>
 
-    <!-- 6. PYQ Screen -->
+    <!-- 7. PYQ Screen -->
     <div id="pyqScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="backToSectionChoice()">
             <span>← वापस विकल्प पर आएँ</span>
@@ -1152,21 +1305,17 @@
         <div class="study-box">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px; border-bottom: 1.5px solid var(--border); padding-bottom: 8px;">
                 <div>
-                    <h2 style="font-size: 18px; font-weight:800; color:#d97706;">📂 पिछले वर्षों के हल प्रश्न-पत्र (PYQs)</h2>
+                    <h2 style="font-size: 18px; font-weight:800; color:#d97706;">📜 पिछले वर्षों के हल प्रश्न-पत्र (PYQs)</h2>
                     <p style="font-size: 12.5px; color:var(--text-sub);" id="pyqSubHeading">मूल आधिकारिक प्रश्न-पत्र एवं उत्तर कुंजी</p>
                 </div>
                 <span class="exam-tag" id="pyqTag" style="background:#fef3c7; color:#92400e;">PYQ</span>
             </div>
 
-            <p style="font-size:13px; color:var(--text-sub); margin-bottom:14px;">
-                नीचे दिए गए किसी भी पिछले वर्ष के पेपर को चुनें। आप इसे उत्तर-व्याख्या सहित पढ़ सकते हैं या सीधे टाइमर के साथ लाइव टेस्ट दे सकते हैं:
-            </p>
-
             <div id="pyqPapersContainer"></div>
         </div>
     </div>
 
-    <!-- 7. CBT ऑनलाइन क्विज Screen -->
+    <!-- 8. CBT ऑनलाइन क्विज Screen -->
     <div class="quiz-card" id="quizScreen">
         <div class="q-meta">
             <span class="exam-tag" id="examDetailTag">UPESSC</span>
@@ -1184,7 +1333,7 @@
         </div>
     </div>
 
-    <!-- 8. रिजल्ट Screen -->
+    <!-- 9. रिजल्ट Screen -->
     <div class="result-panel" id="resultScreen">
         <div style="font-size: 44px;">🎯</div>
         <h2 style="font-size: 20px; font-weight: 800; margin-top: 4px;">मॉक टेस्ट समाप्त हुआ!</h2>
@@ -1267,7 +1416,9 @@
         PRT:        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1463599656&single=true&output=csv",
         DEFAULT:    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=0&single=true&output=csv",
         NOTES:      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1508729464&single=true&output=csv",
-        PAID_USERS: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=896927898&single=true&output=csv"
+        PAID_USERS: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=896927898&single=true&output=csv",
+        // 📂 DrivePDFs Tab ka Published CSV Link:
+        DRIVE_PDFS: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=515899979&single=true&output=csv"
     };
 
     const MASTER_PASSWORD = "Anurag2016@";
@@ -1282,6 +1433,9 @@
     let timerInterval = null;
     let allNotesData = {};
     let allNoticesList = [];
+
+    let allDrivePdfList = [];
+    let activeTopicFilter = "ALL";
 
     // ==========================================================
     // 📂 PYQ Papers Data
@@ -1306,16 +1460,34 @@
     };
 
     // ==========================================================
-    // 🔐 Auth System
+    // 🔐 Auth System (Paid Login + Free Demo Access)
     // ==========================================================
     function checkAuthStatus() {
         const session = localStorage.getItem('cbt_user_session');
         const overlay = document.getElementById('loginOverlay');
+        const demoTag = document.getElementById('demoUserTag');
+
         if (session) {
+            const data = JSON.parse(session);
             overlay.style.display = 'none';
+            if (data.isDemo) {
+                demoTag.style.display = 'inline-block';
+            } else {
+                demoTag.style.display = 'none';
+            }
         } else {
             overlay.style.display = 'flex';
         }
+    }
+
+    function enterDemoMode() {
+        localStorage.setItem('cbt_user_session', JSON.stringify({
+            mobile: 'DEMO',
+            name: 'Demo Student',
+            isDemo: true,
+            time: new Date().toISOString()
+        }));
+        checkAuthStatus();
     }
 
     async function verifyLogin() {
@@ -1365,9 +1537,10 @@
                 localStorage.setItem('cbt_user_session', JSON.stringify({
                     mobile: mobile,
                     name: studentName,
+                    isDemo: false,
                     time: new Date().toISOString()
                 }));
-                document.getElementById('loginOverlay').style.display = 'none';
+                checkAuthStatus();
             } else {
                 const waLink = `https://wa.me/91${ADMIN_WHATSAPP}?text=${encodeURIComponent('नमस्ते Team Anurag, मैंने फीस जमा कर दी है। कृपया मेरा मोबाइल नंबर पोर्टल में एक्टिवेट करें: ' + mobile)}`;
                 err.innerHTML = `⚠️ यह मोबाइल नंबर एक्टिव नहीं है।<br><a href="${waLink}" target="_blank" style="color:#2563eb; text-decoration:underline;">👉 यहाँ क्लिक कर WhatsApp पर एक्सेस मांगें</a>`;
@@ -1390,12 +1563,115 @@
     }
 
     // ==========================================================
+    // 📂 DYNAMIC GOOGLE DRIVE PDF लाइब्रेरी लॉजिक (Sheet Powered)
+    // ==========================================================
+    async function openDrivePdfLibrary() {
+        document.getElementById('sectionChoiceScreen').style.display = 'none';
+        document.getElementById('drivePdfScreen').style.display = 'block';
+
+        const container = document.getElementById('drivePdfListContainer');
+        container.innerHTML = '<div style="text-align:center; padding:20px; font-weight:700; color:var(--text-sub);">PDF Library load हो रही है...</div>';
+
+        allDrivePdfList = [];
+
+        try {
+            const res = await fetch(CSV_URLS.DRIVE_PDFS + '&_t=' + new Date().getTime());
+            const csv = await res.text();
+            const lines = csv.split('\n');
+
+            // Nayi PDF sabse upar dikhane ke liye reverse loop
+            for (let i = lines.length - 1; i >= 1; i--) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                const cols = parseCSVLine(line);
+                if (cols.length >= 4 && cols[1]) {
+                    allDrivePdfList.push({
+                        topic: (cols[0] || 'General').trim(),
+                        title: cols[1].trim(),
+                        meta: (cols[2] || '').trim(),
+                        url: cols[3].trim()
+                    });
+                }
+            }
+        } catch (e) {
+            console.error("DrivePDFs load error", e);
+        }
+
+        buildDriveTopicFilters();
+        renderDrivePdfCards();
+    }
+
+    function buildDriveTopicFilters() {
+        const filterBar = document.getElementById('driveTopicFilterBar');
+        filterBar.innerHTML = '';
+
+        const topics = ['ALL'];
+        allDrivePdfList.forEach(item => {
+            if (item.topic && !topics.includes(item.topic)) {
+                topics.push(item.topic);
+            }
+        });
+
+        topics.forEach(t => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn' + (t === activeTopicFilter ? ' active' : '');
+            btn.textContent = t === 'ALL' ? '🌐 सभी टॉपिक्स (All)' : t;
+            btn.onclick = () => {
+                activeTopicFilter = t;
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterDrivePdfs();
+            };
+            filterBar.appendChild(btn);
+        });
+    }
+
+    function filterDrivePdfs() {
+        const query = document.getElementById('drivePdfSearchInput').value.toLowerCase().trim();
+        const filtered = allDrivePdfList.filter(item => {
+            const matchTopic = (activeTopicFilter === 'ALL' || item.topic === activeTopicFilter);
+            const matchText = item.title.toLowerCase().includes(query) || 
+                              item.meta.toLowerCase().includes(query) || 
+                              item.topic.toLowerCase().includes(query);
+            return matchTopic && matchText;
+        });
+        renderDrivePdfCards(filtered);
+    }
+
+    function renderDrivePdfCards(list = allDrivePdfList) {
+        const container = document.getElementById('drivePdfListContainer');
+        container.innerHTML = '';
+
+        if (!list || list.length === 0) {
+            container.innerHTML = '<div style="text-align:center; padding:24px; color:#64748b; font-weight:700;">कोई PDF उपलब्ध नहीं है।</div>';
+            return;
+        }
+
+        list.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'drive-pdf-item';
+            card.innerHTML = `
+                <div class="pdf-icon-badge">📄</div>
+                <div class="pdf-info-wrap">
+                    <span style="background:#fee2e2; color:#dc2626; font-size:10px; font-weight:800; padding:2px 6px; border-radius:4px;">${item.topic}</span>
+                    <div class="pdf-title-text" style="margin-top:3px;">${item.title}</div>
+                    <div class="pdf-meta-badge">${item.meta}</div>
+                </div>
+                <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="btn-drive-download">
+                    <span>📥</span> Google Drive ➔
+                </a>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // ==========================================================
     // 📚 Official Syllabus Database
     // ==========================================================
     const SYLLABUS_DATA = {
         'PRT': {
             title: "प्राथमिक विद्यालय सहायक अध्यापक (कक्षा 1-5) भर्ती 2026",
-            structure: "⏱️ समय: 02:00 घण्टे (120 मिनट) | 📝 कुल प्रश्न: 120 (MCQ) | 🎯 पूर्णांक: 360 अंक (+3 अंक प्रति प्रश्न) | ⚠️️ नेगेटिव मार्किंग: -1 अंक",
+            structure: "⏱️ समय: 02:00 घण्टे (120 मिनट) | 📝 कुल प्रश्न: 120 (MCQ) | 🎯 पूर्णांक: 360 अंक (+3 अंक प्रति प्रश्न) | ⚠️ नेगेटिव मार्किंग: -1 अंक",
             html: `
                 <table class="syllabus-table">
                     <tr><th>विषय वर्ग</th><th>पाठ्यक्रम विवरण</th><th style="text-align:center;">प्रश्न</th></tr>
@@ -1433,7 +1709,7 @@
         },
         'PGT': {
             title: "प्रवक्ता (PGT) - सामान्य ज्ञान पाठ्यक्रम",
-            structure: "📝 कुल प्रश्न: 30 बहुविकल्पीय प्रश्न (MCQ) | ⏱️️ अवधि: भाग-1 अनिवार्य सामान्य ज्ञान",
+            structure: "📝 कुल प्रश्न: 30 बहुविकल्पीय प्रश्न (MCQ) | ⏱ अवधि: भाग-1 अनिवार्य सामान्य ज्ञान",
             html: `
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 1: समसामयिक घटनाएं (Current Affairs)</span><span>(08-10 प्रश्न)</span></div>
@@ -1504,10 +1780,10 @@
         document.getElementById('noticeDatePicker').value = today;
 
         allNoticesList = [
+            { date: today, tag: "PDF Library", text: "महत्वपूर्ण टॉपिक: 'राष्ट्रीय एवं अंतरराष्ट्रीय पुरस्कार व सम्मान 2025-26' की संपूर्ण PDF ड्राइव पर लाइव!" },
             { date: today, tag: "UPESSC Official", text: "उत्तर प्रदेश शिक्षा सेवा चयन आयोग द्वारा सभी विषयों की आधिकारिक पाठ्यक्रम पुस्तिका (Booklet) जारी।" },
             { date: today, tag: "UP PRT 2026", text: "उत्तर प्रदेश प्राथमिक शिक्षक भर्ती (12,405 पद) ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।" },
-            { date: today, tag: "UP TGT/PGT", text: "TGT/PGT नियमावली स्पष्ट: TGT में 50% बाध्यता समाप्त; हिंदी पद हेतु संस्कृत की अनिवार्यता पूर्ववत।" },
-            { date: today, tag: "UPESSC Adv 51", text: "असिस्टेंट प्रोफेसर परीक्षा तिथि निर्धारण हेतु आयोग स्तर पर समीक्षा बैठक जारी।" }
+            { date: today, tag: "UP TGT/PGT", text: "TGT/PGT नियमावली स्पष्ट: TGT में 50% बाध्यता समाप्त; हिंदी पद हेतु संस्कृत की अनिवार्यता पूर्ववत।" }
         ];
 
         filterNoticesByDate(today);
@@ -1716,6 +1992,7 @@
         document.getElementById('studyMaterialScreen').style.display = 'none';
         document.getElementById('syllabusScreen').style.display = 'none';
         document.getElementById('pyqScreen').style.display = 'none';
+        document.getElementById('drivePdfScreen').style.display = 'none';
         document.getElementById('quizScreen').style.display = 'none';
         document.getElementById('resultScreen').style.display = 'none';
         document.getElementById('timerBadge').style.display = 'none';
@@ -1731,7 +2008,6 @@
         document.getElementById('postScreen').style.display = 'block';
         document.getElementById('currentAayogBadge').textContent = `${aayogName} (${sub})`;
 
-        // यदि UPESSC चुना गया हो, तो पोस्ट स्क्रीन पर भी बुकलेट का डायरेक्ट बैनर दिखाएँ
         const bookletBanner = document.getElementById('upesscDirectBookletBanner');
         if (aayogName === 'UPESSC') {
             bookletBanner.style.display = 'flex';
@@ -1763,6 +2039,7 @@
         document.getElementById('studyMaterialScreen').style.display = 'none';
         document.getElementById('syllabusScreen').style.display = 'none';
         document.getElementById('pyqScreen').style.display = 'none';
+        document.getElementById('drivePdfScreen').style.display = 'none';
         document.getElementById('sectionChoiceScreen').style.display = 'block';
     }
 
@@ -1784,6 +2061,7 @@
     async function startCbtMockWithCustomUrl(targetCsvUrl, examTitle) {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
         document.getElementById('pyqScreen').style.display = 'none';
+        document.getElementById('drivePdfScreen').style.display = 'none';
         document.getElementById('quizScreen').style.display = 'block';
         document.getElementById('timerBadge').style.display = 'block';
         document.getElementById('btnPaletteOpen').style.display = 'block';
