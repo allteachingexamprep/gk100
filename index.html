@@ -928,7 +928,7 @@
         @media print {
             body { background: #ffffff !important; padding: 0 !important; }
 
-            .header, .social-strip, #aayogScreen, #postScreen, #sectionChoiceScreen, 
+            .header, .social-strip, #aayogScreen, #postScreen, #sectionChoiceScreen, #mockSelectScreen,
             .calendar-selector, .btn-action-pdf, .breadcrumb-bar, #quizScreen, 
             .result-panel, .palette-overlay, .palette-modal, #homeNoticeBoard, #loginOverlay, .ticker-container, #pyqScreen, #drivePdfScreen {
                 display: none !important;
@@ -1015,10 +1015,11 @@
     <div class="ticker-badge-live">⚡ BREAKING NEWS</div>
     <div class="ticker-scroll-area">
         <div class="ticker-scroll-text" id="liveTickerText">
-            <span class="ticker-item">📂 <strong>PDF Library:</strong> 'राष्ट्रीय एवं अंतरराष्ट्रीय पुरस्कार व सम्मान 2025-26' की संपूर्ण PDF ड्राइव पर लाइव!</span>
-            <span class="ticker-item">🏛️ <strong>UPESSC Official:</strong> आयोग की आधिकारिक पाठ्यक्रम पुस्तिका (Booklet) पोर्टल पर सीधे लाइव।</span>
-            <span class="ticker-item">👶 <strong>UP PRT 2026:</strong> प्राथमिक शिक्षक भर्ती (12,405 पद) ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।</span>
-            <span class="ticker-item">🎓 <strong>UP TGT/PGT:</strong> TGT 50% बाध्यता समाप्त; हिंदी पद हेतु संस्कृत की अनिवार्यता पूर्ववत।</span>
+            <span class="ticker-item">🚨 <strong>UP Assistant Professor (विज्ञापन 52 - 1,936 पद):</strong> अंतिम तिथि 07 अक्टूबर; तुरंत आवेदन करें!</span>
+            <span class="ticker-item">👶 <strong>UP PRT (12,405 पद):</strong> ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।</span>
+            <span class="ticker-item">🔬 <strong>UP PGT (2,607 पद):</strong> ऑनलाइन आवेदन 17 अक्टूबर तक सक्रिय।</span>
+            <span class="ticker-item">📍 <strong>BPSC TRE-4 (33,000+ पद):</strong> PRT/Junior/TGT/PGT फॉर्म भरने की अंतिम तिथि 25 अक्टूबर।</span>
+            <span class="ticker-item">⚖️ <strong>UPPSC RO/ARO 2026:</strong> आयोग को नए पदों का अधियाचन प्राप्त, विज्ञप्ति शीघ्र!</span>
         </div>
     </div>
 </div>
@@ -1151,9 +1152,9 @@
                 <div class="card-sub">प्रवक्ता सामान्य ज्ञान (30 प्रश्न)</div>
             </div>
             <div class="select-card" onclick="selectPost('Assistant Professor')">
-                <div class="badge-icon">👨‍‍🏫</div>
+                <div class="badge-icon">👨‍🏫</div>
                 <div class="card-title">Assistant Professor</div>
-                <div class="card-sub">विज्ञापन 51 GS (30 प्रश्न)</div>
+                <div class="card-sub">विज्ञापन 52 GS (30 प्रश्न)</div>
             </div>
         </div>
     </div>
@@ -1203,14 +1204,26 @@
             </div>
         </div>
 
-        <!-- विकल्प 5: डेली मॉक टेस्ट -->
-        <div class="action-choice-card" onclick="startCbtMock()">
+        <!-- विकल्प 5: डेली मॉक टेस्ट (अब 1 से 10 टेस्ट सेलेक्टर खुलेगा) -->
+        <div class="action-choice-card" onclick="openMockSelectionScreen()">
             <div style="font-size: 34px;">📝</div>
             <div>
                 <h3 style="font-size: 16.5px; font-weight:800; color:var(--success);">Daily Mock Test (CBT Mode)</h3>
-                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;" id="mockCardDesc">लाइव CBT टेस्ट + Gen-Z स्कोर फीडबैक + सुपर कॉम्पैक्ट PDF</p>
+                <p style="font-size:12.5px; color:var(--text-sub); margin-top:3px;" id="mockCardDesc">मॉक टेस्ट 01 से 10 चुनें (टाइमर + पैलेट + सुपर कॉम्पैक्ट PDF)</p>
             </div>
         </div>
+    </div>
+
+    <!-- 📝 3.5 मॉक टेस्ट नंबर सेलेक्टर Screen (Mock 01 से 10) -->
+    <div id="mockSelectScreen" style="display: none;">
+        <div class="breadcrumb-bar" onclick="backToSectionChoiceFromMock()">
+            <span>← वापस विकल्प पर आएँ</span> | <span id="currentMockPostBadge" style="color:var(--text-main);"></span>
+        </div>
+
+        <h2 class="section-title">मॉक टेस्ट चुनें (Mock Test 01 - 10)</h2>
+        <p class="section-desc">जिस मॉक टेस्ट का अभ्यास करना चाहते हैं, उस पर क्लिक करें:</p>
+
+        <div class="selection-grid" id="mockGridList"></div>
     </div>
 
     <!-- 📂 4. GOOGLE DRIVE PDF LIBRARY Screen -->
@@ -1417,7 +1430,6 @@
         DEFAULT:    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=0&single=true&output=csv",
         NOTES:      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1508729464&single=true&output=csv",
         PAID_USERS: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=896927898&single=true&output=csv",
-        // 📂 DrivePDFs Tab ka Published CSV Link:
         DRIVE_PDFS: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=515899979&single=true&output=csv"
     };
 
@@ -1426,6 +1438,7 @@
 
     let selectedAayog = "";
     let selectedPost = "";
+    let selectedMockTestNo = 1;
     let questions = [];
     let currentIndex = 0;
     let userAnswers = {};
@@ -1579,7 +1592,6 @@
             const csv = await res.text();
             const lines = csv.split('\n');
 
-            // Nayi PDF sabse upar dikhane ke liye reverse loop
             for (let i = lines.length - 1; i >= 1; i--) {
                 const line = lines[i].trim();
                 if (!line) continue;
@@ -1726,7 +1738,7 @@
             `
         },
         'Assistant Professor': {
-            title: "असिस्टेंट प्रोफेसर (विज्ञापन 51) - अनिवार्य सामान्य अध्ययन",
+            title: "असिस्टेंट प्रोफेसर (विज्ञापन 52) - अनिवार्य सामान्य अध्ययन",
             structure: "📝 कुल प्रश्न: 30 बहुविकल्पीय प्रश्न | 🎯 कुल अंक: 60 अंक | 6 अनिवार्य इकाइयाँ",
             html: `
                 <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 1: समसामयिक मुद्दे</div><p style="font-size:13px; color:#334155;">राष्ट्रीय व अंतर्राष्ट्रीय घटनाएं, प्रमुख व्यक्तित्व, खेलकूद, विज्ञान में नवीनतम शोध।</p></div>
@@ -1780,10 +1792,11 @@
         document.getElementById('noticeDatePicker').value = today;
 
         allNoticesList = [
-            { date: today, tag: "PDF Library", text: "महत्वपूर्ण टॉपिक: 'राष्ट्रीय एवं अंतरराष्ट्रीय पुरस्कार व सम्मान 2025-26' की संपूर्ण PDF ड्राइव पर लाइव!" },
-            { date: today, tag: "UPESSC Official", text: "उत्तर प्रदेश शिक्षा सेवा चयन आयोग द्वारा सभी विषयों की आधिकारिक पाठ्यक्रम पुस्तिका (Booklet) जारी।" },
-            { date: today, tag: "UP PRT 2026", text: "उत्तर प्रदेश प्राथमिक शिक्षक भर्ती (12,405 पद) ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।" },
-            { date: today, tag: "UP TGT/PGT", text: "TGT/PGT नियमावली स्पष्ट: TGT में 50% बाध्यता समाप्त; हिंदी पद हेतु संस्कृत की अनिवार्यता पूर्ववत।" }
+            { date: today, tag: "UP Asst. Prof", text: "<strong>असिस्टेंट प्रोफेसर (विज्ञापन 52 - 1,936 पद):</strong> अंतिम तिथि <strong>07 अक्टूबर</strong> है; समय रहते फॉर्म पूर्ण करें।" },
+            { date: today, tag: "UP PRT 2026", text: "<strong>UP प्राथमिक शिक्षक भर्ती (12,405 पद):</strong> ऑनलाइन रजिस्ट्रेशन की अंतिम तिथि <strong>15 अक्टूबर 2026</strong> निर्धारित।" },
+            { date: today, tag: "UP PGT 2026", text: "<strong>UP प्रवक्ता (PGT) भर्ती (2,607 पद):</strong> ऑनलाइन आवेदन <strong>17 अक्टूबर</strong> तक सक्रिय रहेंगे।" },
+            { date: today, tag: "BPSC TRE-4", text: "<strong>BPSC शिक्षक भर्ती फेज-4 (33,000+ पद):</strong> PRT/Junior/TGT/PGT फॉर्म भरने की अंतिम तिथि <strong>25 अक्टूबर</strong> है।" },
+            { date: today, tag: "UPPSC RO/ARO", text: "<strong>समीक्षा अधिकारी / सहायक समीक्षा अधिकारी:</strong> आयोग को नए पदों का <strong>अधियाचन प्राप्त</strong> हो चुका है; विज्ञप्ति शीघ्र।" }
         ];
 
         filterNoticesByDate(today);
@@ -1807,7 +1820,7 @@
             });
         } else {
             status.innerHTML = `<span style="color:var(--danger)">⚠️ इस तारीख (${target}) का कोई नया नोटिस नहीं है। हालिया सक्रिय विज्ञप्तियां:</span>`;
-            allNoticesList.slice(0, 4).forEach(item => {
+            allNoticesList.slice(0, 5).forEach(item => {
                 const li = document.createElement('li');
                 li.className = 'news-item';
                 li.innerHTML = `<span class="news-tag-pill">${item.tag}</span> <div><small style="color:#64748b;">(${item.date})</small> ${item.text}</div>`;
@@ -1941,24 +1954,46 @@
             const lines = csv.split('\n');
             let html = `<div style="margin-bottom:12px; font-weight:800; color:var(--primary);">मूल आधिकारिक प्रश्न-पत्र (हल व व्याख्या सहित):</div>`;
 
-            for (let i = 1; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (!line) continue;
-                const cols = parseCSVLine(line);
-                if (cols.length >= 7) {
-                    html += `
-                        <div class="bullet-q-card" style="margin-bottom:12px; padding:12px;">
-                            <div style="font-weight:800; font-size:14.5px; margin-bottom:6px;">Q${cols[0] || i}. ${cols[1]}</div>
-                            <div style="font-size:13px; color:#334155; margin-bottom:4px;">
-                                <strong>(A)</strong> ${cols[2]} &nbsp;&nbsp; <strong>(B)</strong> ${cols[3]}<br>
-                                <strong>(C)</strong> ${cols[4]} &nbsp;&nbsp; <strong>(D)</strong> ${cols[5]}
+            if (lines.length > 1) {
+                const headerCols = parseCSVLine(lines[0]);
+                const hasTestNo = headerCols[0] && headerCols[0].toLowerCase().includes('test');
+
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    const cols = parseCSVLine(line);
+
+                    let qNum = i, qText = '', oA = '', oB = '', oC = '', oD = '', cAns = '', expText = '';
+
+                    if (hasTestNo) {
+                        qNum = cols[1] || i;
+                        qText = cols[2] || '';
+                        oA = cols[3] || ''; oB = cols[4] || ''; oC = cols[5] || ''; oD = cols[6] || '';
+                        cAns = (cols[7] || '').toUpperCase();
+                        expText = cols[8] || '';
+                    } else {
+                        qNum = cols[0] || i;
+                        qText = cols[1] || '';
+                        oA = cols[2] || ''; oB = cols[3] || ''; oC = cols[4] || ''; oD = cols[5] || '';
+                        cAns = (cols[6] || '').toUpperCase();
+                        expText = cols[7] || '';
+                    }
+
+                    if (qText) {
+                        html += `
+                            <div class="bullet-q-card" style="margin-bottom:12px; padding:12px;">
+                                <div style="font-weight:800; font-size:14.5px; margin-bottom:6px;">Q${qNum}. ${qText}</div>
+                                <div style="font-size:13px; color:#334155; margin-bottom:4px;">
+                                    <strong>(A)</strong> ${oA} &nbsp;&nbsp; <strong>(B)</strong> ${oB}<br>
+                                    <strong>(C)</strong> ${oC} &nbsp;&nbsp; <strong>(D)</strong> ${oD}
+                                </div>
+                                <div style="font-size:13px; font-weight:800; color:#16a34a; margin-top:6px;">
+                                    ✅ सही उत्तर: (${cAns})
+                                </div>
+                                ${expText ? `<div style="font-size:12px; color:#64748b; margin-top:4px;">💡 व्याख्या: ${expText}</div>` : ''}
                             </div>
-                            <div style="font-size:13px; font-weight:800; color:#16a34a; margin-top:6px;">
-                                ✅ सही उत्तर: (${(cols[6] || '').toUpperCase()})
-                            </div>
-                            ${cols[7] ? `<div style="font-size:12px; color:#64748b; margin-top:4px;">💡 व्याख्या: ${cols[7]}</div>` : ''}
-                        </div>
-                    `;
+                        `;
+                    }
                 }
             }
             body.innerHTML = html;
@@ -1989,6 +2024,7 @@
         document.getElementById('aayogScreen').style.display = 'block';
         document.getElementById('postScreen').style.display = 'none';
         document.getElementById('sectionChoiceScreen').style.display = 'none';
+        document.getElementById('mockSelectScreen').style.display = 'none';
         document.getElementById('studyMaterialScreen').style.display = 'none';
         document.getElementById('syllabusScreen').style.display = 'none';
         document.getElementById('pyqScreen').style.display = 'none';
@@ -2024,9 +2060,9 @@
         
         const mockDesc = document.getElementById('mockCardDesc');
         if (selectedPost === 'PRT') {
-            mockDesc.textContent = "120 प्रश्न • 120 मिनट • 360 अंक (-1 नेगेटिव मार्किंग)";
+            mockDesc.textContent = "मॉक 01 से 10 (120 प्रश्न • 120 मिनट • -1 नेगेटिव मार्किंग)";
         } else {
-            mockDesc.textContent = "लाइव CBT टेस्ट + Gen-Z स्कोर फीडबैक + सुपर कॉम्पैक्ट PDF";
+            mockDesc.textContent = "मॉक 01 से 10 (30 प्रश्न • CBT मोड • सुपर कॉम्पैक्ट PDF)";
         }
     }
 
@@ -2040,13 +2076,42 @@
         document.getElementById('syllabusScreen').style.display = 'none';
         document.getElementById('pyqScreen').style.display = 'none';
         document.getElementById('drivePdfScreen').style.display = 'none';
+        document.getElementById('mockSelectScreen').style.display = 'none';
+        document.getElementById('sectionChoiceScreen').style.display = 'block';
+    }
+
+    function backToSectionChoiceFromMock() {
+        document.getElementById('mockSelectScreen').style.display = 'none';
         document.getElementById('sectionChoiceScreen').style.display = 'block';
     }
 
     // ==========================================================
-    // 📝 CBT Test Engine
+    // 📝 Multi-Mock Selection Engine (Mock 01 to 10)
     // ==========================================================
-    async function startCbtMock() {
+    function openMockSelectionScreen() {
+        document.getElementById('sectionChoiceScreen').style.display = 'none';
+        document.getElementById('mockSelectScreen').style.display = 'block';
+        document.getElementById('currentMockPostBadge').textContent = `${selectedAayog} • ${selectedPost}`;
+
+        const grid = document.getElementById('mockGridList');
+        grid.innerHTML = '';
+
+        for (let i = 1; i <= 10; i++) {
+            const card = document.createElement('div');
+            card.className = 'select-card';
+            card.innerHTML = `
+                <div class="badge-icon">📝</div>
+                <div class="card-title">Mock Test ${i < 10 ? '0' + i : i}</div>
+                <div class="card-sub">${selectedPost === 'PRT' ? '120 प्रश्न • 120 मिनट (-1 Neg)' : '30 प्रश्न • CBT मोड'}</div>
+            `;
+            card.onclick = () => loadAndStartMockNumber(i);
+            grid.appendChild(card);
+        }
+    }
+
+    async function loadAndStartMockNumber(mockNo) {
+        selectedMockTestNo = mockNo;
+
         let targetCsvUrl = CSV_URLS.DEFAULT;
         if (selectedPost === 'Assistant Professor') {
             targetCsvUrl = CSV_URLS.ASST_PROF;
@@ -2055,13 +2120,94 @@
         } else if (selectedPost === 'PRT') {
             targetCsvUrl = CSV_URLS.PRT;
         }
-        startCbtMockWithCustomUrl(targetCsvUrl, `${selectedAayog} • ${selectedPost}`);
+
+        document.getElementById('mockSelectScreen').style.display = 'none';
+        document.getElementById('quizScreen').style.display = 'block';
+        document.getElementById('timerBadge').style.display = 'block';
+        document.getElementById('btnPaletteOpen').style.display = 'block';
+        
+        const mockBadge = mockNo < 10 ? '0' + mockNo : mockNo;
+        document.getElementById('examDetailTag').textContent = `${selectedAayog} • ${selectedPost} (Mock ${mockBadge})`;
+        document.getElementById('questionText').textContent = `मॉक टेस्ट ${mockNo} लोड हो रहा है, कृपया प्रतीक्षा करें...`;
+
+        let examSeconds = 60 * 60;
+        if (selectedPost === 'PRT') {
+            examSeconds = 120 * 60;
+        }
+
+        try {
+            const response = await fetch(targetCsvUrl + '&_nocache=' + new Date().getTime());
+            const csvText = await response.text();
+            const lines = csvText.split('\n');
+
+            questions = [];
+
+            if (lines.length > 1) {
+                const headerCols = parseCSVLine(lines[0]);
+                const hasTestNo = headerCols[0] && headerCols[0].toLowerCase().includes('test');
+
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    const cols = parseCSVLine(line);
+
+                    if (hasTestNo) {
+                        // cols[0]=test_no, cols[1]=id, cols[2]=question, cols[3]=optA, cols[4]=optB, cols[5]=optC, cols[6]=optD, cols[7]=correct, cols[8]=exp
+                        if (cols.length >= 8) {
+                            const rowTestNo = parseInt(cols[0], 10);
+                            if (rowTestNo === mockNo || isNaN(rowTestNo)) {
+                                questions.push({
+                                    q: cols[2] || '',
+                                    a: cols[3] || '',
+                                    b: cols[4] || '',
+                                    c: cols[5] || '',
+                                    d: cols[6] || '',
+                                    correct: (cols[7] || '').toUpperCase().trim(),
+                                    exp: cols[8] || ''
+                                });
+                            }
+                        }
+                    } else {
+                        // Fallback for legacy format: cols[0]=id, cols[1]=question, cols[2]=optA, cols[3]=optB, cols[4]=optC, cols[5]=optD, cols[6]=correct, cols[7]=exp
+                        if (cols.length >= 7) {
+                            questions.push({
+                                q: cols[1] || '',
+                                a: cols[2] || '',
+                                b: cols[3] || '',
+                                c: cols[4] || '',
+                                d: cols[5] || '',
+                                correct: (cols[6] || '').toUpperCase().trim(),
+                                exp: cols[7] || ''
+                            });
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+            console.error("Sheet load error", e);
+        }
+
+        if (questions.length === 0) {
+            alert(`मॉक टेस्ट ${mockNo} में अभी प्रश्न उपलब्ध नहीं हैं! कृपया पहले शीट में टेस्ट ${mockNo} का डेटा भरें।`);
+            goHome();
+            return;
+        }
+
+        currentIndex = 0;
+        userAnswers = {};
+        timeLeft = examSeconds;
+        document.getElementById('paletteTitle').textContent = `क्वेश्चन पैलेट (1-${questions.length})`;
+        
+        startTimer();
+        renderQuestion();
+        renderCompactPalette();
     }
 
     async function startCbtMockWithCustomUrl(targetCsvUrl, examTitle) {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
         document.getElementById('pyqScreen').style.display = 'none';
         document.getElementById('drivePdfScreen').style.display = 'none';
+        document.getElementById('mockSelectScreen').style.display = 'none';
         document.getElementById('quizScreen').style.display = 'block';
         document.getElementById('timerBadge').style.display = 'block';
         document.getElementById('btnPaletteOpen').style.display = 'block';
@@ -2079,24 +2225,50 @@
             const lines = csvText.split('\n');
 
             questions = [];
-            for (let i = 1; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (!line) continue;
-                const cols = parseCSVLine(line);
-                if (cols.length >= 7) {
-                    questions.push({
-                        q: cols[1] || '',
-                        a: cols[2] || '',
-                        b: cols[3] || '',
-                        c: cols[4] || '',
-                        d: cols[5] || '',
-                        correct: (cols[6] || '').toUpperCase(),
-                        exp: cols[7] || ''
-                    });
+            if (lines.length > 1) {
+                const headerCols = parseCSVLine(lines[0]);
+                const hasTestNo = headerCols[0] && headerCols[0].toLowerCase().includes('test');
+
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    const cols = parseCSVLine(line);
+
+                    if (hasTestNo) {
+                        if (cols.length >= 8) {
+                            questions.push({
+                                q: cols[2] || '',
+                                a: cols[3] || '',
+                                b: cols[4] || '',
+                                c: cols[5] || '',
+                                d: cols[6] || '',
+                                correct: (cols[7] || '').toUpperCase().trim(),
+                                exp: cols[8] || ''
+                            });
+                        }
+                    } else {
+                        if (cols.length >= 7) {
+                            questions.push({
+                                q: cols[1] || '',
+                                a: cols[2] || '',
+                                b: cols[3] || '',
+                                c: cols[4] || '',
+                                d: cols[5] || '',
+                                correct: (cols[6] || '').toUpperCase().trim(),
+                                exp: cols[7] || ''
+                            });
+                        }
+                    }
                 }
             }
         } catch (e) {
             console.error("Sheet load error", e);
+        }
+
+        if (questions.length === 0) {
+            alert("इस टेस्ट में अभी प्रश्न उपलब्ध नहीं हैं!");
+            goHome();
+            return;
         }
 
         currentIndex = 0;
