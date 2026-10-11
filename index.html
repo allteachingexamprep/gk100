@@ -439,7 +439,7 @@
             cursor: pointer;
         }
 
-        /* ⚖️ UPPSC Sub-Tabs (Teaching vs Non-Teaching) Styles */
+        /* ⚖️ UPPSC Sub-Tabs Bar */
         .uppsc-tab-bar {
             display: flex;
             gap: 10px;
@@ -615,9 +615,8 @@
             outline: none;
             margin-bottom: 14px;
         }
-        .drive-search-input:focus {
-            border-color: #ef4444;
-        }
+        .drive-search-input:focus { border-color: #ef4444; }
+
         .drive-pdf-item {
             background: #ffffff;
             border: 1.5px solid var(--border);
@@ -1140,12 +1139,14 @@
                 <div class="card-title">BPSC TRE</div>
                 <div class="card-sub">बिहार शिक्षक भर्ती</div>
             </div>
-            <!-- ⚖️ UPPSC Hub Trigger Card -->
+            
+            <!-- ⚖️ UPPSC Hub Card (Clean Name) -->
             <div class="select-card" onclick="openUppscHub()">
                 <div class="badge-icon">⚖️</div>
                 <div class="card-title">UPPSC</div>
                 <div class="card-sub">उत्तर प्रदेश लोक सेवा आयोग</div>
             </div>
+
             <div class="select-card" onclick="selectAayog('KVS', 'Kendriya Vidyalaya')">
                 <div class="badge-icon">🏫</div>
                 <div class="card-title">KVS</div>
@@ -1174,7 +1175,7 @@
         </div>
     </div>
 
-    <!-- ⚖️ UPPSC हब Screen (Teaching vs Non-Teaching Tabs) -->
+    <!-- ⚖️ UPPSC Sub-Hub Screen (Teaching vs Non-Teaching Tabs) -->
     <div id="uppscSubScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="goHome()">
             <span>← आयोग बदलें</span> | <span style="color:var(--text-main);">उत्तर प्रदेश लोक सेवा आयोग (UPPSC)</span>
@@ -1331,7 +1332,7 @@
             </div>
         </div>
 
-        <!-- विकल्प 5: डेली मॉक टेस्ट (अब 1 से 10 टेस्ट सेलेक्टर खुलेगा) -->
+        <!-- विकल्प 5: डेली मॉक टेस्ट -->
         <div class="action-choice-card" onclick="openMockSelectionScreen()">
             <div style="font-size: 34px;">📝</div>
             <div>
@@ -1508,7 +1509,7 @@
     <div style="position:relative; z-index:1;">
         <div style="border-bottom: 1.5px solid #4f46e5; padding-bottom: 6px; margin-bottom: 10px; display:flex; justify-content:space-between; align-items:flex-end;">
             <div>
-                <h1 style="font-size: 16px; color: #4f46e5; font-weight:800; margin-bottom: 2px;">Teaching Exam GS GK - Revision Sheet</h1>
+                <h1 style="font-size: 16px; color: #4f46e5; font-weight:800; margin-bottom: 2px;">Exam Prep - Revision Sheet</h1>
                 <p style="font-size: 10px; color: #64748b;" id="pdfMetaText"></p>
             </div>
             <div style="text-align:right; font-size:9.5px; font-weight:700; color:#0f172a;">
@@ -1555,7 +1556,7 @@
         TGT_PGT:        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1383517549&single=true&output=csv",
         PRT:            "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1463599656&single=true&output=csv",
         
-        // ⚖️ UPPSC Pre & RO/ARO Special GID Mappings
+        // ⚖️ UPPSC Pre & RO/ARO CSV Links
         UPPSC_PRE_2026: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1659397408&single=true&output=csv",
         RO_ARO_GS:      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=2117579856&single=true&output=csv",
         RO_ARO_HINDI:   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=851470518&single=true&output=csv",
@@ -1615,7 +1616,7 @@
     };
 
     // ==========================================================
-    // 🔐 Auth System (Paid Login + Free Demo Access)
+    // 🔐 Auth System (Paid Login + Guaranteed Demo Mode)
     // ==========================================================
     function checkAuthStatus() {
         const session = localStorage.getItem('cbt_user_session');
@@ -1623,15 +1624,18 @@
         const demoTag = document.getElementById('demoUserTag');
 
         if (session) {
-            const data = JSON.parse(session);
-            overlay.style.display = 'none';
-            if (data.isDemo) {
-                demoTag.style.display = 'inline-block';
-            } else {
-                demoTag.style.display = 'none';
+            try {
+                const data = JSON.parse(session);
+                if (overlay) overlay.style.display = 'none';
+                if (demoTag) {
+                    demoTag.style.display = data.isDemo ? 'inline-block' : 'none';
+                }
+            } catch (e) {
+                localStorage.removeItem('cbt_user_session');
+                if (overlay) overlay.style.display = 'flex';
             }
         } else {
-            overlay.style.display = 'flex';
+            if (overlay) overlay.style.display = 'flex';
         }
     }
 
@@ -1642,7 +1646,10 @@
             isDemo: true,
             time: new Date().toISOString()
         }));
-        checkAuthStatus();
+        const overlay = document.getElementById('loginOverlay');
+        if (overlay) overlay.style.display = 'none';
+        const demoTag = document.getElementById('demoUserTag');
+        if (demoTag) demoTag.style.display = 'inline-block';
     }
 
     async function verifyLogin() {
@@ -1849,15 +1856,15 @@
             html: `
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 1: समसामयिक घटनाएं (Current Affairs)</span><span>(08-10 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) राष्ट्रीय, अंतर्राष्ट्रीय एवं उत्तर प्रदेश राज्य स्तरीय महत्वपूर्ण समसामयिक घटनाएं।<br>(ii) चर्चित व्यक्तित्व (Personalities in News)।<br>(iii) खेलकूद एवं प्रतियोगिताएं।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) राष्ट्रीय, अंतर्राष्ट्रीय एवं उत्तर प्रदेश राज्य स्तरीय महत्वपूर्ण समसामयिक घटनाएं।<br>(ii) चर्चित व्यक्तित्व।<br>(iii) खेलकूद एवं प्रतियोगिताएं।</p>
                 </div>
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 2: भारतीय इतिहास, राजव्यवस्था, अर्थव्यवस्था व भूगोल</span><span>(10-12 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) भारतीय इतिहास एवं भारतीय राष्ट्रीय आंदोलन।<br>(ii) भारतीय संविधान एवं राजव्यवस्था, शिक्षा प्रणाली से संबंधित कानूनी व संवैधानिक विकास।<br>(iii) भारतीय अर्थव्यवस्था की बुनियादी समझ व चुनौतियां।<br>(iv) भारत का सामान्य भूगोल एवं जनसंख्या।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) भारतीय इतिहास एवं भारतीय राष्ट्रीय आंदोलन।<br>(ii) भारतीय संविधान एवं राजव्यवस्था, शिक्षा का संवैधानिक विकास।<br>(iii) भारतीय अर्थव्यवस्था की बुनियादी समझ।<br>(iv) भारत का सामान्य भूगोल एवं जनसंख्या।</p>
                 </div>
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 3: सामान्य विज्ञान एवं सूचना-संचार प्रौद्योगिकी (ICT)</span><span>(08-10 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) सामान्य विज्ञान, प्रौद्योगिकी एवं पर्यावरण।<br>(ii) मानव स्वास्थ्य एवं स्वच्छता - विटामिन्स, खनिज, संक्रामक व हीनताजन्य रोग, हार्मोन्स एवं एंजाइम्स।<br>(iii) कंप्यूटर एवं इंटरनेट शब्दावली।<br>(iv) शिक्षा में ICT का अनुप्रयोग एवं शैक्षिक प्रौद्योगिकी में विकास।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) सामान्य विज्ञान, प्रौद्योगिकी एवं पर्यावरण।<br>(ii) मानव स्वास्थ्य एवं पोषण, विटामिन्स, रोग।<br>(iii) कंप्यूटर एवं इंटरनेट शब्दावली।<br>(iv) शिक्षा में ICT का अनुप्रयोग।</p>
                 </div>
             `
         },
@@ -1867,15 +1874,15 @@
             html: `
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 1: समसामयिक घटनाएं (Current Affairs)</span><span>(08-10 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) राष्ट्रीय, अंतर्राष्ट्रीय एवं राज्य स्तरीय समसामयिक घटनाएं।<br>(ii) चर्चित व्यक्तित्व।<br>(iii) खेलकूद एवं पुरस्कार।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) राष्ट्रीय, अंतर्राष्ट्रीय एवं राज्य स्तरीय समसामयिक घटनाएं।<br>(ii) चर्चित व्यक्तित्व एवं खेलकूद।</p>
                 </div>
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 2: भारतीय इतिहास, राजव्यवस्था, अर्थव्यवस्था व भूगोल</span><span>(10-12 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) भारतीय राष्ट्रीय आंदोलन।<br>(ii) भारतीय संविधान, शासन प्रणाली, शिक्षा का संवैधानिक विकास।<br>(iii) भारतीय अर्थव्यवस्था की प्रमुख विशेषताएं।<br>(iv) भारत का भूगोल एवं जनसांख्यिकी।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) भारतीय राष्ट्रीय आंदोलन।<br>(ii) भारतीय संविधान एवं शासन प्रणाली।<br>(iii) भारतीय अर्थव्यवस्था की प्रमुख विशेषताएं।<br>(iv) भारत का भूगोल एवं जनसांख्यिकी।</p>
                 </div>
                 <div class="syllabus-unit-box">
                     <div class="syllabus-unit-title"><span>यूनिट 3: सामान्य विज्ञान एवं सूचना-संचार प्रौद्योगिकी (ICT)</span><span>(08-10 प्रश्न)</span></div>
-                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) दैनिक जीवन में विज्ञान व पर्यावरण।<br>(ii) मानव स्वास्थ्य, पोषण, रोग, विटामिन्स।<br>(iii) कंप्यूटर हार्डवेयर, सॉफ्टवेयर, इंटरनेट टर्मिनोलॉजी।<br>(iv) ICT आधारित आधुनिक शिक्षण विधियाँ।</p>
+                    <p style="font-size:13px; color:#334155; line-height:1.6;">(i) दैनिक जीवन में विज्ञान व पर्यावरण।<br>(ii) मानव स्वास्थ्य, पोषण, रोग।<br>(iii) कंप्यूटर हार्डवेयर, सॉफ्टवेयर, इंटरनेट।<br>(iv) ICT आधारित आधुनिक शिक्षण विधियाँ।</p>
                 </div>
             `
         },
@@ -2602,4 +2609,185 @@
     }
 
     function navQuestion(dir) {
-        currentIndex +=
+        currentIndex += dir;
+        renderQuestion();
+    }
+
+    function finishExam() {
+        clearInterval(timerInterval);
+        document.getElementById('quizScreen').style.display = 'none';
+        document.getElementById('timerBadge').style.display = 'none';
+        document.getElementById('btnPaletteOpen').style.display = 'none';
+        document.getElementById('resultScreen').style.display = 'block';
+
+        let correct = 0, wrong = 0, skipped = 0;
+        const wrongList = [];
+        const skippedList = [];
+        const correctList = [];
+
+        questions.forEach((q, idx) => {
+            const ans = userAnswers[idx];
+            const dataObj = { num: idx + 1, q: q.q, ans: ans, correct: q.correct, exp: q.exp };
+
+            if (ans === undefined) {
+                skipped++;
+                skippedList.push(dataObj);
+            } else if (ans === q.correct) {
+                correct++;
+                correctList.push(dataObj);
+            } else {
+                wrong++;
+                wrongList.push(dataObj);
+            }
+        });
+
+        const totalQ = questions.length;
+        let percentage = 0;
+        let finalScoreDisplay = "";
+
+        if (selectedPost === 'PRT') {
+            const rawScore = (correct * 3) - (wrong * 1);
+            const totalScoreVal = Math.max(0, rawScore);
+            const maxMarks = totalQ * 3;
+            percentage = maxMarks > 0 ? Math.round((totalScoreVal / maxMarks) * 100) : 0;
+            finalScoreDisplay = `${totalScoreVal} / ${maxMarks} अंक`;
+            document.getElementById('statScoreBar').innerHTML = `
+                <div style="color:var(--success); font-weight:800;">सही (+3): ${correct}</div>
+                <div style="color:var(--danger); font-weight:800;">गलत (-1): ${wrong}</div>
+                <div style="color:var(--text-sub); font-weight:800;">छूटा: ${skipped}</div>
+            `;
+        } else if (selectedPost === 'RO_ARO_GS' || selectedPost === 'RO_ARO_HINDI') {
+            const rawScore = (correct * 1) - (wrong * 0.33);
+            const totalScoreVal = Math.max(0, parseFloat(rawScore.toFixed(2)));
+            const maxMarks = totalQ;
+            percentage = maxMarks > 0 ? Math.round((totalScoreVal / maxMarks) * 100) : 0;
+            finalScoreDisplay = `${totalScoreVal} / ${maxMarks} अंक`;
+            document.getElementById('statScoreBar').innerHTML = `
+                <div style="color:var(--success); font-weight:800;">सही (+1): ${correct}</div>
+                <div style="color:var(--danger); font-weight:800;">गलत (-0.33): ${wrong}</div>
+                <div style="color:var(--text-sub); font-weight:800;">छूटा: ${skipped}</div>
+            `;
+        } else if (selectedPost === 'UPPSC Pre 2026') {
+            const rawScore = (correct * 1.33) - (wrong * 0.44);
+            const totalScoreVal = Math.max(0, parseFloat(rawScore.toFixed(2)));
+            const maxMarks = Math.round(totalQ * 1.33);
+            percentage = maxMarks > 0 ? Math.round((totalScoreVal / maxMarks) * 100) : 0;
+            finalScoreDisplay = `${totalScoreVal} / ${maxMarks} अंक`;
+            document.getElementById('statScoreBar').innerHTML = `
+                <div style="color:var(--success); font-weight:800;">सही (+1.33): ${correct}</div>
+                <div style="color:var(--danger); font-weight:800;">गलत (-0.44): ${wrong}</div>
+                <div style="color:var(--text-sub); font-weight:800;">छूटा: ${skipped}</div>
+            `;
+        } else {
+            percentage = totalQ > 0 ? Math.round((correct / totalQ) * 100) : 0;
+            finalScoreDisplay = `${correct} / ${totalQ}`;
+            document.getElementById('statScoreBar').innerHTML = `
+                <div style="color:var(--success); font-weight:800;">सही: ${correct}</div>
+                <div style="color:var(--danger); font-weight:800;">गलत: ${wrong}</div>
+                <div style="color:var(--text-sub); font-weight:800;">छूटा: ${skipped}</div>
+            `;
+        }
+
+        document.getElementById('finalScore').textContent = `${finalScoreDisplay} (${percentage}%)`;
+
+        let remark = "";
+        let boxColor = "";
+        let bgStyle = "";
+
+        if (percentage >= 90) {
+            remark = "शानदार तैयारी! 🔥 पहली ही लिस्ट में टॉप करने का पूरा दम है! सीट पक्की!";
+            boxColor = "#16a34a";
+            bgStyle = "#ecfdf5";
+        } else if (percentage >= 75) {
+            remark = "एकदम सॉलिड तैयारी! ⚡ बस थोड़ा सा रिवीजन और, फिर सीधे कटऑफ पार! कीप इट अप!";
+            boxColor = "#2563eb";
+            bgStyle = "#eff6ff";
+        } else if (percentage >= 50) {
+            remark = "अच्छा प्रयास है! 📚 थोड़ी और मेहनत और नेगेटिव मार्किंग पर नियंत्रण आवश्यक है।";
+            boxColor = "#d97706";
+            bgStyle = "#fffbeb";
+        } else if (percentage >= 20) {
+            remark = "गंभीर होकर रिवीजन करें! ⚠️ कमजोर टॉपिक्स पर तुरंत पकड़ मजबूत बनाएं।";
+            boxColor = "#ea580c";
+            bgStyle = "#fff7ed";
+        } else {
+            remark = "बेसिक से पढ़ाई की सख्त जरूरत है! 📖 प्रतिदिन नियमित अभ्यास और नोट्स रिवीजन करें।";
+            boxColor = "#dc2626";
+            bgStyle = "#fef2f2";
+        }
+
+        const genzBox = document.getElementById('genzBox');
+        genzBox.textContent = remark;
+        genzBox.style.color = boxColor;
+        genzBox.style.borderColor = boxColor;
+        genzBox.style.background = bgStyle;
+
+        document.getElementById('pdfGenzRemark').textContent = `फीडबैक: ${remark}`;
+
+        renderBulletResults(wrongList, skippedList, correctList, correct, wrong, skipped, finalScoreDisplay);
+    }
+
+    function renderBulletResults(wrongList, skippedList, correctList, c, w, s, scoreDisplay) {
+        const webContainer = document.getElementById('bulletContainerWeb');
+        const printContainer = document.getElementById('printBulletList');
+        webContainer.innerHTML = '';
+        printContainer.innerHTML = '';
+
+        let displayPost = selectedPost;
+        if (selectedPost === 'RO_ARO_GS') displayPost = 'RO/ARO सामान्य अध्ययन';
+        if (selectedPost === 'RO_ARO_HINDI') displayPost = 'RO/ARO सामान्य हिन्दी';
+
+        document.getElementById('printReportArea').style.display = 'block';
+        document.getElementById('pdfMetaText').textContent = `Exam: ${selectedAayog} (${displayPost}) | Team Anurag`;
+        document.getElementById('pdfScoreText').textContent = scoreDisplay;
+        document.getElementById('pdfRightText').textContent = `${c}`;
+        document.getElementById('pdfWrongText').textContent = `${w}`;
+
+        const createWebCard = (item, type) => {
+            let badgeColor = type === 'wrong' ? '#dc2626' : (type === 'skipped' ? '#d97706' : '#16a34a');
+            let badgeText = type === 'wrong' ? '❌ गलत' : (type === 'skipped' ? '⚠️ छूटा' : '✅ सही');
+            return `
+                <div class="bullet-q-card ${type==='wrong'?'':(type==='skipped'?'skipped-card':'right-card')}">
+                    <div style="font-weight:800; font-size:14px; margin-bottom:4px;">Q${item.num}. ${item.q}</div>
+                    <div style="font-size:12.5px; margin-bottom:2px;">
+                        <span style="background:${badgeColor}15; color:${badgeColor}; padding:1px 6px; border-radius:4px; font-weight:800;">${badgeText}</span>
+                        <span style="margin-left:6px; font-weight:700;">आपका चयन: ${item.ans || 'None'}</span>
+                        <span style="margin-left:6px; color:#16a34a; font-weight:800;">| सही उत्तर: (${item.correct})</span>
+                    </div>
+                    ${item.exp ? `<div style="font-size:12px; color:#64748b; margin-top:3px;">💡 व्याख्या: ${item.exp}</div>` : ''}
+                </div>
+            `;
+        };
+
+        const createPrintCard = (item) => {
+            return `
+                <div class="bullet-q-card">
+                    <div class="q-title">Q${item.num}. ${item.q}</div>
+                    <div class="q-meta-ans">
+                        <strong>उत्तर:</strong> ${item.ans || 'None'} | 
+                        <strong style="color:#16a34a;">सही: (${item.correct})</strong>
+                    </div>
+                    ${item.exp ? `<div class="q-exp" style="color:#475569;">💡 ${item.exp}</div>` : ''}
+                </div>
+            `;
+        };
+
+        wrongList.forEach(item => webContainer.innerHTML += createWebCard(item, 'wrong'));
+        skippedList.forEach(item => webContainer.innerHTML += createWebCard(item, 'skipped'));
+        correctList.forEach(item => webContainer.innerHTML += createWebCard(item, 'right'));
+
+        if (wrongList.length === 0 && skippedList.length === 0) {
+            printContainer.innerHTML = `<div style="grid-column: span 2; text-align:center; padding:10px; font-weight:800; color:#16a34a;">शाबाश! आपने सभी प्रश्नों के सही उत्तर दिए हैं।</div>`;
+        } else {
+            wrongList.forEach(item => printContainer.innerHTML += createPrintCard(item));
+            skippedList.forEach(item => printContainer.innerHTML += createPrintCard(item));
+        }
+    }
+
+    window.onload = function() {
+        checkAuthStatus();
+        loadStudentNotices();
+    };
+</script>
+</body>
+</html>
