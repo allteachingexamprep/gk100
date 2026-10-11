@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Teaching Exam GS GK - CBT Portal</title>
+    <title>Teaching & UPPSC Exam Prep - CBT Portal</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
 
@@ -437,6 +437,62 @@
             color: var(--primary);
             margin-bottom: 16px;
             cursor: pointer;
+        }
+
+        /* ⚖️ UPPSC Sub-Tabs (Teaching vs Non-Teaching) Styles */
+        .uppsc-tab-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+        }
+        .uppsc-tab-btn {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 800;
+            border: 1.5px solid var(--border);
+            background: #ffffff;
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .uppsc-tab-btn.active {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .paper-action-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .btn-sub-paper {
+            flex: 1;
+            padding: 9px 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            transition: 0.15s;
+            text-align: center;
+        }
+        .btn-sub-paper-gs {
+            background: #0284c7;
+            color: #ffffff;
+        }
+        .btn-sub-paper-hindi {
+            background: #ea580c;
+            color: #ffffff;
+        }
+        .btn-sub-paper:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
         .action-choice-card {
@@ -928,7 +984,7 @@
         @media print {
             body { background: #ffffff !important; padding: 0 !important; }
 
-            .header, .social-strip, #aayogScreen, #postScreen, #sectionChoiceScreen, #mockSelectScreen,
+            .header, .social-strip, #aayogScreen, #postScreen, #uppscSubScreen, #sectionChoiceScreen, #mockSelectScreen,
             .calendar-selector, .btn-action-pdf, .breadcrumb-bar, #quizScreen, 
             .result-panel, .palette-overlay, .palette-modal, #homeNoticeBoard, #loginOverlay, .ticker-container, #pyqScreen, #drivePdfScreen {
                 display: none !important;
@@ -1015,11 +1071,12 @@
     <div class="ticker-badge-live">⚡ BREAKING NEWS</div>
     <div class="ticker-scroll-area">
         <div class="ticker-scroll-text" id="liveTickerText">
+            <span class="ticker-item">⚖️ <strong>UPPSC Pre 2026:</strong> सम्मिलित राज्य प्रवर अधीनस्थ सेवा दैनिक 75 प्रश्न Mini Mock सक्रिय!</span>
+            <span class="ticker-item">📙 <strong>UPPSC RO/ARO 2026:</strong> सामान्य अध्ययन (140Q) एवं सामान्य हिन्दी (60Q) अलग-अलग टेस्ट सीरीज़ उपलब्ध!</span>
             <span class="ticker-item">🚨 <strong>UP Assistant Professor (विज्ञापन 52 - 1,936 पद):</strong> अंतिम तिथि 07 अक्टूबर; तुरंत आवेदन करें!</span>
             <span class="ticker-item">👶 <strong>UP PRT (12,405 पद):</strong> ऑनलाइन आवेदन 15 अक्टूबर 2026 तक जारी।</span>
             <span class="ticker-item">🔬 <strong>UP PGT (2,607 पद):</strong> ऑनलाइन आवेदन 17 अक्टूबर तक सक्रिय।</span>
-            <span class="ticker-item">📍 <strong>BPSC TRE-4 (33,000+ पद):</strong> PRT/Junior/TGT/PGT फॉर्म भरने की अंतिम तिथि 25 अक्टूबर।</span>
-            <span class="ticker-item">⚖️ <strong>UPPSC RO/ARO 2026:</strong> आयोग को नए पदों का अधियाचन प्राप्त, विज्ञप्ति शीघ्र!</span>
+            <span class="ticker-item">📍 <strong>BPSC TRE-4:</strong> PRT/Junior/TGT/PGT फॉर्म भरने की प्रक्रिया जारी।</span>
         </div>
     </div>
 </div>
@@ -1083,10 +1140,11 @@
                 <div class="card-title">BPSC TRE</div>
                 <div class="card-sub">बिहार शिक्षक भर्ती</div>
             </div>
-            <div class="select-card" onclick="selectAayog('UPPSC', 'उत्तर प्रदेश लोक सेवा')">
+            <!-- ⚖️ UPPSC Hub Trigger Card -->
+            <div class="select-card" onclick="openUppscHub()">
                 <div class="badge-icon">⚖️</div>
-                <div class="card-title">UPPSC (GIC/LT)</div>
-                <div class="card-sub">UP राजकीय शिक्षक</div>
+                <div class="card-title">UPPSC</div>
+                <div class="card-sub">उत्तर प्रदेश लोक सेवा आयोग</div>
             </div>
             <div class="select-card" onclick="selectAayog('KVS', 'Kendriya Vidyalaya')">
                 <div class="badge-icon">🏫</div>
@@ -1116,7 +1174,76 @@
         </div>
     </div>
 
-    <!-- 2. पद चयन Screen -->
+    <!-- ⚖️ UPPSC हब Screen (Teaching vs Non-Teaching Tabs) -->
+    <div id="uppscSubScreen" style="display: none;">
+        <div class="breadcrumb-bar" onclick="goHome()">
+            <span>← आयोग बदलें</span> | <span style="color:var(--text-main);">उत्तर प्रदेश लोक सेवा आयोग (UPPSC)</span>
+        </div>
+
+        <div class="uppsc-tab-bar">
+            <button class="uppsc-tab-btn active" id="btnTabTeaching" onclick="switchUppscTab('teaching')">शिक्षण पद (Teaching)</button>
+            <button class="uppsc-tab-btn" id="btnTabNonTeaching" onclick="switchUppscTab('non-teaching')">गैर-शिक्षण पद (Non-Teaching)</button>
+        </div>
+
+        <!-- 🍎 Teaching Sub-Panel -->
+        <div id="uppscTeachingPanel">
+            <h2 class="section-title">शिक्षण पद चयन</h2>
+            <p class="section-desc">UP राजकीय शिक्षक भर्ती स्तर चुनें:</p>
+            <div class="selection-grid">
+                <div class="select-card" onclick="selectPost('GIC Lecturer')">
+                    <div class="badge-icon">🎓</div>
+                    <div class="card-title">GIC Lecturer</div>
+                    <div class="card-sub">प्रवक्ता सामान्य अध्ययन व विषय</div>
+                </div>
+                <div class="select-card" onclick="selectPost('LT Grade')">
+                    <div class="badge-icon">📖</div>
+                    <div class="card-title">LT Grade</div>
+                    <div class="card-sub">सहायक अध्यापक (GS 30 प्रश्न)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 💼 Non-Teaching Sub-Panel -->
+        <div id="uppscNonTeachingPanel" style="display: none;">
+            <h2 class="section-title">गैर-शिक्षण पद चयन</h2>
+            <p class="section-desc">UPPSC सम्मिलित राज्य व समीक्षा अधिकारी परीक्षाएं:</p>
+            <div class="selection-grid" style="grid-template-columns: 1fr;">
+                
+                <!-- UPPSC Pre 2026 -->
+                <div class="select-card" onclick="selectPost('UPPSC Pre 2026')">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <div class="badge-icon">🏆</div>
+                        <span class="exam-tag" style="background:#dbeafe; color:#1e40af;">दैनिक 75 प्रश्न</span>
+                    </div>
+                    <div class="card-title" style="font-size:16.5px;">UPPSC सम्मिलित राज्य प्रवर अधीनस्थ सेवा 2026</div>
+                    <div class="card-sub">प्रारम्भिक परीक्षा (Pre GS Mini-Mock) • 60 मिनट CBT मोड</div>
+                </div>
+
+                <!-- RO / ARO Special Card -->
+                <div class="select-card" style="cursor: default; border: 2px solid #fdba74;">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <div class="badge-icon">📜</div>
+                        <span class="exam-tag" style="background:#ffedd5; color:#c2410c;">समीक्षा अधिकारी</span>
+                    </div>
+                    <div class="card-title" style="font-size:16.5px; color:#9a3412;">UPPSC RO / ARO 2026</div>
+                    <div class="card-sub" style="margin-bottom:6px;">प्रारम्भिक परीक्षा विशेष टेस्ट सीरीज़ (अलग-अलग विषय चुनें):</div>
+                    
+                    <!-- RO / ARO Split Buttons -->
+                    <div class="paper-action-group">
+                        <button class="btn-sub-paper btn-sub-paper-gs" onclick="selectPost('RO_ARO_GS')">
+                            📘 सामान्य अध्ययन (GS - 140Q)
+                        </button>
+                        <button class="btn-sub-paper btn-sub-paper-hindi" onclick="selectPost('RO_ARO_HINDI')">
+                            📙 सामान्य हिन्दी (Hindi - 60Q)
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. पद चयन Screen (UPESSC आदि के लिए) -->
     <div id="postScreen" style="display: none;">
         <div class="breadcrumb-bar" onclick="goHome()">
             <span>← आयोग बदलें</span> | <span id="currentAayogBadge" style="color:var(--text-main);"></span>
@@ -1424,13 +1551,19 @@
     // ⚙️ GOOGLE SHEET CSV LINKS
     // ==========================================================
     const CSV_URLS = {
-        ASST_PROF:  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1896238938&single=true&output=csv",
-        TGT_PGT:    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1383517549&single=true&output=csv",
-        PRT:        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1463599656&single=true&output=csv",
-        DEFAULT:    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=0&single=true&output=csv",
-        NOTES:      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1508729464&single=true&output=csv",
-        PAID_USERS: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=896927898&single=true&output=csv",
-        DRIVE_PDFS: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=515899979&single=true&output=csv"
+        ASST_PROF:      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1896238938&single=true&output=csv",
+        TGT_PGT:        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1383517549&single=true&output=csv",
+        PRT:            "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1463599656&single=true&output=csv",
+        
+        // ⚖️ UPPSC Pre & RO/ARO Special GID Mappings
+        UPPSC_PRE_2026: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1659397408&single=true&output=csv",
+        RO_ARO_GS:      "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=2117579856&single=true&output=csv",
+        RO_ARO_HINDI:   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=851470518&single=true&output=csv",
+
+        DEFAULT:        "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=0&single=true&output=csv",
+        NOTES:          "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=1508729464&single=true&output=csv",
+        PAID_USERS:     "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=896927898&single=true&output=csv",
+        DRIVE_PDFS:     "https://docs.google.com/spreadsheets/d/e/2PACX-1vRKx7xKu-MWPrxbLKm5qMLzbCPV5ymWLVRXu76NtKmnodMZagaxijPq3eITeZfT-kytIDMBEsAqCMbv/pub?gid=515899979&single=true&output=csv"
     };
 
     const MASTER_PASSWORD = "Anurag2016@";
@@ -1469,6 +1602,15 @@
         'Assistant Professor': [
             { id: 'asst_adv50', title: "UPHESC विज्ञापन 50 - सामान्य अध्ययन (2021)", meta: "सभी 6 इकाइयों के 30 आधिकारिक प्रश्न | व्याख्या सहित", csvUrl: CSV_URLS.ASST_PROF },
             { id: 'asst_adv47', title: "UPHESC विज्ञापन 47 - सामान्य अध्ययन (2018)", meta: "डिग्री कॉलेज असिस्टेंट प्रोफेसर भर्ती परीक्षा", csvUrl: CSV_URLS.ASST_PROF }
+        ],
+        'RO_ARO_GS': [
+            { id: 'ro_2023_gs', title: "UPPSC RO/ARO Pre 2023 - सामान्य अध्ययन (11 Feb 2024)", meta: "आधिकारिक प्रश्न-पत्र व्याख्या सहित | 140 प्रश्न", csvUrl: CSV_URLS.RO_ARO_GS }
+        ],
+        'RO_ARO_HINDI': [
+            { id: 'ro_2023_hindi', title: "UPPSC RO/ARO Pre 2023 - सामान्य हिन्दी (11 Feb 2024)", meta: "आधिकारिक प्रश्न-पत्र व्याख्या सहित | 60 प्रश्न", csvUrl: CSV_URLS.RO_ARO_HINDI }
+        ],
+        'UPPSC Pre 2026': [
+            { id: 'uppsc_pre_mini', title: "UPPSC Pre 2026 - दैनिक 75 प्रश्न Mini Mock 01", meta: "नवीनतम ट्रेंड आधारित प्रश्न-पत्र | व्याख्या सहित", csvUrl: CSV_URLS.UPPSC_PRE_2026 }
         ]
     };
 
@@ -1748,6 +1890,27 @@
                 <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 5: भारतीय इतिहास एवं भूगोल</div><p style="font-size:13px; color:#334155;">भारतीय राष्ट्रीय आंदोलन, भारत का भौतिक, सामाजिक एवं आर्थिक भूगोल।</p></div>
                 <div class="syllabus-unit-box"><div class="syllabus-unit-title">इकाई 6: भारतीय संविधान एवं अर्थव्यवस्था</div><p style="font-size:13px; color:#334155;">मौलिक अधिकार, नीति निदेशक तत्व, न्यायपालिका, संसद, भारतीय अर्थव्यवस्था।</p></div>
             `
+        },
+        'RO_ARO_GS': {
+            title: "UPPSC समीक्षा अधिकारी (RO/ARO) - सामान्य अध्ययन (Paper-1)",
+            structure: "📝 कुल प्रश्न: 140 बहुविकल्पीय प्रश्न | ⏱️ समय: 120 मिनट | 🎯 पूर्णांक: 140 अंक | ⚠️ नेगेटिव मार्किंग: 1/3 (-0.33)",
+            html: `
+                <div class="syllabus-unit-box"><div class="syllabus-unit-title">सामान्य अध्ययन पाठ्यक्रम (140 प्रश्न)</div><p style="font-size:13px; color:#334155; line-height:1.6;">1. सामान्य विज्ञान<br>2. भारत का इतिहास एवं भारतीय राष्ट्रीय आन्दोलन<br>3. भारतीय राजतन्त्र, अर्थव्यवस्था एवं संस्कृति<br>4. भारतीय कृषि, वाणिज्य एवं व्यापार<br>5. जनसंख्या, पर्यावरण एवं नगरीकरण (भारतीय सन्दर्भ में)<br>6. विश्व भूगोल तथा भारत का भूगोल और प्राकृतिक संसाधन<br>7. अधुनातन राष्ट्रीय तथा अन्तर्राष्ट्रीय महत्वपूर्ण घटनाक्रम (Current Affairs)<br>8. सामान्य बौद्धिक क्षमता (Reasoning)<br>9. उत्तर प्रदेश की शिक्षा, संस्कृति, कृषि, उद्योग, व्यापार एवं रहन-सहन संबंधी विशिष्ट जानकारी।</p></div>
+            `
+        },
+        'RO_ARO_HINDI': {
+            title: "UPPSC समीक्षा अधिकारी (RO/ARO) - सामान्य हिन्दी (Paper-2)",
+            structure: "📝 कुल प्रश्न: 60 प्रश्न (प्रत्येक टॉपिक 10 प्रश्न) | ⏱️ समय: 60 मिनट | 🎯 पूर्णांक: 60 अंक | ⚠️ नेगेटिव मार्किंग: 1/3",
+            html: `
+                <div class="syllabus-unit-box"><div class="syllabus-unit-title">सामान्य हिन्दी पाठ्यक्रम (6 महत्वपूर्ण विषय - 60 अंक)</div><p style="font-size:13px; color:#334155; line-height:1.7;">(1) विलोम शब्द (10 शब्द)<br>(2) वाक्य एवं वर्तनी शुद्धि (10 वाक्य/शब्द)<br>(3) अनेक शब्दों के लिए एक शब्द (10 शब्द)<br>(4) तत्सम एवं तद्भव शब्द (10 शब्द)<br>(5) विशेष्य और विशेषण (10 शब्द)<br>(6) पर्यायवाची शब्द (10 शब्द)</p></div>
+            `
+        },
+        'UPPSC Pre 2026': {
+            title: "UPPSC सम्मिलित राज्य प्रवर अधीनस्थ सेवा (Pre) - GS Mini-Mock",
+            structure: "📝 कुल प्रश्न: 75 प्रश्न | ⏱️ समय: 60 मिनट | 🎯 पूर्णांक: 100 अंक (+1.33) | ⚠️ नेगेटिव मार्किंग: 1/3 (-0.44)",
+            html: `
+                <div class="syllabus-unit-box"><div class="syllabus-unit-title">UPPSC Prelims GS पाठ्यक्रम</div><p style="font-size:13px; color:#334155; line-height:1.6;">राष्ट्रीय व अंतर्राष्ट्रीय समसामयिक घटनाएं, भारत का इतिहास व राष्ट्रीय आंदोलन, भारत एवं विश्व का भूगोल, भारतीय राजनीति व शासन, आर्थिक व सामाजिक विकास, पर्यावरण एवं पारिस्थितिकी, सामान्य विज्ञान, उत्तर प्रदेश विशेष।</p></div>
+            `
         }
     };
 
@@ -1792,11 +1955,12 @@
         document.getElementById('noticeDatePicker').value = today;
 
         allNoticesList = [
+            { date: today, tag: "UPPSC 2026", text: "<strong>UPPSC सम्मिलित राज्य प्रवर अधीनस्थ सेवा (Pre):</strong> दैनिक 75 प्रश्न Mini-Mock अभ्यास शुरू!" },
+            { date: today, tag: "RO/ARO 2026", text: "<strong>समीक्षा अधिकारी / सहायक समीक्षा अधिकारी:</strong> सामान्य अध्ययन (140Q) एवं सामान्य हिन्दी (60Q) अलग टेस्ट उपलब्ध!" },
             { date: today, tag: "UP Asst. Prof", text: "<strong>असिस्टेंट प्रोफेसर (विज्ञापन 52 - 1,936 पद):</strong> अंतिम तिथि <strong>07 अक्टूबर</strong> है; समय रहते फॉर्म पूर्ण करें।" },
             { date: today, tag: "UP PRT 2026", text: "<strong>UP प्राथमिक शिक्षक भर्ती (12,405 पद):</strong> ऑनलाइन रजिस्ट्रेशन की अंतिम तिथि <strong>15 अक्टूबर 2026</strong> निर्धारित।" },
             { date: today, tag: "UP PGT 2026", text: "<strong>UP प्रवक्ता (PGT) भर्ती (2,607 पद):</strong> ऑनलाइन आवेदन <strong>17 अक्टूबर</strong> तक सक्रिय रहेंगे।" },
-            { date: today, tag: "BPSC TRE-4", text: "<strong>BPSC शिक्षक भर्ती फेज-4 (33,000+ पद):</strong> PRT/Junior/TGT/PGT फॉर्म भरने की अंतिम तिथि <strong>25 अक्टूबर</strong> है।" },
-            { date: today, tag: "UPPSC RO/ARO", text: "<strong>समीक्षा अधिकारी / सहायक समीक्षा अधिकारी:</strong> आयोग को नए पदों का <strong>अधियाचन प्राप्त</strong> हो चुका है; विज्ञप्ति शीघ्र।" }
+            { date: today, tag: "BPSC TRE-4", text: "<strong>BPSC शिक्षक भर्ती फेज-4 (33,000+ पद):</strong> PRT/Junior/TGT/PGT फॉर्म भरने की अंतिम तिथि <strong>25 अक्टूबर</strong> है।" }
         ];
 
         filterNoticesByDate(today);
@@ -1956,7 +2120,7 @@
 
             if (lines.length > 1) {
                 const headerCols = parseCSVLine(lines[0]);
-                const hasTestNo = headerCols[0] && headerCols[0].toLowerCase().includes('test');
+                const hasTestNo = headerCols[0] && (headerCols[0].toLowerCase().includes('test') || headerCols[0].toLowerCase().includes('mock'));
 
                 for (let i = 1; i < lines.length; i++) {
                     const line = lines[i].trim();
@@ -2023,6 +2187,7 @@
         document.getElementById('homeNoticeBoard').style.display = 'block';
         document.getElementById('aayogScreen').style.display = 'block';
         document.getElementById('postScreen').style.display = 'none';
+        document.getElementById('uppscSubScreen').style.display = 'none';
         document.getElementById('sectionChoiceScreen').style.display = 'none';
         document.getElementById('mockSelectScreen').style.display = 'none';
         document.getElementById('studyMaterialScreen').style.display = 'none';
@@ -2035,6 +2200,36 @@
         document.getElementById('btnPaletteOpen').style.display = 'none';
         document.getElementById('printReportArea').style.display = 'none';
         togglePalette(false);
+    }
+
+    // ==========================================================
+    // ⚖️ UPPSC Hub Navigation Engine
+    // ==========================================================
+    function openUppscHub() {
+        selectedAayog = 'UPPSC';
+        document.getElementById('homeNoticeBoard').style.display = 'none';
+        document.getElementById('aayogScreen').style.display = 'none';
+        document.getElementById('uppscSubScreen').style.display = 'block';
+        switchUppscTab('teaching');
+    }
+
+    function switchUppscTab(tabKey) {
+        const teachPanel = document.getElementById('uppscTeachingPanel');
+        const nonTeachPanel = document.getElementById('uppscNonTeachingPanel');
+        const btnTeach = document.getElementById('btnTabTeaching');
+        const btnNonTeach = document.getElementById('btnTabNonTeaching');
+
+        if (tabKey === 'teaching') {
+            teachPanel.style.display = 'block';
+            nonTeachPanel.style.display = 'none';
+            btnTeach.classList.add('active');
+            btnNonTeach.classList.remove('active');
+        } else {
+            teachPanel.style.display = 'none';
+            nonTeachPanel.style.display = 'block';
+            btnNonTeach.classList.add('active');
+            btnTeach.classList.remove('active');
+        }
     }
 
     function selectAayog(aayogName, sub) {
@@ -2055,12 +2250,24 @@
     function selectPost(postName) {
         selectedPost = postName;
         document.getElementById('postScreen').style.display = 'none';
+        document.getElementById('uppscSubScreen').style.display = 'none';
         document.getElementById('sectionChoiceScreen').style.display = 'block';
-        document.getElementById('currentPostBadge').textContent = `${selectedAayog} • ${selectedPost}`;
+        
+        let displayPost = postName;
+        if (postName === 'RO_ARO_GS') displayPost = 'RO/ARO सामान्य अध्ययन (GS)';
+        if (postName === 'RO_ARO_HINDI') displayPost = 'RO/ARO सामान्य हिन्दी (Hindi)';
+
+        document.getElementById('currentPostBadge').textContent = `${selectedAayog} • ${displayPost}`;
         
         const mockDesc = document.getElementById('mockCardDesc');
         if (selectedPost === 'PRT') {
             mockDesc.textContent = "मॉक 01 से 10 (120 प्रश्न • 120 मिनट • -1 नेगेटिव मार्किंग)";
+        } else if (selectedPost === 'RO_ARO_GS') {
+            mockDesc.textContent = "मॉक 01 से 10 (140 प्रश्न • 120 मिनट • 1/3 नेगेटिव मार्किंग)";
+        } else if (selectedPost === 'RO_ARO_HINDI') {
+            mockDesc.textContent = "मॉक 01 से 10 (60 प्रश्न • 60 मिनट • 1/3 नेगेटिव मार्किंग)";
+        } else if (selectedPost === 'UPPSC Pre 2026') {
+            mockDesc.textContent = "दैनिक मिनी-मॉक (75 प्रश्न • 60 मिनट • 1/3 नेगेटिव मार्किंग)";
         } else {
             mockDesc.textContent = "मॉक 01 से 10 (30 प्रश्न • CBT मोड • सुपर कॉम्पैक्ट PDF)";
         }
@@ -2068,7 +2275,11 @@
 
     function backToPostScreen() {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
-        document.getElementById('postScreen').style.display = 'block';
+        if (selectedAayog === 'UPPSC') {
+            document.getElementById('uppscSubScreen').style.display = 'block';
+        } else {
+            document.getElementById('postScreen').style.display = 'block';
+        }
     }
 
     function backToSectionChoice() {
@@ -2091,7 +2302,12 @@
     function openMockSelectionScreen() {
         document.getElementById('sectionChoiceScreen').style.display = 'none';
         document.getElementById('mockSelectScreen').style.display = 'block';
-        document.getElementById('currentMockPostBadge').textContent = `${selectedAayog} • ${selectedPost}`;
+        
+        let displayPost = selectedPost;
+        if (selectedPost === 'RO_ARO_GS') displayPost = 'RO/ARO सामान्य अध्ययन (GS)';
+        if (selectedPost === 'RO_ARO_HINDI') displayPost = 'RO/ARO सामान्य हिन्दी (Hindi)';
+
+        document.getElementById('currentMockPostBadge').textContent = `${selectedAayog} • ${displayPost}`;
 
         const grid = document.getElementById('mockGridList');
         grid.innerHTML = '';
@@ -2099,10 +2315,17 @@
         for (let i = 1; i <= 10; i++) {
             const card = document.createElement('div');
             card.className = 'select-card';
+            
+            let cardSubText = '30 प्रश्न • CBT मोड';
+            if (selectedPost === 'PRT') cardSubText = '120 प्रश्न • 120 मिनट (-1 Neg)';
+            if (selectedPost === 'RO_ARO_GS') cardSubText = '140 प्रश्न • 120 मिनट (-0.33 Neg)';
+            if (selectedPost === 'RO_ARO_HINDI') cardSubText = '60 प्रश्न • 60 मिनट (-0.33 Neg)';
+            if (selectedPost === 'UPPSC Pre 2026') cardSubText = '75 प्रश्न • 60 मिनट (-0.44 Neg)';
+
             card.innerHTML = `
                 <div class="badge-icon">📝</div>
                 <div class="card-title">Mock Test ${i < 10 ? '0' + i : i}</div>
-                <div class="card-sub">${selectedPost === 'PRT' ? '120 प्रश्न • 120 मिनट (-1 Neg)' : '30 प्रश्न • CBT मोड'}</div>
+                <div class="card-sub">${cardSubText}</div>
             `;
             card.onclick = () => loadAndStartMockNumber(i);
             grid.appendChild(card);
@@ -2113,12 +2336,26 @@
         selectedMockTestNo = mockNo;
 
         let targetCsvUrl = CSV_URLS.DEFAULT;
+        let examSeconds = 60 * 60;
+
         if (selectedPost === 'Assistant Professor') {
             targetCsvUrl = CSV_URLS.ASST_PROF;
-        } else if (selectedPost === 'TGT' || selectedPost === 'PGT') {
+            examSeconds = 60 * 60;
+        } else if (selectedPost === 'TGT' || selectedPost === 'PGT' || selectedPost === 'GIC Lecturer' || selectedPost === 'LT Grade') {
             targetCsvUrl = CSV_URLS.TGT_PGT;
+            examSeconds = 60 * 60;
         } else if (selectedPost === 'PRT') {
             targetCsvUrl = CSV_URLS.PRT;
+            examSeconds = 120 * 60;
+        } else if (selectedPost === 'UPPSC Pre 2026') {
+            targetCsvUrl = CSV_URLS.UPPSC_PRE_2026;
+            examSeconds = 60 * 60;
+        } else if (selectedPost === 'RO_ARO_GS') {
+            targetCsvUrl = CSV_URLS.RO_ARO_GS;
+            examSeconds = 120 * 60;
+        } else if (selectedPost === 'RO_ARO_HINDI') {
+            targetCsvUrl = CSV_URLS.RO_ARO_HINDI;
+            examSeconds = 60 * 60;
         }
 
         document.getElementById('mockSelectScreen').style.display = 'none';
@@ -2127,13 +2364,12 @@
         document.getElementById('btnPaletteOpen').style.display = 'block';
         
         const mockBadge = mockNo < 10 ? '0' + mockNo : mockNo;
-        document.getElementById('examDetailTag').textContent = `${selectedAayog} • ${selectedPost} (Mock ${mockBadge})`;
-        document.getElementById('questionText').textContent = `मॉक टेस्ट ${mockNo} लोड हो रहा है, कृपया प्रतीक्षा करें...`;
+        let displayPost = selectedPost;
+        if (selectedPost === 'RO_ARO_GS') displayPost = 'RO/ARO GS';
+        if (selectedPost === 'RO_ARO_HINDI') displayPost = 'RO/ARO हिन्दी';
 
-        let examSeconds = 60 * 60;
-        if (selectedPost === 'PRT') {
-            examSeconds = 120 * 60;
-        }
+        document.getElementById('examDetailTag').textContent = `${selectedAayog} • ${displayPost} (Mock ${mockBadge})`;
+        document.getElementById('questionText').textContent = `मॉक टेस्ट ${mockNo} लोड हो रहा है, कृपया प्रतीक्षा करें...`;
 
         try {
             const response = await fetch(targetCsvUrl + '&_nocache=' + new Date().getTime());
@@ -2144,7 +2380,7 @@
 
             if (lines.length > 1) {
                 const headerCols = parseCSVLine(lines[0]);
-                const hasTestNo = headerCols[0] && headerCols[0].toLowerCase().includes('test');
+                const hasTestNo = headerCols[0] && (headerCols[0].toLowerCase().includes('test') || headerCols[0].toLowerCase().includes('mock'));
 
                 for (let i = 1; i < lines.length; i++) {
                     const line = lines[i].trim();
@@ -2152,7 +2388,6 @@
                     const cols = parseCSVLine(line);
 
                     if (hasTestNo) {
-                        // cols[0]=test_no, cols[1]=id, cols[2]=question, cols[3]=optA, cols[4]=optB, cols[5]=optC, cols[6]=optD, cols[7]=correct, cols[8]=exp
                         if (cols.length >= 8) {
                             const rowTestNo = parseInt(cols[0], 10);
                             if (rowTestNo === mockNo || isNaN(rowTestNo)) {
@@ -2168,7 +2403,6 @@
                             }
                         }
                     } else {
-                        // Fallback for legacy format: cols[0]=id, cols[1]=question, cols[2]=optA, cols[3]=optB, cols[4]=optC, cols[5]=optD, cols[6]=correct, cols[7]=exp
                         if (cols.length >= 7) {
                             questions.push({
                                 q: cols[1] || '',
@@ -2188,7 +2422,7 @@
         }
 
         if (questions.length === 0) {
-            alert(`मॉक टेस्ट ${mockNo} में अभी प्रश्न उपलब्ध नहीं हैं! कृपया पहले शीट में टेस्ट ${mockNo} का डेटा भरें।`);
+            alert(`मॉक टेस्ट ${mockNo} में अभी प्रश्न उपलब्ध नहीं हैं! कृपया पहले संबंधित शीट में टेस्ट ${mockNo} का डेटा भरें।`);
             goHome();
             return;
         }
@@ -2215,7 +2449,7 @@
         document.getElementById('questionText').textContent = "लाइव टेस्ट लोड हो रहा है, कृपया प्रतीक्षा करें...";
 
         let examSeconds = 60 * 60;
-        if (selectedPost === 'PRT') {
+        if (selectedPost === 'PRT' || selectedPost === 'RO_ARO_GS') {
             examSeconds = 120 * 60;
         }
 
@@ -2227,7 +2461,7 @@
             questions = [];
             if (lines.length > 1) {
                 const headerCols = parseCSVLine(lines[0]);
-                const hasTestNo = headerCols[0] && headerCols[0].toLowerCase().includes('test');
+                const hasTestNo = headerCols[0] && (headerCols[0].toLowerCase().includes('test') || headerCols[0].toLowerCase().includes('mock'));
 
                 for (let i = 1; i < lines.length; i++) {
                     const line = lines[i].trim();
@@ -2368,159 +2602,4 @@
     }
 
     function navQuestion(dir) {
-        currentIndex += dir;
-        renderQuestion();
-    }
-
-    function finishExam() {
-        clearInterval(timerInterval);
-        document.getElementById('quizScreen').style.display = 'none';
-        document.getElementById('timerBadge').style.display = 'none';
-        document.getElementById('btnPaletteOpen').style.display = 'none';
-        document.getElementById('resultScreen').style.display = 'block';
-
-        let correct = 0, wrong = 0, skipped = 0;
-        const wrongList = [];
-        const skippedList = [];
-        const correctList = [];
-
-        questions.forEach((q, idx) => {
-            const ans = userAnswers[idx];
-            const dataObj = { num: idx + 1, q: q.q, ans: ans, correct: q.correct, exp: q.exp };
-
-            if (ans === undefined) {
-                skipped++;
-                skippedList.push(dataObj);
-            } else if (ans === q.correct) {
-                correct++;
-                correctList.push(dataObj);
-            } else {
-                wrong++;
-                wrongList.push(dataObj);
-            }
-        });
-
-        const totalQ = questions.length;
-        let percentage = 0;
-        let finalScoreDisplay = "";
-
-        if (selectedPost === 'PRT') {
-            const rawScore = (correct * 3) - (wrong * 1);
-            const totalScoreVal = Math.max(0, rawScore);
-            const maxMarks = totalQ * 3;
-            percentage = maxMarks > 0 ? Math.round((totalScoreVal / maxMarks) * 100) : 0;
-            finalScoreDisplay = `${totalScoreVal} / ${maxMarks} अंक`;
-            document.getElementById('statScoreBar').innerHTML = `
-                <div style="color:var(--success); font-weight:800;">सही (+3): ${correct}</div>
-                <div style="color:var(--danger); font-weight:800;">गलत (-1): ${wrong}</div>
-                <div style="color:var(--text-sub); font-weight:800;">छूटा: ${skipped}</div>
-            `;
-        } else {
-            percentage = totalQ > 0 ? Math.round((correct / totalQ) * 100) : 0;
-            finalScoreDisplay = `${correct} / ${totalQ}`;
-            document.getElementById('statScoreBar').innerHTML = `
-                <div style="color:var(--success); font-weight:800;">सही: ${correct}</div>
-                <div style="color:var(--danger); font-weight:800;">गलत: ${wrong}</div>
-                <div style="color:var(--text-sub); font-weight:800;">छूटा: ${skipped}</div>
-            `;
-        }
-
-        document.getElementById('finalScore').textContent = `${finalScoreDisplay} (${percentage}%)`;
-
-        let remark = "";
-        let boxColor = "";
-        let bgStyle = "";
-
-        if (percentage >= 90) {
-            remark = "वाह! क्या भौकाल तैयारी है! 🔥 गुरु तुम तो पहली ही लिस्ट में टॉपर बनोगे, नो कैप (No Cap)! 🚀 सीट पक्की!";
-            boxColor = "#16a34a";
-            bgStyle = "#ecfdf5";
-        } else if (percentage >= 75) {
-            remark = "एकदम सॉलिड तैयारी! ⚡ बस थोड़ा सा रिवीजन और, फिर सीधे कटऑफ पार! कीप इट अप!";
-            boxColor = "#2563eb";
-            bgStyle = "#eff6ff";
-        } else if (percentage >= 50) {
-            remark = "काम चलाऊ स्कोर है! 📚 ओवरकॉन्फिडेंस में मत आना, वरना असली एग्जाम में मोये-मोये हो जाएगा! थोड़ा और घिसो!";
-            boxColor = "#d97706";
-            bgStyle = "#fffbeb";
-        } else if (percentage >= 20) {
-            remark = "सीरियस हो जाओ यार! 💀 रील्स कम देखो और तुरंत रिवीजन करो, वरना कटऑफ बहुत दूर रह जाएगी!";
-            boxColor = "#ea580c";
-            bgStyle = "#fff7ed";
-        } else {
-            remark = "बेटा तुमसे ना हो पाएगा! 😭 ऐसे तो एडमिट कार्ड भी रो देगा! तुरंत बेसिक से पढ़ना शुरू करो!";
-            boxColor = "#dc2626";
-            bgStyle = "#fef2f2";
-        }
-
-        const genzBox = document.getElementById('genzBox');
-        genzBox.textContent = remark;
-        genzBox.style.color = boxColor;
-        genzBox.style.borderColor = boxColor;
-        genzBox.style.background = bgStyle;
-
-        document.getElementById('pdfGenzRemark').textContent = `फीडबैक: ${remark}`;
-
-        renderBulletResults(wrongList, skippedList, correctList, correct, wrong, skipped, finalScoreDisplay);
-    }
-
-    function renderBulletResults(wrongList, skippedList, correctList, c, w, s, scoreDisplay) {
-        const webContainer = document.getElementById('bulletContainerWeb');
-        const printContainer = document.getElementById('printBulletList');
-        webContainer.innerHTML = '';
-        printContainer.innerHTML = '';
-
-        document.getElementById('printReportArea').style.display = 'block';
-        document.getElementById('pdfMetaText').textContent = `Exam: ${selectedAayog} (${selectedPost}) | Team Anurag`;
-        document.getElementById('pdfScoreText').textContent = scoreDisplay;
-        document.getElementById('pdfRightText').textContent = `${c}`;
-        document.getElementById('pdfWrongText').textContent = `${w}`;
-
-        const createWebCard = (item, type) => {
-            let badgeColor = type === 'wrong' ? '#dc2626' : (type === 'skipped' ? '#d97706' : '#16a34a');
-            let badgeText = type === 'wrong' ? '❌ गलत' : (type === 'skipped' ? '⚠️ छूटा' : '✅ सही');
-            return `
-                <div class="bullet-q-card ${type==='wrong'?'':(type==='skipped'?'skipped-card':'right-card')}">
-                    <div style="font-weight:800; font-size:14px; margin-bottom:4px;">Q${item.num}. ${item.q}</div>
-                    <div style="font-size:12.5px; margin-bottom:2px;">
-                        <span style="background:${badgeColor}15; color:${badgeColor}; padding:1px 6px; border-radius:4px; font-weight:800;">${badgeText}</span>
-                        <span style="margin-left:6px; font-weight:700;">आपका चयन: ${item.ans || 'None'}</span>
-                        <span style="margin-left:6px; color:#16a34a; font-weight:800;">| सही उत्तर: (${item.correct})</span>
-                    </div>
-                    ${item.exp ? `<div style="font-size:12px; color:#64748b; margin-top:3px;">💡 व्याख्या: ${item.exp}</div>` : ''}
-                </div>
-            `;
-        };
-
-        const createPrintCard = (item) => {
-            return `
-                <div class="bullet-q-card">
-                    <div class="q-title">Q${item.num}. ${item.q}</div>
-                    <div class="q-meta-ans">
-                        <strong>उत्तर:</strong> ${item.ans || 'None'} | 
-                        <strong style="color:#16a34a;">सही: (${item.correct})</strong>
-                    </div>
-                    ${item.exp ? `<div class="q-exp" style="color:#475569;">💡 ${item.exp}</div>` : ''}
-                </div>
-            `;
-        };
-
-        wrongList.forEach(item => webContainer.innerHTML += createWebCard(item, 'wrong'));
-        skippedList.forEach(item => webContainer.innerHTML += createWebCard(item, 'skipped'));
-        correctList.forEach(item => webContainer.innerHTML += createWebCard(item, 'right'));
-
-        if (wrongList.length === 0 && skippedList.length === 0) {
-            printContainer.innerHTML = `<div style="grid-column: span 2; text-align:center; padding:10px; font-weight:800; color:#16a34a;">शाबाश! आपने सभी प्रश्नों के सही उत्तर दिए हैं।</div>`;
-        } else {
-            wrongList.forEach(item => printContainer.innerHTML += createPrintCard(item));
-            skippedList.forEach(item => printContainer.innerHTML += createPrintCard(item));
-        }
-    }
-
-    window.onload = function() {
-        checkAuthStatus();
-        loadStudentNotices();
-    };
-</script>
-</body>
-</html>
+        currentIndex +=
